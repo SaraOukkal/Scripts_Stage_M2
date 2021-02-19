@@ -3,8 +3,13 @@
 #Importer packages: 
 import argparse 
 import numpy as np
-import matplotlib.pyplot as plt
 import os
+import matplotlib as mpl
+if os.environ.get('DISPLAY','') == '':
+    print('no display found. Using non-interactive Agg backend')
+    mpl.use('Agg')
+import matplotlib.pyplot as plt
+
 
 def ancestral_sites(bar_AB_count, output_directory): #Plot du nombre de sites par distance aux barrières
 	AB_count=open(bar_AB_count, "r") #Fichier avec nombe de bases par type en fonction de la distance aux barrières

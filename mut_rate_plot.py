@@ -3,8 +3,13 @@
 #Importer packages: 
 import argparse 
 import numpy as np
-import matplotlib.pyplot as plt
 import os
+import matplotlib as mpl
+if os.environ.get('DISPLAY','') == '':
+    print('no display found. Using non-interactive Agg backend')
+    mpl.use('Agg')
+import matplotlib.pyplot as plt
+
 
 def mut_rate_plot(mut_rate, output):
 	data=open(mut_rate, "r")
