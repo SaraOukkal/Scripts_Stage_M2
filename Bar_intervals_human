@@ -1,0 +1,19 @@
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/
+
+#Générer fichier bed avec les nouveaux intervalles de l'Homme:
+cat /media/disk1/soukkal/StageM2/Stage_M1/Step1_results/new_intervals.txt |cut -f1,2,3 > /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_intervals.bed
+
+#Le trier par chromosome et par position:
+sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_intervals.bed > /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_intervals_sorted.bed
+
+sort -k1,1 -k2,2n  /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/selected_bar.txt >  /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/selected_bar_sorted.bed
+
+#Retire les espaces avant le start du fichier barrières: (tmp = fichier temporaire qui stock l'info)
+
+cat /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_barriers_sorted.bed |sed 's/ //g' > tmp && mv tmp /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_barriers_sorted.bed
+
+#Générer un fichier contenant les Barrières et parties de barrières présentes dans les intervalles de l'homme:
+
+bedtools intersect -sorted -a /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_intervals_sorted.bed  -b /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_barriers_sorted.bed > /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_barriers_in_inter.bed
+
+sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_barriers_in_inter.bed > /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_barriers_in_inter_sorted.bed

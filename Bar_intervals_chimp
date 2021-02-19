@@ -1,0 +1,13 @@
+#Générer fichier bed avec les nouveaux intervalles du Chimpanzé:
+cat /home/saraoukkal/Documents/Stage_M1/Step1_results/new_intervals.txt |cut -f4,5,6 > /home/saraoukkal/Documents/Stage_M1/Chimp_Step2_results/C_intervals.bed
+
+#Le trier par chromosome et par position:
+sort -k1,1 -k2,2n /home/saraoukkal/Documents/Stage_M1/Chimp_Step2_results/C_intervals.bed > /home/saraoukkal/Documents/Stage_M1/Chimp_Step2_results/C_intervals_sorted.bed
+
+sort -k1,1 -k2,2n /home/saraoukkal/Documents/Stage_M1/Chimp_Step2_results/selected_bar.txt > /home/saraoukkal/Documents/Stage_M1/Chimp_Step2_results/selected_bar_sorted.bed
+
+#Générer un fichier contenant les Barrières et parties de barrières présentes dans les intervalles du chimpanzé:
+
+bedtools intersect -sorted -a /home/saraoukkal/Documents/Stage_M1/Chimp_Step2_results/C_intervals_sorted.bed  -b /home/saraoukkal/Documents/Stage_M1/Chimp_Step2_results/selected_bar_sorted.bed > /home/saraoukkal/Documents/Stage_M1/Chimp_Step2_results/C_barriers_in_inter.bed
+
+sort -k1,1 -k2,2n /home/saraoukkal/Documents/Stage_M1/Chimp_Step2_results/C_barriers_in_inter.bed > /home/saraoukkal/Documents/Stage_M1/Chimp_Step2_results/C_barriers_in_inter_sorted.bed

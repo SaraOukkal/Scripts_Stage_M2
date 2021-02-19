@@ -1,0 +1,10 @@
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/
+
+cp /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step3_results/H_seq.fa /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/
+
+cp /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step3_results/C_seq.fa /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/
+
+cp /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step3_results/G_seq.fa /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/
+
+cp /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step3_results/O_seq.fa /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/
+

@@ -1,0 +1,11 @@
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/
+
+#Garder uniquement les colonnes Chr/Pos/nuc_C/EA: (nuc C ici correspond aux nucléotides de l'Homme)
+
+cat /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/mut_pattern.txt|cut -f1,2,3,4|grep -v "N" |grep -v "n"> /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/mut_EA.txt
+
+#Trier le fichier contenant les mutations (celui contenant les barrieres a déja été trié) :
+
+sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/mut_EA.txt > /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/mut_EA_sorted.txt
+
+

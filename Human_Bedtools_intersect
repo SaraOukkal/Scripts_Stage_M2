@@ -1,0 +1,15 @@
+#sort files: 
+
+sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Step1_results/20200728_HC.bed > /media/disk1/soukkal/StageM2/Stage_M1/Step1_results/20200728_HC_sorted.bed
+sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Step1_results/20200728_HG.bed > /media/disk1/soukkal/StageM2/Stage_M1/Step1_results/20200728_HG_sorted.bed
+sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Step1_results/20200728_HO.bed > /media/disk1/soukkal/StageM2/Stage_M1/Step1_results/20200728_HO_sorted.bed
+
+#create HC/HG/HO common intervals: 
+
+bedtools intersect -sorted -a /media/disk1/soukkal/StageM2/Stage_M1/Step1_results/20200728_HC_sorted.bed -b /media/disk1/soukkal/StageM2/Stage_M1/Step1_results/20200728_HG_sorted.bed > /media/disk1/soukkal/StageM2/Stage_M1/Step1_results/HC_HG_intersect.bed
+
+sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Step1_results/HC_HG_intersect.bed > /media/disk1/soukkal/StageM2/Stage_M1/Step1_results/HC_HG_intersect_sorted.bed
+
+bedtools intersect -sorted -a /media/disk1/soukkal/StageM2/Stage_M1/Step1_results/HC_HG_intersect_sorted.bed -b /media/disk1/soukkal/StageM2/Stage_M1/Step1_results/20200728_HO_sorted.bed > /media/disk1/soukkal/StageM2/Stage_M1/Step1_results/HC_HG_HO_intersect.bed
+
+sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Step1_results/HC_HG_HO_intersect.bed > /media/disk1/soukkal/StageM2/Stage_M1/Step1_results/HC_HG_HO_intersect_sorted.bed
