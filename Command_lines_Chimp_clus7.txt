@@ -25,7 +25,7 @@ bash Move_fasta
 bash Get_seq_files
 
 ##Répérer les différences de nucléotides Homme-Chimp: (inverser séquences H et C) 
-python3 Mut_pattern.py -H /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step3_results/H_seq.fa -C /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step3_results/C_seq.fa -G /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step3_results/G_seq.fa -O /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step3_results/O_seq.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step3_results/mut_pattern.txt 
+python3 Mut_pattern.py -H /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/H_seq.fa -C /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/C_seq.fa -G /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/G_seq.fa -O /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/O_seq.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step3_results/mut_pattern.txt 
 #Définir le pattern mutationnel de l'Homme autour des barrières: 
 ##Repérer les mutations dont on peut déterminer l'état ancestral: 
 ###Modifiers pathways du script bash: 
@@ -35,7 +35,7 @@ python3 Mut_pattern_bar.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step
 
 #Définir les bases non mutées aux bords des barrières de l'Homme: 
 ##Déterminer les bases non mutées depuis les séquences des 4 espèces: 
-python3 Calcul_ancestralBase.py -H /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step3_results/H_seq.fa -C /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step3_results/C_seq.fa -G /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step3_results/G_seq.fa -O /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step3_results/O_seq.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/AB_chimp.txt 
+python3 Calcul_ancestralBase.py -H /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/H_seq.fa -C /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/C_seq.fa -G /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/G_seq.fa -O /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/O_seq.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/AB_chimp.txt 
 ##Trier le fichier de sortie par chromosome et par position: 
 sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/AB_chimp.txt  > /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/AB_chimp_sorted.txt 
 ##Compter les bases par type et par position par rapport aux barrières:

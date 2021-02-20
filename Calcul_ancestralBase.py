@@ -34,7 +34,7 @@ def same_base(fa_file1, fa_file2, fa_file3, fa_file4, output_file):
 		if H.startswith(">"): #Lignes >chr:st-end
 			line_H=H.strip().split(":")
 			chrom_H=line_H[0].replace(">","")  #Chromosome chez l'Humain 
-			mut=[]
+			base=[]
 			
 			if chrom_H not in done_chrom:
 				done_chrom.append(chrom_H)
@@ -56,9 +56,9 @@ def same_base(fa_file1, fa_file2, fa_file3, fa_file4, output_file):
 		else:	#Lignes de séquence
 			
 			for n in range(len(H)):#Pour chaque position de nucléotide dans la séquence
-				mut=[] #Réinitialise la liste mut à chaque nucléotide 
+				base=[] #Réinitialise la liste mut à chaque nucléotide 
 				if H[n].upper() in nucleotides: 
-					mut.append(chrom_C)
+					base.append(chrom_C)
 					if strand == "+":		
 						pos=start+n #Calcule la position du nucléotide 
 								
@@ -66,14 +66,13 @@ def same_base(fa_file1, fa_file2, fa_file3, fa_file4, output_file):
 						pos=start-(n+1) #n+1 car la position end dans les intervalles n'est pas inclue dans la séquence
 					
 					#.upper() car les nucléotides des éléments répétés sont en minuscule
-					if H[n].upper()==C[n].upper(): #Si même nucléotide entre Homme et chimpanzé
-						if  C[n].upper()==G[n].upper() and C[n].upper()==O[n].upper(): #Même nucléotide partout
+					if  C[n].upper()==G[n].upper() and C[n].upper()==O[n].upper(): #Même nucléotide entre espèce d'interêt et les deux outgroup
 						
-							mut.append(pos)
-							mut.append(C[n].upper())
+						base.append(pos)
+						base.append(C[n].upper())
 							
-							out.write("{}\t{}\t{}\n".format(mut[0],mut[1],mut[2])) 
-							mut=[] #Réinitialise la liste mut à chaque nucléotide 
+						out.write("{}\t{}\t{}\n".format(base[0],base[1],base[2])) 
+						base=[] #Réinitialise la liste mut à chaque nucléotide 
 						
 			start=pos #Mets à jour la position start pour les cas ou on a un retour à la ligne pour une même séquence dans le fichier fasta
 
