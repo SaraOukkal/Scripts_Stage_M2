@@ -29,8 +29,7 @@ python3 Mut_pattern.py -H /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_resu
 ###Modifiers pathways du script bash: 
 bash Mut_barriers_chimp
 ##Compter les mutations par type et par position par rapport aux barrières: 
-python3 Mut_pattern_bar_modifié.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step2_results/selected_inter_bar_sorted.bed
- -mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/mut_EA_sorted.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/mut_count_bar.txt
+python3 Mut_pattern_bar_modif.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step2_results/selected_inter_bar_sorted.bed -mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/mut_EA_sorted.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/mut_count_bar.txt
 
 #Définir les bases non mutées aux bords des barrières de l'Homme: 
 ##Déterminer les bases non mutées depuis les séquences des 4 espèces: 
@@ -38,7 +37,7 @@ python3 Calcul_ancestralBase.py -H /media/disk1/soukkal/StageM2/Stage_M1/Human_S
 ##Trier le fichier de sortie par chromosome et par position: 
 sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/AB_chimp.txt  > /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/AB_chimp_sorted.txt 
 ##Compter les bases par type et par position par rapport aux barrières:
-python3 Ancestral_base_bar_dist_modifié.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step2_results/selected_inter_bar_sorted.bed -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/AB_chimp_sorted.txt  -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/AB_count_bar.txt
+python3 Ancestral_base_bar_dist_modif.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step2_results/selected_inter_bar_sorted.bed -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/AB_chimp_sorted.txt  -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/AB_count_bar.txt
 
 #Calcul du taux de mutations par type de substitutions:
 python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/mut_count_bar.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/AB_count_bar.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/Chimp_mut_rates.txt
