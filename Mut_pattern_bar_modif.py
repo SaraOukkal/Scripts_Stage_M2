@@ -55,7 +55,7 @@ def mut_bar(barriers, input_mut):
 		nuc_C=line[2] #nucléotide chez le chimpanzé
 		EA=line[3] #nucléotide ancestral 
 		
-		threshold=barriers[chrom][0]["st"]-1000 #limite basse au début du chromosome donc ce qu'il y a 1000nt avant la première barrière (sert à gagner du temps en début de chromosome)
+		threshold=barriers[chrom][0]["st1"]-1000 #limite basse au début du chromosome donc ce qu'il y a 1000nt avant la première barrière (sert à gagner du temps en début de chromosome)
 		
 		if chrom not in done_chrom:
 			done_chrom.append(chrom)

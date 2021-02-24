@@ -12,9 +12,9 @@ python3 New_intervals.py -sp1 /media/disk1/soukkal/StageM2/Stage_M1/20200616_hg3
 
 #Déterminer la position des barrières dans les intervalles du Chimpanzé: 
 ##Sélectionner les barrières qui ont un inter barrière de plus de 1000nt: 
-python3 select_inter_bar.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/panTro5/20200228_interSmallNFR.da -o /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step2_results/selected_inter_bar.txt
+python3 select_inter_bar.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/panTro5/20200228_interSmallNFR.dat -o /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step2_results/selected_inter_bar.txt
 # Trier les couples de barrières par chromosome et par position: 
-sort -k1,1 -k2,2n /home/saraoukkal/Documents/Stage_M1/Chimp_Step2_results/selected_inter_bar.txt > /home/saraoukkal/Documents/Stage_M1/Chimp_Step2_results/selected_inter_bar_sorted.bed
+sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step2_results/selected_inter_bar.txt > /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step2_results/selected_inter_bar_sorted.bed
 
 #Déterminer le pattern mutationnel de l'Homme (cette étude est réalisée après celle du chimpanzé) 
 ##Copier fichiers fasta dans le dossier de l'Homme: 

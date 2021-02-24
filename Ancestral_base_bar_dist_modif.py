@@ -55,7 +55,7 @@ def ancestral_base_bar(barriers, input_AB):
 		pos=int(line[1]) #position du nt
 		nuc_C=line[2] #nucléotide chez le chimpanzé
 		
-		threshold=barriers[chrom][0]["st"]-1000 #limite basse au début du chromosome (sert à gagner du temps en début de chromosome)
+		threshold=barriers[chrom][0]["st1"]-1000 #limite basse au début du chromosome (sert à gagner du temps en début de chromosome)
 		
 		if chrom not in done_chrom:
 			done_chrom.append(chrom)
