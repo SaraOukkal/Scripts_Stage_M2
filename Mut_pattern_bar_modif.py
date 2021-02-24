@@ -90,7 +90,7 @@ def mut_bar(barriers, input_mut):
 				if dist >= -50:
 					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
 						dico[dist]=Counter()	
-					dico[dist][base]+=1 #Ajoute 1 au type de base concerné
+					dico[dist][mutation]+=1 #Ajoute 1 au type de base concerné
 					index=i #mets à jour l'index 
 					break			
 					
