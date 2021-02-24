@@ -1,0 +1,168 @@
+
+#!/usr/bin/python3
+
+#Importer packages: 
+import argparse 
+from collections import Counter
+
+
+def load_bar(input_bar):
+	"""
+	Charge le fichier .bed des barrières dans un dictionnaire
+	"""
+	
+	barriers ={} 
+	f=open(input_bar,"r")
+	bars=f.readlines()	
+	
+	for l in bars: 
+		line=l.strip().split("\t")
+	
+		chrom=line[0]
+
+		if chrom not in barriers.keys():
+			barriers[chrom]=[]
+		
+		bar={}
+		bar["st1"]=int(line[1])
+		bar["end1"]=int(line[2])
+		bar["st2"]=int(line[3])
+		bar["end2"]=int(line[4])
+			
+		barriers[chrom].append(bar)
+		
+	
+		
+	return barriers #dictionnaire de chromosomes, chaque chromosome est une liste contenant des dictionnaires pour chaque barrière, un dictionnaire de barrière contient les positions start et end
+	
+	
+	
+	
+def ancestral_base_bar(barriers, input_AB):
+	"""
+	Charge le fichier des bases non mutées et les place en fonction des barrières
+	"""
+	dico={}	
+	AB=open(input_AB,"r")
+	done_chrom=[] 
+	c = 0 #compteur de bases
+	
+	for l in AB: 
+		if c%100000 == 0 : 
+			print(c) #affiche C toutes les 100000 nt 
+		line=l.strip().split("\t")
+		chrom=line[0] #chromosome du nt 
+		pos=int(line[1]) #position du nt
+		nuc_C=line[2] #nucléotide chez le chimpanzé
+		
+		threshold=barriers[chrom][0]["st"]-1000 #limite basse au début du chromosome (sert à gagner du temps en début de chromosome)
+		
+		if chrom not in done_chrom:
+			done_chrom.append(chrom)
+			print(chrom) #imprime le nouveau chromosome pris en charge 
+			index=0 #réinitialise l'index 
+			
+		for i in range(index,len(barriers[chrom]),1):
+			st1=barriers[chrom][i]["st1"]	#start de la barrière x 
+			end1=barriers[chrom][i]["end1"]	#end de la barrière x 
+			st2=barriers[chrom][i]["st2"]
+			end2=barriers[chrom][i]["end2"]
+			base=nuc_C.upper()	#détermine le type de base	
+			
+			if pos < threshold: #Pour le cas ou il y a des bases au début du chromosome avant la première barrière, trop loin pour qu'elles soient comptabilisées, cela permet de passer rapidement ces mutations et ne pas parcourir l'entiereté des barrières du chromosome inutilement
+				break
+			
+			elif pos >=st1 and pos <=end1 : #si la base est dans la première barrière
+				dist1=st1-pos
+				dist2=pos-end1		
+				dist=max(dist1,dist2)
+				if dist >= -50:
+					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
+						dico[dist]=Counter()	
+					dico[dist][base]+=1 #Ajoute 1 au type de base concerné
+					index=i #mets à jour l'index 
+					break
+			
+			elif pos >=st2 and pos <=end2: #Si la base est dans la deuxième barrière
+				dist1=st2-pos
+				dist2=pos-end2		
+				dist=max(dist1,dist2)
+				if dist >= -50:
+					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
+						dico[dist]=Counter()	
+					dico[dist][base]+=1 #Ajoute 1 au type de base concerné
+					index=i #mets à jour l'index 
+					break
+
+			elif pos <= end1+1000 and pos > end1: #Si la base est à - de 1000 nucléotides après la première barrière
+				if pos < st2:
+					dist=pos-end1
+					if dist not in dico.keys():
+						dico[dist]=Counter()		
+						
+					dico[dist][base]+=1
+					index=i
+					break
+
+			elif pos >= st2-1000 and pos < st2: #Si la base est à - de 1000 nucléotides avant la deuxième barrière
+				dist=st2-pos
+				if dist not in dico.keys():
+					dico[dist]=Counter()		
+						
+				dico[dist][base]+=1
+				index=i
+				break
+				
+			elif pos > end1+1000 and pos < st2-1000: #Si la base est entre deux barrières mais à + de 1000 nucléotides des deux, on ne la comptabilise pas mais on mets à jour l'index et on sort de la boucle
+				index=i
+				break
+				
+				
+		c += 1 #mets à jour le compteur de bases totales 
+					
+	return dico								
+
+
+		
+						
+def write_out(base_count,output_file):	
+	"""
+	Ecrit dans le fichier output le compte de chaque type de bases par position par rapport aux barrières.
+	"""
+	
+	out=open(output_file,"w")
+	
+	out.write("{}\t{}\t{}\t{}\t{}\n".format("dist","A","C","G","T"))#Ecrit un header au fichier 
+	
+	for dist in sorted(base_count.keys()):
+		out.write("{}\t{}\t{}\t{}\t{}\n".format(str(dist),str(base_count[dist]["A"]),str(base_count[dist]["C"]),str(base_count[dist]["G"]),str(base_count[dist]["T"])))
+
+
+				
+def main(): 
+	parser = argparse.ArgumentParser()
+	
+	#fichiers input:
+	##fichier .bed des barrières chez le chimpanzé: 
+	parser.add_argument('-bar', '--input_bar', type=str, help='Path to barriers intervals', default ="/media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step2_results/selected_inter_bar_sorted.be")
+	##fichier des mutations du chimpanzé :					
+	parser.add_argument('-AB', '--input_AB', type=str, help='Path to mutation positions and nuc ancestral state', default ="/home/soukkal/Bureau/Projet/Step3_results/AB_chimp.txt")			
+
+	#fichier de sortie: 
+	parser.add_argument('-out', '--output', type=str, help='Path to output file', default ="/home/soukkal/Bureau/Projet/Step3_results/AB_count_bar.txt")			
+
+	
+	args = parser.parse_args()
+	
+	#Lancer fonctions: 
+	print("loading barriers file")
+	barriers=load_bar(args.input_bar)
+	print("counting bases around barriers")
+	base_count=ancestral_base_bar(barriers, args.input_AB)
+	print("writing counts in the output file")
+	write_out(base_count,args.output)
+	print("done")
+	
+
+if "__main__" == __name__:
+	main()
