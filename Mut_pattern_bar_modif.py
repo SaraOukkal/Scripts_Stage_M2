@@ -95,7 +95,7 @@ def mut_bar(barriers, input_mut):
 					break			
 					
 			elif pos <= end1+1000 and pos > end1: #Si la mutation est à - de 1000 nucléotides après la première barrière
-				dist=pos-end			
+				dist=pos-end1			
 				if dist not in dico.keys():
 					dico[dist]=Counter()	
 				dico[dist][mutation]+=1
@@ -110,7 +110,7 @@ def mut_bar(barriers, input_mut):
 				index=i
 				break
 
-			elif pos < st2-1000 and pos > end+1000: #Si la mutation est entre les deux barrières mais à + de 1000 nucléotides des deux, on ne la comptabilise pas mais on mets à jour l'index et on sort de la boucle
+			elif pos < st2-1000 and pos > end1+1000: #Si la mutation est entre les deux barrières mais à + de 1000 nucléotides des deux, on ne la comptabilise pas mais on mets à jour l'index et on sort de la boucle
 				index=i
 				break
 				
