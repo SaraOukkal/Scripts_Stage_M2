@@ -46,7 +46,8 @@ def ancestral_base_bar(barriers, input_AB):
 	AB=open(input_AB,"r")
 	done_chrom=[] 
 	c = 0 #compteur de bases
-	
+	threshold=barriers[chrom][0]["st1"]-1000 #limite basse au début du chromosome (sert à gagner du temps en début de chromosome)
+
 	for l in AB: 
 		if c%100000 == 0 : 
 			print(c) #affiche C toutes les 100000 nt 
@@ -54,9 +55,7 @@ def ancestral_base_bar(barriers, input_AB):
 		chrom=line[0] #chromosome du nt 
 		pos=int(line[1]) #position du nt
 		nuc_C=line[2] #nucléotide chez le chimpanzé
-		
-		threshold=barriers[chrom][0]["st1"]-1000 #limite basse au début du chromosome (sert à gagner du temps en début de chromosome)
-		
+				
 		if chrom not in done_chrom:
 			done_chrom.append(chrom)
 			print(chrom) #imprime le nouveau chromosome pris en charge 
@@ -72,7 +71,11 @@ def ancestral_base_bar(barriers, input_AB):
 			if pos < threshold: #Pour le cas ou il y a des bases au début du chromosome avant la première barrière, trop loin pour qu'elles soient comptabilisées, cela permet de passer rapidement ces mutations et ne pas parcourir l'entiereté des barrières du chromosome inutilement
 				break
 			
-			elif pos >=st1 and pos <=end1 : #si la base est dans la première barrière
+			elif pos < st1: #Si la base est avant la première barrière (donc dans un interbarrière non prit en compte) 
+				index=i
+				break
+			
+			elif pos <=end1 : #si la base est dans la première barrière
 				dist1=st1-pos
 				dist2=pos-end1		
 				dist=max(dist1,dist2)
@@ -80,10 +83,21 @@ def ancestral_base_bar(barriers, input_AB):
 					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
 						dico[dist]=Counter()	
 					dico[dist][base]+=1 #Ajoute 1 au type de base concerné
-					index=i #mets à jour l'index 
-					break
-			
-			elif pos >=st2 and pos <=end2: #Si la base est dans la deuxième barrière
+				index=i #mets à jour l'index 
+				break
+
+			elif pos < st2:
+				dist1=pos-end1
+				dist2=st2-pos
+				dist=min(dist1,dist2)
+				if dist <= 1000 
+					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
+						dico[dist]=Counter()	
+					dico[dist][base]+=1 #Ajoute 1 au type de base concerné
+				index=i #mets à jour l'index 
+				break
+		
+			elif pos <=end2: #Si la base est dans la deuxième barrière
 				dist1=st2-pos
 				dist2=pos-end2		
 				dist=max(dist1,dist2)
@@ -91,32 +105,10 @@ def ancestral_base_bar(barriers, input_AB):
 					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
 						dico[dist]=Counter()	
 					dico[dist][base]+=1 #Ajoute 1 au type de base concerné
-					index=i #mets à jour l'index 
-					break
-
-			elif pos <= end1+1000 and pos > end1: #Si la base est à - de 1000 nucléotides après la première barrière
-				if pos < st2:
-					dist=pos-end1
-					if dist not in dico.keys():
-						dico[dist]=Counter()		
-						
-					dico[dist][base]+=1
-					index=i
-					break
-
-			elif pos >= st2-1000 and pos < st2: #Si la base est à - de 1000 nucléotides avant la deuxième barrière
-				dist=st2-pos
-				if dist not in dico.keys():
-					dico[dist]=Counter()		
-						
-				dico[dist][base]+=1
-				index=i
+				index=i #mets à jour l'index 
 				break
-				
-			elif pos > end1+1000 and pos < st2-1000: #Si la base est entre deux barrières mais à + de 1000 nucléotides des deux, on ne la comptabilise pas mais on mets à jour l'index et on sort de la boucle
-				index=i
-				break
-				
+			
+			#Si la base est après la deuxième barrière on continue de parcourir les barrières
 				
 		c += 1 #mets à jour le compteur de bases totales 
 					
