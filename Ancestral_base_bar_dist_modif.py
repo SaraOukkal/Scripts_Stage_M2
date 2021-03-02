@@ -67,7 +67,7 @@ def ancestral_base_bar(barriers, input_AB):
 			end2=barriers[chrom][i]["end2"]
 			base=nuc_C.upper()	#détermine le type de base	
 			
-			elif pos < st1: #Si la base est avant la première barrière (donc dans un interbarrière non prit en compte) 
+			if pos < st1: #Si la base est avant la première barrière (donc dans un interbarrière non prit en compte) 
 				index=i
 				break
 			
