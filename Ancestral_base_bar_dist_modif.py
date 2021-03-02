@@ -46,7 +46,6 @@ def ancestral_base_bar(barriers, input_AB):
 	AB=open(input_AB,"r")
 	done_chrom=[] 
 	c = 0 #compteur de bases
-	threshold=barriers[chrom][0]["st1"]-1000 #limite basse au début du chromosome (sert à gagner du temps en début de chromosome)
 
 	for l in AB: 
 		if c%100000 == 0 : 
@@ -67,9 +66,6 @@ def ancestral_base_bar(barriers, input_AB):
 			st2=barriers[chrom][i]["st2"]
 			end2=barriers[chrom][i]["end2"]
 			base=nuc_C.upper()	#détermine le type de base	
-			
-			if pos < threshold: #Pour le cas ou il y a des bases au début du chromosome avant la première barrière, trop loin pour qu'elles soient comptabilisées, cela permet de passer rapidement ces mutations et ne pas parcourir l'entiereté des barrières du chromosome inutilement
-				break
 			
 			elif pos < st1: #Si la base est avant la première barrière (donc dans un interbarrière non prit en compte) 
 				index=i
