@@ -71,8 +71,12 @@ def mut_bar(barriers, input_mut):
 			
 			if pos < threshold: #Pour le cas ou il y a des mutations au début du chromosome avant la première barrière, trop loin pour qu'elles soient comptabilisées, cela permet de passer rapidement ces mutations et ne pas parcourir l'entiereté des barrières du chromosome 
 				break
+				
+			elif pos < st1: #Si la base est avant la première barrière (donc dans un interbarrière non prit en compte) 
+				index=i
+				break
 
-			elif pos >=st1 and pos <=end1 : #si la mutation est dans la première barrière
+			elif pos <=end1 : #si la mutation est dans la première barrière
 				dist1=st1-pos
 				dist2=pos-end1		
 				dist=max(dist1,dist2)
@@ -80,10 +84,21 @@ def mut_bar(barriers, input_mut):
 					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
 						dico[dist]=Counter()	
 					dico[dist][mutation]+=1 #Ajoute 1 au type de mutation concerné 
-					index=i #mets à jour l'index 
-					break		
+				index=i #mets à jour l'index 
+				break	
 			
-			elif pos >=st2 and pos <=end2: #Si la mutation est dans la deuxième barrière
+			elif pos < st2: #Si la mutation est dans l'inter barrière end1-st2
+				dist1=pos-end1
+				dist2=st2-pos
+				dist=min(dist1,dist2)
+				if dist <= 1000:
+					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
+						dico[dist]=Counter()	
+					dico[dist][mutation]+=1 #Ajoute 1 au type de base concerné
+				index=i #mets à jour l'index 
+				break				
+			
+			elif pos <=end2: #Si la mutation est dans la deuxième barrière
 				dist1=st2-pos
 				dist2=pos-end2		
 				dist=max(dist1,dist2)
@@ -91,29 +106,11 @@ def mut_bar(barriers, input_mut):
 					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
 						dico[dist]=Counter()	
 					dico[dist][mutation]+=1 #Ajoute 1 au type de base concerné
-					index=i #mets à jour l'index 
-					break			
-					
-			elif pos <= end1+1000 and pos > end1: #Si la mutation est à - de 1000 nucléotides après la première barrière
-				dist=pos-end1			
-				if dist not in dico.keys():
-					dico[dist]=Counter()	
-				dico[dist][mutation]+=1
-				index=i
-				break
-
-			elif pos >= st2-1000 and pos < st2 : #Si la mutation est  à - de 1000 nucléotides avant la deuxième barrière
-				dist=st2-pos
-				if dist not in dico.keys():
-					dico[dist]=Counter()	
-				dico[dist][mutation]+=1
-				index=i
-				break
-
-			elif pos < st2-1000 and pos > end1+1000: #Si la mutation est entre les deux barrières mais à + de 1000 nucléotides des deux, on ne la comptabilise pas mais on mets à jour l'index et on sort de la boucle
-				index=i
-				break
-				
+				index=i #mets à jour l'index 
+				break			
+	
+			#Si la mutation est après la deuxième barrière on continue de parcourir les barrières
+			
 		c += 1 #mets à jour le compteur de mutations totales 
 
 	return dico								

@@ -86,7 +86,7 @@ def ancestral_base_bar(barriers, input_AB):
 				index=i #mets à jour l'index 
 				break
 
-			elif pos < st2:
+			elif pos < st2: #Si la base est dans l'inter barrière end1-st2
 				dist1=pos-end1
 				dist2=st2-pos
 				dist=min(dist1,dist2)
