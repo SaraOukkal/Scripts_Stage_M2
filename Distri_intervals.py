@@ -37,6 +37,8 @@ def main():
 	parser.add_argument('-inter', '--input_inter', type=str, help='Path to intervals', default ="/media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/H_intervals.bed")
 	parser.add_argument('-out', '--output', type=str, help='Path to output plot', default ="/media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/")
 	
+	args = parser.parse_args()
+	
 	#Lancer fonctions: 
 	distribution= distri(args.input_inter)
 	plot(distribution, args.output)
@@ -44,5 +46,4 @@ def main():
 
 if "__main__" == __name__:
 	main()
-	args = parser.parse_args()
-	
+
