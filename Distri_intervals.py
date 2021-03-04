@@ -2,6 +2,14 @@
 
 #Importer packages: 
 import argparse 
+import numpy as np
+import os
+import matplotlib as mpl
+if os.environ.get('DISPLAY','') == '':
+    print('no display found. Using non-interactive Agg backend')
+    mpl.use('Agg')
+import matplotlib.pyplot as plt
+
 
 def distri (intervals):
 	f=open(intervals,"r")
@@ -19,7 +27,7 @@ def distri (intervals):
 
 def plot (distribution, output):
 	
-	pyplot.hist(distribution)
+	plt.hist(distribution)
 	plt.title("Intervals size distribution")
 	plt.xlabel("Size (in nt)")
 	plt.ylabel("Number of intervals")
