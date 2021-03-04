@@ -35,7 +35,7 @@ def main():
 	#fichiers input:
 	##fichier .bed des barrières chez le chimpanzé: 
 	parser.add_argument('-inter', '--input_inter', type=str, help='Path to intervals', default ="/media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/H_intervals.bed")
-	parser.add_argument('-out', '--output', type=str, help='Path to output plot', default ="/media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/")
+	parser.add_argument('-out', '--output', type=str, help='Path to output plot', default ="/media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/distri.png")
 	
 	args = parser.parse_args()
 	
