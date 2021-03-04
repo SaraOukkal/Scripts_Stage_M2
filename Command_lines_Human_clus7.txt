@@ -46,7 +46,12 @@ python3 mut_rates_plots.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4
 #Calcul taux de mutations global: 
 python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/mut_count_bar.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_count_bar.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Human_mut_rate.txt
 #Faire graphique taux de mutations global: 
-python3 mut_rate_plot.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Human_mut_rates.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/MR_plot.png
+python3 mut_rate_plot.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Human_mut_rates.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/Mut_rate.png
 
 #Mesurer GC%, nombre de sites ancestraux, nombre de chaque base: 
 python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_count_bar.txt -out //media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/AB_plots/
+
+#Copier les figures de clus7 à la machine locale: (example de chemins)
+#A faire sur la machine locale  
+scp -r soukkal@clus7.igfl.ens-lyon.fr:/media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/ /home/saraoukkal/Documents/Stage_M1/Human_Results
+
