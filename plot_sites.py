@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 def ancestral_sites(bar_AB_count, output_directory): #Plot du nombre de sites par distance aux barrières
 	AB_count=open(bar_AB_count, "r") #Fichier avec nombe de bases par type en fonction de la distance aux barrières
 	AB=AB_count.readlines()
-	print("Loaded files")
+	print("Loaded files AB")
 	
 	dist=[]
 	AncestralBase=[]
@@ -42,15 +42,13 @@ def ancestral_sub_sites(bar_AB_count, output_directory): #plot du nombre de site
 	AB=AB_count.readlines()
 	types=["A","C","G","T"]
 	liste={}
-	print("Loaded files")
+	print("Loaded files AB sub")
 	
 	dist=[]
 	
 	for sub in types: 
 		liste[sub]=[]
 		
-	print(liste)
-
 	for l in AB:
 		if not l.startswith("d"): #Ignore le header du fichier
 			line=l.strip().split("\t")
@@ -63,7 +61,7 @@ def ancestral_sub_sites(bar_AB_count, output_directory): #plot du nombre de site
 				num+=1
 			
 	for i in types:
-				print(liste[i])
+				#print(liste[i])
 				plt.plot(dist,liste[i])
 				plt.title("Number of ancestral base sites per type and per distance to NIEBs")
 				plt.xlabel("Distance from NIEBs")
@@ -79,14 +77,14 @@ def ancestral_sub_sites_percent(bar_AB_count, output_directory): #plot du pource
 	AB=AB_count.readlines()
 	types=["A","C","G","T"]
 	liste={}
-	print("Loaded files")
+	print("Loaded files AB sub percent")
 	
 	dist=[]
 	
 	for sub in types: 
 		liste[sub]=[]
 		
-	print(liste)
+	#print(liste)
 
 	for l in AB:
 		if not l.startswith("d"): #Ignore le header du fichier
@@ -101,7 +99,7 @@ def ancestral_sub_sites_percent(bar_AB_count, output_directory): #plot du pource
 				num+=1
 			
 	for i in types:
-				print(liste[i])
+				#print(liste[i])
 				plt.plot(dist,liste[i])
 				plt.title("Percentage of bases per distance to NIEBs")
 				plt.xlabel("Distance from NIEBs")
@@ -114,7 +112,7 @@ def ancestral_sub_sites_percent(bar_AB_count, output_directory): #plot du pource
 def GC_content(bar_AB_count, output_directory):
 	AB_count=open(bar_AB_count, "r")
 	AB=AB_count.readlines()
-	print("Loaded files")
+	print("Loaded files GC")
 	
 	dist=[]
 	GC_per=[]
