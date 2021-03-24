@@ -56,3 +56,14 @@ python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_resu
 scp soukkal@clus7.igfl.ens-lyon.fr:/media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/distri.png /home/saraoukkal/Documents/Stage_M1/Human_Results
 scp -r #SI c'est un dossier 
 
+#Distribution de la taille des intervalles alignés sur les 4 espèces: 
+python3 Distri_intervals.py -inter /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/H_intervals.bed -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/distri_inter.png
+
+#Distribution de la taille des barrières de l'Homme: 
+python3 Distri_intervals.py -inter /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_barriers_sorted.bed -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/distri_bar.png
+
+##Calcul de la proportion de barrières de l'Homme inclues dans les intervalles: 
+
+
+#Distribution de la taille des barrières de l'Homme inclues dans les intervalles: 
+python3 Distri_intervals.py -inter /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_barriers_in_inter_sorted.bed -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/distri_bar_in_inter.png
