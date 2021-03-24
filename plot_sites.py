@@ -23,7 +23,10 @@ def ancestral_sites(bar_AB_count, output_directory): #Plot du nombre de sites pa
 		if not l.startswith("d"): #Ignore le header du fichier
 			line=l.strip().split("\t")
 			dist.append(int(line[0]))
-			AncestralBase.append(int(line[1]) + int(line[2]) + int(line[3]) + int(line[4]))
+			num_AB=0
+			num_AB=int(line[1]) + int(line[2]) + int(line[3]) + int(line[4])
+			print(num_AB)
+			AncestralBase.append(num_AB)
 
 	plt.plot(dist,AncestralBase)
 	plt.title("Number of ancestral sites around NIEBs")
