@@ -56,10 +56,10 @@ def CpG_islands(fa_file1, fa_file2, fa_file3, fa_file4): #Ici le chimpanzé est 
 					pos=start-(n+1) #n+1 car la position end dans les intervalles n'est pas inclue dans la séquence
 				
 				#.upper() car les nucléotides des éléments répétés sont en minuscule
-					if H[n].upper() is "C":
+					if H[n].upper() == "C":
 						if  H[n].upper() == G[n].upper() and H[n].upper() == O[n].upper(): 
 							C_count+=1
-							if G[n+1].upper() is "G": 
+							if G[n+1].upper() == "G": 
 								CpG+=1
 			
 			start=pos #Mets à jour la position start pour les cas ou on a un retour à la ligne pour une même séquence dans le fichier fasta
