@@ -63,7 +63,7 @@ python3 Distri_intervals.py -inter /media/disk1/soukkal/StageM2/Stage_M1/Human_S
 python3 Distri_intervals.py -inter /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_barriers_sorted.bed -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/distri_bar.png
 
 ##Calcul de la proportion de barrières de l'Homme inclues dans les intervalles: 
-
+python3 Bar_proportion.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_barriers_sorted.bed -bar_inter /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_barriers_in_inter_sorted.bed
 
 #Distribution de la taille des barrières de l'Homme inclues dans les intervalles: 
 python3 Distri_intervals.py -inter /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_barriers_in_inter_sorted.bed -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/distri_bar_in_inter.png

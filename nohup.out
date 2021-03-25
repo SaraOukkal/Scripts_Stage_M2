@@ -1,9 +1,0 @@
-start searching for ancestral bases
-Traceback (most recent call last):
-  File "Calcul_ancestralBase.py", line 101, in <module>
-    main()
-  File "Calcul_ancestralBase.py", line 97, in main
-    same_base(args.input_H, args.input_C, args.input_G, args.input_O,args.output)
-  File "Calcul_ancestralBase.py", line 17, in same_base
-    H_file=open(fa_file1,"r")
-FileNotFoundError: [Errno 2] No such file or directory: '/media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step3_results/H_seq.fa'

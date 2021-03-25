@@ -50,3 +50,15 @@ python3 mut_rate_plot.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_r
 
 #Mesurer GC%, nombre de sites ancestraux, nombre de chaque base: 
 python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/AB_count_bar.txt -out //media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/Plots/AB_plots/
+
+#Distribution de la taille des intervalles alignés sur les 4 espèces: 
+python3 Distri_intervals.py -inter /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/C_intervals.bed -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/Plots/distri_inter.png
+
+#Distribution de la taille des barrières de l'Homme: 
+python3 Distri_intervals.py -inter /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step2_results/C_barriers_sorted.bed -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/Plots/distri_bar.png
+
+##Calcul de la proportion de barrières de l'Homme inclues dans les intervalles: 
+python3 Bar_proportion.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step2_results/C_barriers_sorted.bed -bar_inter /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step2_results/C_barriers_in_inter_sorted.bed
+
+#Distribution de la taille des barrières de l'Homme inclues dans les intervalles: 
+python3 Distri_intervals.py -inter /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step2_results/C_barriers_in_inter_sorted.bed -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/Plots/distri_bar_in_inter.png
