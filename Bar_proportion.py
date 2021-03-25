@@ -47,8 +47,8 @@ def main():
 	parser = argparse.ArgumentParser()
 	
 	#fichiers input:
-	parser.add_argument('-bar', '--input_bar', type=str, help="")					
-	parser.add_argument('-bar_inter', '--input_bar_inter', type=str, help="")	
+	parser.add_argument('-bar', '--input_bar', type=str, help="/media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_barriers_sorted.bed")					
+	parser.add_argument('-bar_inter', '--input_bar_inter', type=str, help="/media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_barriers_in_inter_sorted.bed")	
 
 	args = parser.parse_args()
 	
