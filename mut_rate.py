@@ -41,7 +41,6 @@ def mut_rate(bar_mut_count, bar_AB_count, output):
 					AB_C=int(line_AB[2])
 					AB_G=int(line_AB[3])
 					AB_T=int(line_AB[4])
-					tot_AB=AB_A + AB_C + AB_G + AB_T
 					
 					if mut_dist == AB_dist: #A chaque même distance des barrières
 					#Ajoute les mutations sur la lignée d'interêt au calcul des bases ancestrales (dénominateur du calcul du taux de mutations)
