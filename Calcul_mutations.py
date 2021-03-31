@@ -5,8 +5,10 @@ import argparse
 
 
 def calcul_mut(input_AB, output): 
-	AB=open(input_AB,"r")
+	inp=open(input_AB,"r")
 	out=open(input_AB,"w")
+	AB=inp.readlines()
+	
 	
 	for l in AB: 
 		line=l.strip().split("\t")
