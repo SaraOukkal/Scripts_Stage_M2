@@ -42,30 +42,25 @@ def mut_rates(bar_mut_count, bar_AB_count, output):
 					AB_T=int(line_AB[4])
 					
 					if mut_dist == AB_dist: #A chaque même distance des barrières
-						#Ajoute les mutations sur la lignée d'interêt au calcul des bases ancestrales (dénominateur du calcul du taux de mutations)
-						AB_A_tot=AB_A + mut_AT + mut_AC + mut_AG #Calcul de toutes les bases ancestrales (A/A/A/A + T/A/A/A + C/A/A/A + G/A/A/A)
-						AB_C_tot=AB_C + mut_CT + mut_CA + mut_CG
-						AB_G_tot=AB_G + mut_GT + mut_GA + mut_GC
-						AB_T_tot=AB_T + mut_TA + mut_TC + mut_TG
 						
 						MR=[]
 						MR.append(mut_dist)
 						
-						MR.append(mut_AT/AB_A_tot) #Calcul du taux de mutation pour ce type de substitutions
-						MR.append(mut_AC/AB_A_tot)
-						MR.append(mut_AG/AB_A_tot)
+						MR.append(mut_AT/AB_A) #Calcul du taux de mutation pour ce type de substitutions
+						MR.append(mut_AC/AB_A)
+						MR.append(mut_AG/AB_A)
 						
-						MR.append(mut_CT/AB_C_tot)
-						MR.append(mut_CA/AB_C_tot)
-						MR.append(mut_CG/AB_C_tot)
+						MR.append(mut_CT/AB_C)
+						MR.append(mut_CA/AB_C)
+						MR.append(mut_CG/AB_C)
 						
-						MR.append(mut_GT/AB_G_tot)
-						MR.append(mut_GA/AB_G_tot)
-						MR.append(mut_GC/AB_G_tot)
+						MR.append(mut_GT/AB_G)
+						MR.append(mut_GA/AB_G)
+						MR.append(mut_GC/AB_G)
 						
-						MR.append(mut_TA/AB_T_tot)
-						MR.append(mut_TC/AB_T_tot)
-						MR.append(mut_TG/AB_T_tot)
+						MR.append(mut_TA/AB_T)
+						MR.append(mut_TC/AB_T)
+						MR.append(mut_TG/AB_T)
 						
 						#print(MR)
 						out.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(MR[0],MR[1],MR[2],MR[3],MR[4],MR[5],MR[6],MR[7],MR[8],MR[9],MR[10],MR[11],MR[12])) 

@@ -53,7 +53,7 @@ def ancestral_base_bar(barriers, input_AB):
 		line=l.strip().split("\t")
 		chrom=line[0] #chromosome du nt 
 		pos=int(line[1]) #position du nt
-		nuc_C=line[2] #nucléotide chez le chimpanzé
+		nuc_EA=line[3] #nucléotide à l'état ancestral
 				
 		if chrom not in done_chrom:
 			done_chrom.append(chrom)
@@ -65,16 +65,14 @@ def ancestral_base_bar(barriers, input_AB):
 			end1=barriers[chrom][i]["end1"]	#end de la barrière x 
 			st2=barriers[chrom][i]["st2"]
 			end2=barriers[chrom][i]["end2"]
-			base=nuc_C.upper()	#détermine le type de base	
+			base=nuc_EA.upper()	#détermine le type de base	
 			
 			if pos < st1: #Si la base est avant la première barrière (donc dans un interbarrière non prit en compte) 
 				index=i
 				break
 			
 			elif pos <=end1 : #si la base est dans la première barrière
-				dist1=st1-pos
-				dist2=pos-end1		
-				dist=max(dist1,dist2)
+				dist=pos-end1		
 				if dist >= -50:
 					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
 						dico[dist]=Counter()	
@@ -94,9 +92,7 @@ def ancestral_base_bar(barriers, input_AB):
 				break
 		
 			elif pos <=end2: #Si la base est dans la deuxième barrière
-				dist1=st2-pos
-				dist2=pos-end2		
-				dist=max(dist1,dist2)
+				dist=st2-pos		
 				if dist >= -50:
 					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
 						dico[dist]=Counter()	

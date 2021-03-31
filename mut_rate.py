@@ -31,7 +31,7 @@ def mut_rate(bar_mut_count, bar_AB_count, output):
 			mut_TA=int(line_mut[10])
 			mut_TC=int(line_mut[11])
 			mut_TG=int(line_mut[12])
-			tot_mut=mut_AT + mut_AC + mut_AG + mut_CT + mut_CA + mut_CG + mut_GT + mut_GA + mut_GC + mut_TA + mut_TC + mut_TG 
+			tot_mut=mut_AT + mut_AC + mut_AG + mut_CT + mut_CA + mut_CG + mut_GT + mut_GA + mut_GC + mut_TA + mut_TC + mut_TG #Somme des mutations
 			
 			for i in AB: #Parcours le fichier contenant le nombre de bases ancestrales par type et par distance des NIEBs
 				if not i.startswith("d"): #Ignore le header du fichier 
@@ -41,14 +41,9 @@ def mut_rate(bar_mut_count, bar_AB_count, output):
 					AB_C=int(line_AB[2])
 					AB_G=int(line_AB[3])
 					AB_T=int(line_AB[4])
+					tot_AB=AB_A + AB_C + AB_G + AB_T #Somme des bases ancestrales
 					
 					if mut_dist == AB_dist: #A chaque même distance des barrières
-					#Ajoute les mutations sur la lignée d'interêt au calcul des bases ancestrales (dénominateur du calcul du taux de mutations)
-						AB_A_tot=AB_A + mut_AT + mut_AC + mut_AG #Calcul de toutes les bases ancestrales (A/A/A/A + T/A/A/A + C/A/A/A + G/A/A/A)
-						AB_C_tot=AB_C + mut_CT + mut_CA + mut_CG
-						AB_G_tot=AB_G + mut_GT + mut_GA + mut_GC
-						AB_T_tot=AB_T + mut_TA + mut_TC + mut_TG
-						tot_AB=AB_A_tot + AB_C_tot + AB_G_tot + AB_T_tot
 						
 						MR=[]
 						MR.append(mut_dist)
