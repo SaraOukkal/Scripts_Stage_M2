@@ -17,8 +17,11 @@ def calcul_mut(input_AB, output):
 		mut_count=0
 		
 		if nuc != nuc_EA: 
+			print('yay')
 			mut_count+=1
 			out.write("{}\n".format(l)) #Ecrit la ligne entière 
+	
+	print(mut_count)
 
 def main(): 
 	parser = argparse.ArgumentParser()
