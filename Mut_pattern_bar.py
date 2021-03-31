@@ -1,8 +1,9 @@
+
 #!/usr/bin/python3
 
 #Importer packages: 
 import argparse 
-
+from collections import Counter
 
 def load_bar(input_bar):
 	"""
@@ -10,7 +11,7 @@ def load_bar(input_bar):
 	"""
 	
 	barriers ={} 
-	f=open(input_bar, "r")
+	f=open(input_bar,"r")
 	bars=f.readlines()	
 	
 	for l in bars: 
@@ -22,9 +23,11 @@ def load_bar(input_bar):
 			barriers[chrom]=[]
 		
 		bar={}
-		bar["st"]=int(line[1])
-		bar["end"]=int(line[2])
-			
+		bar["st1"]=int(line[1])
+		bar["end1"]=int(line[2])
+		bar["st2"]=int(line[3])
+		bar["end2"]=int(line[4])
+
 		barriers[chrom].append(bar)
 		
 	
@@ -35,10 +38,12 @@ def load_bar(input_bar):
 	
 	
 def mut_bar(barriers, input_mut):
+	"""
+	Charge le fichier des mutations ponctuelles et les place en fonction des barrières
+	"""
 	dico={}	
 	mut=open(input_mut,"r")
 	done_chrom=[] 
-	out_bar_mut=0 #initialise le compteur de mutations non prises en compte 
 	c = 0 #compteur de mutations
 	
 	for l in mut: 
@@ -50,7 +55,7 @@ def mut_bar(barriers, input_mut):
 		nuc_C=line[2] #nucléotide chez le chimpanzé
 		EA=line[3] #nucléotide ancestral 
 		
-		threshold=barriers[chrom][0]["st"]-1000 #limite basse au début du chromosome (sert à gagner du temps en début de chromosome)
+		threshold=barriers[chrom][0]["st1"]-1000 #limite basse au début du chromosome donc ce qu'il y a 1000nt avant la première barrière (sert à gagner du temps en début de chromosome)
 		
 		if chrom not in done_chrom:
 			done_chrom.append(chrom)
@@ -58,101 +63,52 @@ def mut_bar(barriers, input_mut):
 			index=0 #réinitialise l'index 
 			
 		for i in range(index,len(barriers[chrom])-1,1):
-			st=barriers[chrom][i]["st"]	#start de la barrière x 
-			end=barriers[chrom][i]["end"]	#end de la barrière x 
-			st2=barriers[chrom][i+1]["st"]	#start de la barrière x+1 (suivante) 
+			st1=barriers[chrom][i]["st1"]	#start de la barrière 1
+			end1=barriers[chrom][i]["end1"]	#end de la barrière 1 
+			st2=barriers[chrom][i]["st2"]
+			end2=barriers[chrom][i]["end2"]
 			mutation=nuc_C.upper()+">"+EA.upper()	#détermine le type de mutation 	
 			
-			if pos < threshold: #Pour le cas ou il y a des mutations au début du chromosome avant la première barrière, trop loin pour qu'elles soient comptabilisées, cela permet de passer rapidement ces mutations et ne pas parcourir l'entiereté des barrières du chromosome inutilement
-				out_bar_mut+=1
+			if pos < threshold: #Pour le cas ou il y a des mutations au début du chromosome avant la première barrière, trop loin pour qu'elles soient comptabilisées, cela permet de passer rapidement ces mutations et ne pas parcourir l'entiereté des barrières du chromosome 
+				break
+				
+			elif pos < st1: #Si la base est avant la première barrière (donc dans un interbarrière non prit en compte) 
+				index=i
 				break
 
-			elif pos >=st and pos <=end : #si la mutation est dans la barrière
-				dist1=pos-st
-				dist2=end-pos		
-				if dist1<=dist2: #choisis la distance la plus courte entre celle vers le start et celle vers le end 
-					dist=-dist1		
-				else:
-					dist=-dist2
-				
+			elif pos <=end1 : #si la mutation est dans la première barrière (dans la partie droite de la barrière)
+				dist=pos-end1		
 				if dist >= -50: #Prend uniquement jusqu'a -50nt dans la barrière 
 					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
-						dico[dist]={}	
-						
-						dico[dist]["A>T"]=0	#Mets les compteurs de tous les types de mutations à 0 dans le cas d'une nouvelle distance 
-						dico[dist]["A>C"]=0
-						dico[dist]["A>G"]=0
-						dico[dist]["C>T"]=0
-						dico[dist]["C>A"]=0
-						dico[dist]["C>G"]=0
-						dico[dist]["G>T"]=0
-						dico[dist]["G>A"]=0
-						dico[dist]["G>C"]=0
-						dico[dist]["T>A"]=0
-						dico[dist]["T>C"]=0
-						dico[dist]["T>G"]=0
-					
+						dico[dist]=Counter()	
 					dico[dist][mutation]+=1 #Ajoute 1 au type de mutation concerné 
-					index=i #mets à jour l'index 
-					break
-					
-			elif pos >= st-1000 and pos < st : #Si la mutation est  à - de 1000 nucléotides à gauche de la barrière
-				dist=st-pos
-				if dist >= -50:
-					if dist not in dico.keys():
-						dico[dist]={}	
-						
-						dico[dist]["A>T"]=0
-						dico[dist]["A>C"]=0
-						dico[dist]["A>G"]=0
-						dico[dist]["C>T"]=0
-						dico[dist]["C>A"]=0
-						dico[dist]["C>G"]=0
-						dico[dist]["G>T"]=0
-						dico[dist]["G>A"]=0
-						dico[dist]["G>C"]=0
-						dico[dist]["T>A"]=0
-						dico[dist]["T>C"]=0
-						dico[dist]["T>G"]=0
-						
-					dico[dist][mutation]+=1
-					index=i
-					break
-					
-			elif pos <= end+1000 and pos > end: #Si la mutation est à - de 1000 nucléotides à droite de la barrière
-				dist=pos-end			
-				if dist >= -50:
-					if dist not in dico.keys():
-						dico[dist]={}	
-						
-						dico[dist]["A>T"]=0
-						dico[dist]["A>C"]=0
-						dico[dist]["A>G"]=0
-						dico[dist]["C>T"]=0
-						dico[dist]["C>A"]=0
-						dico[dist]["C>G"]=0
-						dico[dist]["G>T"]=0
-						dico[dist]["G>A"]=0
-						dico[dist]["G>C"]=0
-						dico[dist]["T>A"]=0
-						dico[dist]["T>C"]=0
-						dico[dist]["T>G"]=0
-						
-					dico[dist][mutation]+=1
-					index=i
-					break
+				index=i #mets à jour l'index 
+				break	
 			
-			elif pos < st2-1000 and pos > end+1000: #Si la mutation est entre deux barrières mais à + de 1000 nucléotides des deux, on ne la comptabilise pas mais on mets à jour l'index et on sort de la boucle
-				index=i
-				out_bar_mut+=1
-				break
-				
+			elif pos < st2: #Si la mutation est dans l'inter barrière end1-st2
+				dist1=pos-end1
+				dist2=st2-pos
+				dist=min(dist1,dist2)
+				if dist <= 1000:
+					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
+						dico[dist]=Counter()	
+					dico[dist][mutation]+=1 #Ajoute 1 au type de base concerné
+				index=i #mets à jour l'index 
+				break				
 			
-				
-				
+			elif pos <=end2: #Si la mutation est dans la deuxième barrière (dans la partie gauche de la barrière)
+				dist1=st2-pos	
+				if dist >= -50:
+					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
+						dico[dist]=Counter()	
+					dico[dist][mutation]+=1 #Ajoute 1 au type de base concerné
+				index=i #mets à jour l'index 
+				break			
+	
+			#Si la mutation est après la deuxième barrière on continue de parcourir les barrières
+			
 		c += 1 #mets à jour le compteur de mutations totales 
-					
-	print("Mutations non concernées : ", out_bar_mut)
+
 	return dico								
 
 
@@ -177,7 +133,7 @@ def main():
 	
 	#fichiers input:
 	##fichier .bed des barrières chez le chimpanzé: 
-	parser.add_argument('-bar', '--input_bar', type=str, help='Path to barriers intervals', default ="/home/soukkal/Bureau/Projet/Step2_results/C_barriers_in_inter_sorted.bed")
+	parser.add_argument('-bar', '--input_bar', type=str, help='Path to barriers intervals', default ="/media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step2_results/selected_inter_bar_sorted.be")
 	##fichier des mutations du chimpanzé :					
 	parser.add_argument('-mut', '--input_mut', type=str, help='Path to mutation positions and nuc ancestral state', default ="/home/soukkal/Bureau/Projet/Step3_results/mut_EA_sorted.txt")			
 
