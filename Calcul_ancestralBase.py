@@ -81,7 +81,7 @@ def same_base(fa_file1, fa_file2, fa_file3, fa_file4, output_file):
 						base.append(C[n].upper())
 						base.append(H[n].upper())
 							
-						out.write("{}\t{}\t{}\t{}\n".format(base[0],base[1],base[2], base[3))) 
+						out.write("{}\t{}\t{}\t{}\n".format(base[0],base[1],base[2], base[3])) 
 						base=[] #Réinitialise la liste mut à chaque nucléotide 
 						
 			start=pos #Mets à jour la position start pour les cas ou on a un retour à la ligne pour une même séquence dans le fichier fasta
