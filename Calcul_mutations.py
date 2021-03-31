@@ -9,7 +9,6 @@ def calcul_mut(input_AB, output):
 	out=open(input_AB,"w")
 	AB=inp.readlines()
 	
-	
 	for l in AB: 
 		line=l.strip().split("\t")
 		chrom=line[0] #chromosome du nt 
