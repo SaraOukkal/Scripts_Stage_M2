@@ -32,7 +32,7 @@ def main():
 	
 	args = parser.parse_args()
 	
-	calcul_mut(input_AB, output)
+	calcul_mut(args.input_AB, args.output)
 	
 	
 if "__main__" == __name__:
