@@ -57,8 +57,8 @@ def same_base(fa_file1, fa_file2, fa_file3, fa_file4, output_file):
 			
 			for n in range(len(H)):#Pour chaque position de nucléotide dans la séquence
 				base=[] #Réinitialise la liste mut à chaque nucléotide 
-				if H[n].upper() in nucleotides: 
-					base.append(chrom_C)
+				if C[n].upper() in nucleotides: 
+					base.append(chrom_C) #Chromosome chez l'espèce d'interet 
 					if strand == "+":		
 						pos=start+n #Calcule la position du nucléotide 
 								
@@ -70,8 +70,18 @@ def same_base(fa_file1, fa_file2, fa_file3, fa_file4, output_file):
 						
 						base.append(pos)
 						base.append(C[n].upper())
+						base.append(C[n].upper())
 							
-						out.write("{}\t{}\t{}\n".format(base[0],base[1],base[2])) 
+						out.write("{}\t{}\t{}\n".format(base[0],base[1],base[2], base[3])) 
+						base=[] #Réinitialise la liste mut à chaque nucléotide 
+						
+					elif H[n].upper()==G[n].upper() and H[n].upper()==O[n].upper(): #Même nucléotide entre l'autre espèce et les deux outgroup
+						
+						base.append(pos)
+						base.append(C[n].upper())
+						base.append(H[n].upper())
+							
+						out.write("{}\t{}\t{}\n".format(base[0],base[1],base[2], base[3))) 
 						base=[] #Réinitialise la liste mut à chaque nucléotide 
 						
 			start=pos #Mets à jour la position start pour les cas ou on a un retour à la ligne pour une même séquence dans le fichier fasta
