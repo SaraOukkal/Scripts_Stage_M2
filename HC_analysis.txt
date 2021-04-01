@@ -1,0 +1,16 @@
+#Commandes analyse alignements HC (uniquement): 
+##Distribution de la taille des intervalles HC:
+python3 Distri_intervals.py -inter /home/saraoukkal/Documents/Stage_M1/Step1_results/20200728_HC.bed -out /home/saraoukkal/Documents/Stage_M1/Distri_HC_intervals.png
+
+##Distribution de la taille des barrières de l'Homme dans les intervalles HC:
+###Selectionner barrières de + de 1000pb:
+python3 select_bar.py -bar /home/saraoukkal/Documents/Stage_M1/Barriers/hg38/20200228_interSmallNFR.dat -o /home/saraoukkal/Documents/Stage_M1/HC_analysis/selected_bar.bed
+
+###Trier barrières:
+sort -k1,1 -k2,2n  /home/saraoukkal/Documents/Stage_M1/HC_analysis/selected_bar.bed > /home/saraoukkal/Documents/Stage_M1/HC_analysis/selected_bar_sorted.bed
+
+###Selectionner barrières dans les alignements HC:
+bedtools intersect -sorted -a /home/saraoukkal/Documents/Stage_M1/Step1_results/20200728_HC_sorted.bed -b /home/saraoukkal/Documents/Stage_M1/HC_analysis/selected_bar_sorted.bed > /home/saraoukkal/Documents/Stage_M1/HC_analysis/H_bar_in_HC_inter.bed
+
+###Distribution barrières dans ali: 
+python3 Distri_intervals.py -inter /home/saraoukkal/Documents/Stage_M1/HC_analysis/H_bar_in_HC_inter.bed -out /home/saraoukkal/Documents/Stage_M1/HC_analysis/Distri_H_bar_in_HC_inter.png

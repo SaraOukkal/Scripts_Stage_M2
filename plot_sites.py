@@ -22,11 +22,13 @@ def ancestral_sites(bar_AB_count, output_directory): #Plot du nombre de sites pa
 	for l in AB:
 		if not l.startswith("d"): #Ignore le header du fichier
 			line=l.strip().split("\t")
-			dist.append(int(line[0]))
-			num_AB=0
-			num_AB=int(line[1]) + int(line[2]) + int(line[3]) + int(line[4])
-			print(num_AB)
-			AncestralBase.append(num_AB)
+			dist=int(line[0])
+			if dist <= 500 :
+				dist.append(int(line[0]))
+				num_AB=0
+				num_AB=int(line[1]) + int(line[2]) + int(line[3]) + int(line[4])
+				print(num_AB)
+				AncestralBase.append(num_AB)
 
 	plt.plot(dist,AncestralBase)
 	plt.title("Number of ancestral sites around NIEBs")
@@ -53,12 +55,13 @@ def ancestral_sub_sites(bar_AB_count, output_directory): #plot du nombre de site
 		if not l.startswith("d"): #Ignore le header du fichier
 			line=l.strip().split("\t")
 			num=1
+			dist=int(line[0])
+			if dist <= 500 :
+				dist.append(int(line[0]))
 			
-			dist.append(int(line[0]))
-			
-			for t in liste: 
-				liste[t].append(int(line[num]))
-				num+=1
+				for t in liste: 
+					liste[t].append(int(line[num]))
+					num+=1
 			
 	for i in types:
 				#print(liste[i])
@@ -90,13 +93,15 @@ def ancestral_sub_sites_percent(bar_AB_count, output_directory): #plot du pource
 		if not l.startswith("d"): #Ignore le header du fichier
 			line=l.strip().split("\t")
 			num=1
-			tot=int(line[1]) + int(line[2]) + int(line[3]) + int(line[4]) 
+			dist=int(line[0])
+			if dist <= 500 :
+				tot=int(line[1]) + int(line[2]) + int(line[3]) + int(line[4]) 
 			
-			dist.append(int(line[0]))
+				dist.append(int(line[0]))
 			
-			for t in liste: 
-				liste[t].append((int(line[num])/tot)*100)
-				num+=1
+				for t in liste: 
+					liste[t].append((int(line[num])/tot)*100)
+					num+=1
 			
 	for i in types:
 				#print(liste[i])
@@ -120,12 +125,14 @@ def GC_content(bar_AB_count, output_directory):
 	for l in AB:
 		if not l.startswith("d"): #Ignore le header du fichier
 			line=l.strip().split("\t")
-			tot=int(line[1]) + int(line[2]) + int(line[3]) + int(line[4])
-			C=int(line[2])
-			G=int(line[3]) 
-			GC=((C + G)/tot)*100
-			dist.append(int(line[0]))
-			GC_per.append(GC)
+			dist=int(line[0])
+			if dist <= 500 :
+				tot=int(line[1]) + int(line[2]) + int(line[3]) + int(line[4])
+				C=int(line[2])
+				G=int(line[3]) 
+				GC=((C + G)/tot)*100
+				dist.append(int(line[0]))
+				GC_per.append(GC)
 
 			
 	plt.plot(dist,GC_per)

@@ -51,6 +51,8 @@ python3 mut_rate_plot.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_r
 #Mesurer GC%, nombre de sites ancestraux, nombre de chaque base: 
 python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/AB_count_bar.txt -out //media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/Plots/AB_plots/
 
+python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/AB_count_bar_test.txt -out //media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/Plots/AB_plots_test/
+
 #Distribution de la taille des intervalles alignés sur les 4 espèces: 
 python3 Distri_intervals.py -inter /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/C_intervals.bed -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step4_results/Plots/distri_inter.png
 
