@@ -67,7 +67,8 @@ def ancestral_base_bar(barriers, input_AB):
 			end1=barriers[chrom][i]["end1"]	#end de la barrière x 
 			st2=barriers[chrom][i]["st2"]
 			end2=barriers[chrom][i]["end2"]
-			base=nuc_EA.upper()	#détermine le type de base	
+			base=nuc_EA.upper()	#détermine le type de base
+			mid_bar2=st2 + 50	
 			
 			if pos < st1: #Si la base est avant la première barrière (donc dans un interbarrière non prit en compte) 
 				index=i
@@ -93,7 +94,7 @@ def ancestral_base_bar(barriers, input_AB):
 				index=i #mets à jour l'index 
 				break
 		
-			elif pos <=end2: #Si la base est dans la deuxième barrière
+			elif pos <= mid_bar2: #Si la base est dans la deuxième barrière
 				dist=st2-pos		
 				if dist >= -50:
 					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
