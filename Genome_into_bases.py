@@ -25,9 +25,7 @@ def same_base(fa_file, output_file):
 	for l in data: 
 		
 		if l.startswith(">"): #Lignes >chr:st-end
-			line=l.strip().split(":")
-			chrom=line[0].replace(">","")  #Chromosome
-			interval=line[1].split("-")
+			chrom=l.replace(">","")  #Chromosome
 			base=[]
 			
 			if chrom not in done_chrom:
