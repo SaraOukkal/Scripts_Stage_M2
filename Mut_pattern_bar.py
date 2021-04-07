@@ -50,6 +50,7 @@ def mut_bar(barriers, input_mut):
 		if c%100000 == 0 : 
 			print(c) #affiche C toutes les 100000 mutations 
 		line=l.strip().split("\t")
+		print(line)
 		chrom=line[0] #chromosome de la mutation 
 		pos=int(line[1]) #position de la mutation 
 		nuc_C=line[2] #nucléotide chez l'espèce d'interêt

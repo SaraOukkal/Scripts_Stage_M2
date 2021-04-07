@@ -15,17 +15,13 @@ def calcul_mut(input_AB, output):
 		pos=int(line[1]) #position du nt
 		nuc=line[2] #Nucléotide de l'espèce d'interêt 
 		nuc_EA=line[3] #nucléotide à l'état ancestral
-		mut_count=0
 
 		if chrom not in done_chrom:
 			done_chrom.append(chrom)
 			print(chrom)
 		
-		if nuc != nuc_EA: 
-			mut_count+=1
-			out.write("{}\n".format(l)) #Ecrit la ligne entière 
-	
-	print(mut_count)
+		if nuc != nuc_EA: #S'il y a une mutation
+			out.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, nuc_EA)) 
 
 def main(): 
 	parser = argparse.ArgumentParser()
