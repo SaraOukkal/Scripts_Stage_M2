@@ -32,7 +32,6 @@ python3 Ancestral_base_bar_dist.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Hu
 ###Compter les bases actuelles par type et par position par rapport aux barrières: 
 python3 Actual_base_bar_dist.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/selected_inter_bar_sorted.bed -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human_sorted.txt  -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Actual_count_bar.txt
 
-
 ###Repérer les mutations chez l'Homme: 
 python3 Calcul_mutations.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human_sorted.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Mut_human.txt
 #Trier le fichier de sortie: 

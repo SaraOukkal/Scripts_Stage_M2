@@ -14,12 +14,11 @@ def same_base(fa_file, output_file):
 	fini=False
 	
 	out=open(output_file,"w")
-	f=open(fa_file,"r")
+	data=open(fa_file,"r")
 	
 	done_chrom=[]
 	nucleotides=["A","C","T","G"]
 	
-	data=f.readlines()
 	start=1
 	
 	for l in data: 
