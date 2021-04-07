@@ -5,9 +5,9 @@ import argparse
 
 
 def calcul_mut(input_AB, output): 
-	inp=open(input_AB,"r")
-	out=open(input_AB,"w")
-	AB=inp.readlines()
+	f=open(input_AB,"r")
+	out=open(output,"w")
+	AB=f.readlines()
 	
 	for l in AB: 
 		line=l.strip().split("\t")
