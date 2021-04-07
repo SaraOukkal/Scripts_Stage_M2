@@ -143,7 +143,7 @@ def main():
 	print("loading barriers file")
 	barriers=load_bar(args.input_bar)
 	print("counting bases around barriers")
-	base_count=Base_bar(barriers, args.input_B)
+	base_count=base_bar(barriers, args.input_B)
 	print("writing counts in the output file")
 	write_out(base_count,args.output)
 	print("done")
