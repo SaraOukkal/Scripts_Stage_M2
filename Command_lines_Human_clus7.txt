@@ -70,3 +70,11 @@ python3 Distri_intervals.py -inter /media/disk1/soukkal/StageM2/Stage_M1/Human_S
 
 #Compter les ilots CpG: 
 python3 CpG.py -H /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/C_seq.fa -C /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/H_seq.fa -G /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/G_seq.fa -O /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/O_seq.fa 
+
+#Analyse du génome entier de l'Homme:
+##Convertir fasta en bed: 
+python3 ali_into_bases.py -fa /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/hg38.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_bases.txt
+#Positionner bases autour des barrières: 
+python3 Ali_bar_dist.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/hg38/20200228_interSmallNFR.dat -B /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_bases.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_count_bar.txt
+#Metrics: 
+python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_count_bar.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/Genome_plots/
