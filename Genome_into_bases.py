@@ -45,6 +45,9 @@ def same_base(fa_file, output_file):
 							
 					out.write("{}\t{}\t{}\t{}\n".format(base[0],base[1],base[2])) 
 					base=[] #Réinitialise la liste à chaque nucléotide 
+				
+				else: 
+					continue
 						
 			start=pos #Mets à jour la position start pour les cas ou on a un retour à la ligne pour une même séquence dans le fichier fasta
 
