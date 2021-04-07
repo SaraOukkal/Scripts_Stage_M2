@@ -8,6 +8,7 @@ def calcul_mut(input_AB, output):
 	f=open(input_AB,"r")
 	out=open(output,"w")
 	AB=f.readlines()
+	done_chrom=[]
 	
 	for l in AB: 
 		line=l.strip().split("\t")
@@ -16,6 +17,10 @@ def calcul_mut(input_AB, output):
 		nuc=line[2] #Nucléotide de l'espèce d'interêt 
 		nuc_EA=line[3] #nucléotide à l'état ancestral
 		mut_count=0
+
+		if chrom not in done_chrom:
+			done_chrom.append(chrom)
+			print(chrom)
 		
 		if nuc != nuc_EA: 
 			print('yay')
