@@ -70,7 +70,7 @@ def mut_bar(barriers, input_mut):
 			mid_bar2=st2 + 50
 			
 
-			elif pos < st1: #Si la base est avant la première barrière (donc dans un interbarrière non prit en compte) 
+			if pos < st1: #Si la base est avant la première barrière (donc dans un interbarrière non prit en compte) 
 				index=i
 				break
 
