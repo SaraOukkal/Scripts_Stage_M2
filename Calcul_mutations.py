@@ -13,6 +13,7 @@ def calcul_mut(input_AB, output):
 	for l in AB: 
 		line=l.strip().split("\t")
 		chrom=line[0] #chromosome du nt 
+		print(chrom)
 		pos=int(line[1]) #position du nt
 		nuc=line[2] #Nucléotide de l'espèce d'interêt 
 		nuc_EA=line[3] #nucléotide à l'état ancestral
