@@ -36,6 +36,7 @@ def same_base(fa_file, output_file):
 			
 			for n in range(len(l)):#Pour chaque position de nucléotide dans la séquence
 				base=[] #Réinitialise la liste base à chaque nucléotide 
+				print(l)
 				if l[n].upper() in nucleotides: 	
 					pos=start+n #Calcule la position du nucléotide 
 					base.append(chrom) #Chromosome chez l'espèce d'interet 	
@@ -45,11 +46,10 @@ def same_base(fa_file, output_file):
 							
 					out.write("{}\t{}\t{}\t{}\n".format(base[0],base[1],base[2])) 
 					base=[] #Réinitialise la liste à chaque nucléotide 
-				
-				else: 
-					continue
+				else:
+					pos=start+n
 						
-			start=pos #Mets à jour la position start pour les cas ou on a un retour à la ligne pour une même séquence dans le fichier fasta
+			start=pos+1 #Mets à jour la position start pour les cas ou on a un retour à la ligne pour une même séquence dans le fichier fasta
 
 
 def main(): 
