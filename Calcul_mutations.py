@@ -5,9 +5,8 @@ import argparse
 
 
 def calcul_mut(input_AB, output): 
-	f=open(input_AB,"r")
+	AB=open(input_AB,"r")
 	out=open(output,"w")
-	AB=f.readlines()
 	done_chrom=[]
 	
 	for l in AB: 
