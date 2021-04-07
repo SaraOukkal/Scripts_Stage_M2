@@ -37,7 +37,6 @@ def same_base(fa_file, output_file):
 			for n in range(len(l)):#Pour chaque position de nucléotide dans la séquence
 				base=[] #Réinitialise la liste base à chaque nucléotide 
 				if l[n].upper() in nucleotides: 
-					print(l[n].upper())	
 					pos=start+n #Calcule la position du nucléotide 
 					base.append(chrom) #Chromosome chez l'espèce d'interet 	
 					base.append(pos)
