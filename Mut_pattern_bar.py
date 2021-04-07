@@ -52,26 +52,24 @@ def mut_bar(barriers, input_mut):
 		line=l.strip().split("\t")
 		chrom=line[0] #chromosome de la mutation 
 		pos=int(line[1]) #position de la mutation 
-		nuc_C=line[2] #nucléotide chez le chimpanzé
+		nuc_C=line[2] #nucléotide chez l'espèce d'interêt
 		EA=line[3] #nucléotide ancestral 
 		
-		threshold=barriers[chrom][0]["st1"]-1000 #limite basse au début du chromosome donc ce qu'il y a 1000nt avant la première barrière (sert à gagner du temps en début de chromosome)
-		
+
 		if chrom not in done_chrom:
 			done_chrom.append(chrom)
 			#print(chrom) #imprime le nouveau chromosome pris en charge 
 			index=0 #réinitialise l'index 
 			
-		for i in range(index,len(barriers[chrom])-1,1):
+		for i in range(index,len(barriers[chrom]),1):
 			st1=barriers[chrom][i]["st1"]	#start de la barrière 1
 			end1=barriers[chrom][i]["end1"]	#end de la barrière 1 
 			st2=barriers[chrom][i]["st2"]
 			end2=barriers[chrom][i]["end2"]
 			mutation=nuc_C.upper()+">"+EA.upper()	#détermine le type de mutation 	
+			mid_bar2=st2 + 50
 			
-			if pos < threshold: #Pour le cas ou il y a des mutations au début du chromosome avant la première barrière, trop loin pour qu'elles soient comptabilisées, cela permet de passer rapidement ces mutations et ne pas parcourir l'entiereté des barrières du chromosome 
-				break
-				
+
 			elif pos < st1: #Si la base est avant la première barrière (donc dans un interbarrière non prit en compte) 
 				index=i
 				break
@@ -96,7 +94,7 @@ def mut_bar(barriers, input_mut):
 				index=i #mets à jour l'index 
 				break				
 			
-			elif pos <=end2: #Si la mutation est dans la deuxième barrière (dans la partie gauche de la barrière)
+			elif pos <= mid_bar2: #Si la mutation est dans la deuxième barrière (dans la partie gauche de la barrière)
 				dist1=st2-pos	
 				if dist >= -50:
 					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
@@ -132,9 +130,9 @@ def main():
 	parser = argparse.ArgumentParser()
 	
 	#fichiers input:
-	##fichier .bed des barrières chez le chimpanzé: 
+	##fichier .bed des barrières: 
 	parser.add_argument('-bar', '--input_bar', type=str, help='Path to barriers intervals', default ="/media/disk1/soukkal/StageM2/Stage_M1/Chimp_Step2_results/selected_inter_bar_sorted.be")
-	##fichier des mutations du chimpanzé :					
+	##fichier des mutations:					
 	parser.add_argument('-mut', '--input_mut', type=str, help='Path to mutation positions and nuc ancestral state', default ="/home/soukkal/Bureau/Projet/Step3_results/mut_EA_sorted.txt")			
 
 	#fichier de sortie: 
