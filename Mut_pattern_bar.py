@@ -50,7 +50,6 @@ def mut_bar(barriers, input_mut):
 		if c%100000 == 0 : 
 			print(c) #affiche C toutes les 100000 mutations 
 		line=l.strip().split("\t")
-		print(line)
 		chrom=line[0] #chromosome de la mutation 
 		pos=int(line[1]) #position de la mutation 
 		nuc_C=line[2] #nucléotide chez l'espèce d'interêt
@@ -59,7 +58,7 @@ def mut_bar(barriers, input_mut):
 
 		if chrom not in done_chrom:
 			done_chrom.append(chrom)
-			#print(chrom) #imprime le nouveau chromosome pris en charge 
+			print(chrom) #imprime le nouveau chromosome pris en charge 
 			index=0 #réinitialise l'index 
 			
 		for i in range(index,len(barriers[chrom]),1):
@@ -68,7 +67,7 @@ def mut_bar(barriers, input_mut):
 			st2=barriers[chrom][i]["st2"]
 			end2=barriers[chrom][i]["end2"]
 			mutation=nuc_C.upper()+">"+EA.upper()	#détermine le type de mutation 	
-			mid_bar2=st2 + 50
+			mid_bar2= st2 + 50
 			
 
 			if pos < st1: #Si la base est avant la première barrière (donc dans un interbarrière non prit en compte) 
@@ -96,7 +95,7 @@ def mut_bar(barriers, input_mut):
 				break				
 			
 			elif pos <= mid_bar2: #Si la mutation est dans la deuxième barrière (dans la partie gauche de la barrière)
-				dist1=st2-pos	
+				dist=st2-pos	
 				if dist >= -50:
 					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
 						dico[dist]=Counter()	

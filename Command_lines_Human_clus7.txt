@@ -44,13 +44,13 @@ python3 mut_rates_plots.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4
 #Calcul taux de mutations global: 
 python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/mut_count_bar.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_count_bar.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Human_mut_rate.txt
 #Faire graphique taux de mutations global: 
-python3 mut_rate_plot.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Human_mut_rates.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/Mut_rate.png
+python3 mut_rate_plot.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Human_mut_rate.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/Mut_rate.png
 
 #Mesurer GC%, nombre de sites, nombre de chaque base: 
 ##Bases ancestrales:
 python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_count_bar2.txt -out //media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/AB_plots/
 ##Bases actuelles:
-python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_count_bar2.txt -out //media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/AB_plots/
+python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Actual_count_bar.txt -out //media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/Actual_plots/
 ##Génome entier: 
 
 
@@ -77,7 +77,9 @@ python3 CpG.py -H /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/C_se
 #Analyse du génome entier de l'Homme:
 ##Convertir fasta en bed: 
 python3 Genome_into_bases.py -fa /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/hg38.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_bases.txt
+#Retirer les \n inutiles: 
+cat /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_bases.txt |sed '$!N;s/\n//g' > /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_bases_2.txt
 #Positionner bases autour des barrières: 
-python3 Ali_bar_dist.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/hg38/20200228_interSmallNFR.dat -B /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_bases.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_count_bar.txt
+python3 Ali_bar_dist.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/hg38/20200228_interSmallNFR.dat -B /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_bases_2.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_count_bar.txt
 #Metrics: 
 python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_count_bar.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/Genome_plots/
