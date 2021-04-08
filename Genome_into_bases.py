@@ -10,8 +10,6 @@ def same_base(fa_file, output_file):
 	"""
 	Rapporte les positions des bases alignées
 	"""
-		
-	fini=False
 	
 	out=open(output_file,"w")
 	data=open(fa_file,"r")
@@ -19,12 +17,12 @@ def same_base(fa_file, output_file):
 	done_chrom=[]
 	nucleotides=["A","C","T","G"]
 	
-	start=1
+	start=0
 	
 	for l in data: 
 		
 		if l.startswith(">"): #Lignes >chr:st-end
-			chrom=l.replace(">","")  #Chromosome
+			chrom=l..strip().replace(">","")  #Chromosome
 			base=[]
 			
 			if chrom not in done_chrom:
