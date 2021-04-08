@@ -40,13 +40,12 @@ def same_base(fa_file, output_file):
 					base.append(l[n].upper())
 
 					out.write("{}\t{}\t{}\n".format(base[0],base[1],base[2])) 
-					base=[] #Réinitialise la liste à chaque nucléotide 
+					base=[] #Réinitialise la liste à chaque nucléotide
+					 
 				elif l[n].upper() =='N' :
 					pos=start+n
-				else:
-					break
 		
-		start=pos #Mets à jour la position start pour les cas ou on a un retour à la ligne pour une même séquence dans le fichier fasta
+			start=pos #Mets à jour la position start pour les cas ou on a un retour à la ligne pour une même séquence dans le fichier fasta
 
 
 def main(): 
