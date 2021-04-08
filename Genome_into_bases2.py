@@ -34,7 +34,7 @@ def read_fasta(genome, output):
 	print("start reading fasta file")	
 	nucleotides=["A","C","T","G"]
 	chromosomes={}
-	base=[]
+	base=[] 
 	
 	for chrom in genome.keys(): 
 		for i in range(len(genome[chrom])):
