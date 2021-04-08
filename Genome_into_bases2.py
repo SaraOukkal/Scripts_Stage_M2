@@ -21,10 +21,15 @@ def load_fasta(fa_file):
 
 		else:	#Lignes de séquence
 			print(l)
-			break
-			genome[chrom]=l.strip('\n')
 			
-	print(genome["chr10"])		
+			if chrom in genome.keys():
+				genome[chrom]+=l.strip('\n')
+				print(genome[chrom])
+				break
+				
+			else:
+				genome[chrom]=l.strip('\n')
+				
 	return genome
 			
 			
