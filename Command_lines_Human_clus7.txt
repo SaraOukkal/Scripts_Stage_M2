@@ -50,7 +50,7 @@ python3 mut_rate_plot.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_r
 
 #Mesurer GC%, nombre de sites, nombre de chaque base: 
 ##Bases ancestrales:
-python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_count_bar2.txt -out //media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/AB_plots/
+python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_count_bar.txt -out //media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/AB_plots/
 ##Bases actuelles:
 python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Actual_count_bar.txt -out //media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/Actual_plots/
 ##Mutations: 

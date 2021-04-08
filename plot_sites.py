@@ -30,9 +30,10 @@ def ancestral_sites(bar_AB_count, output_directory): #Plot du nombre de sites pa
 				print(num_AB)
 				AncestralBase.append(num_AB)
 
-	plt.plot(dist,AncestralBase, color='#cc0066')
-	plt.axvline(x=0, color='red')
-	plt.axvspan(-50, 0, zorder=1, alpha=0.4, color='#cc0000')
+	plt.plot(dist,AncestralBase, color='#0000cc')
+	plt.axvline(0, color='red', linewidth=1.2, label="NIEBs borders")
+	plt.axvspan(-75, 0, zorder=1, alpha=0.2, color='#cc0000', label="Inside NIEBs")
+	plt.axvspan(0, 500, zorder=1, alpha=0.2, color='#00cccc', label="Inter NIEBs")
 	plt.title("Number of ancestral sites around NIEBs")
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("Ancestral Bases")
@@ -67,9 +68,10 @@ def ancestral_sub_sites(bar_AB_count, output_directory): #plot du nombre de site
 			
 	for i in types:
 				#print(liste[i])
-				plt.plot(dist,liste[i], color='#00cc99')
-				plt.axvline(x=0, color='red')
-				plt.axvspan(-50, 0, zorder=1, alpha=0.4, color='#cc0000')
+				plt.plot(dist,liste[i], color='#0000cc')
+				plt.axvline(0, color='red', linewidth=1.2, label="NIEBs borders")
+				plt.axvspan(-75, 0, zorder=1, alpha=0.2, color='#cc0000', label="Inside NIEBs")
+				plt.axvspan(0, 500, zorder=1, alpha=0.2, color='#00cccc', label="Inter NIEBs")
 				plt.title("Number of ancestral base sites per type and per distance to NIEBs")
 				plt.xlabel("Distance from NIEBs")
 				plt.ylabel("Ancestal Bases")
@@ -109,9 +111,10 @@ def ancestral_sub_sites_percent(bar_AB_count, output_directory): #plot du pource
 			
 	for i in types:
 				#print(liste[i])
-				plt.plot(dist,liste[i], color='#00cc99')
-				plt.axvline(x=0, color='red')
-				plt.axvspan(-50, 0, zorder=1, alpha=0.4, color='#cc0000')
+				plt.plot(dist,liste[i], color='#0000cc')
+				plt.axvline(0, color='red', linewidth=1.2, label="NIEBs borders")
+				plt.axvspan(-75, 0, zorder=1, alpha=0.2, color='#cc0000', label="Inside NIEBs")
+				plt.axvspan(0, 500, zorder=1, alpha=0.2, color='#00cccc', label="Inter NIEBs")
 				plt.title("Percentage of bases per distance to NIEBs")
 				plt.xlabel("Distance from NIEBs")
 				plt.ylabel("Bases percentage")
@@ -142,8 +145,9 @@ def GC_content(bar_AB_count, output_directory):
 
 			
 	plt.plot(dist,GC_per, color='#0000cc')
-	plt.axvline(0, color='red')
-	plt.axvspan(-50, 0, zorder=1, alpha=0.4, color='#cc0000')
+	plt.axvline(0, color='red', linewidth=1.2, label="NIEBs borders")
+	plt.axvspan(-75, 0, zorder=1, alpha=0.2, color='#cc0000', label="Inside NIEBs")
+	plt.axvspan(0, 500, zorder=1, alpha=0.2, color='#00cccc', label="Inter NIEBs")
 	plt.title("GC % around NIEBs")
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("GC percentage")
