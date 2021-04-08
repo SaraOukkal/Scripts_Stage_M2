@@ -22,6 +22,7 @@ def mut_rate_plot(mut_rate, output):
 	for l in mut_R:
 		if not l.startswith("d"): #Ignore le header du fichier
 			line_MR=l.strip().split("\t")
+			distance=int(line_MR[0])
 			if distance <= 500 :
 				dist.append(float(line_MR[0])) #Charge les données des mutations dans les variables associées
 				MR.append(float(line_MR[1])*100)
