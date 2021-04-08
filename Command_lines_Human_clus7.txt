@@ -24,11 +24,13 @@ bash Get_seq_files
 
 ##Définir les bases non mutées aux bords des barrières de l'Homme: 
 ###Déterminer les bases non mutées depuis les séquences des 4 espèces: 
-python3 Calcul_ancestralBase.py -H /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/C_seq.fa -C /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/H_seq.fa -G /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/G_seq.fa -O /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/O_seq.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human.txt 
+python3 Calcul_AB_nostr.py -H /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/H_seq.fa -C /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/C_seq.fa -G /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/G_seq.fa -O /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/O_seq.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human2.txt 
 ###Trier le fichier de sortie par chromosome et par position: 
 sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human.txt  > /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human_sorted.txt 
-###Compter les bases ancestrales par type et par position par rapport aux barrières:
+###Compter les bases ancestrales par type et par position par rapport aux barrières sélectionnées:
 python3 Ancestral_base_bar_dist.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/selected_inter_bar_sorted.bed -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human_sorted.txt  -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_count_bar.txt
+###Compter les bases ancestrales par rapport à toutes les barrières: 
+python3 Ancestral_base_bar_dist.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/hg38/20200228_interSmallNFR.dat -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human_sorted.txt  -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_count_all_bar.txt
 ###Compter les bases actuelles par type et par position par rapport aux barrières: 
 python3 Actual_base_bar_dist.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/selected_inter_bar_sorted.bed -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human_sorted.txt  -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Actual_count_bar.txt
 
@@ -42,7 +44,7 @@ python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_
 #Faire graphiques par type de substitutions: 
 python3 mut_rates_plots.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Human_mut_rates.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/
 #Calcul taux de mutations global: 
-python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/mut_count_bar.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_count_bar.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Human_mut_rate.txt
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/mut_count_bar.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_count_bar2.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Human_mut_rate.txt
 #Faire graphique taux de mutations global: 
 python3 mut_rate_plot.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Human_mut_rate.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/Mut_rate.png
 
@@ -51,7 +53,8 @@ python3 mut_rate_plot.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_r
 python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_count_bar2.txt -out //media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/AB_plots/
 ##Bases actuelles:
 python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Actual_count_bar.txt -out //media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/Actual_plots/
-##Génome entier: 
+##Mutations: 
+python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/mut_count_bar.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/Mut_plots/
 
 
 #Copier les figures de clus7 à la machine locale: (example de chemins)
@@ -79,7 +82,9 @@ python3 CpG.py -H /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/C_se
 python3 Genome_into_bases.py -fa /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/hg38.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_bases.txt
 #Retirer les \n inutiles: 
 cat /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_bases.txt |sed '$!N;s/\n//g' > /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_bases_2.txt
-#Positionner bases autour des barrières: 
+#Positionner bases autour de toutes les barrières: 
 python3 Ali_bar_dist.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/hg38/20200228_interSmallNFR.dat -B /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_bases_2.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_count_bar.txt
+#Positionner bases autour d'interbar de + de 1000:
+python3 Ali_bar_dist.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/selected_inter_bar_sorted.bed -B /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_bases_2.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_count_spe_bar.txt
 #Metrics: 
 python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_count_bar.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/Genome_plots/
