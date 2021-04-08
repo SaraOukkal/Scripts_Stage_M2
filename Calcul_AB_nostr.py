@@ -36,7 +36,7 @@ def same_base(fa_file1, fa_file2, fa_file3, fa_file4, output_file):
 			line_H=H.strip().split(":")
 			chrom_H=line_H[0].replace(">","")  #Chromosome espèce d'intêret 
 			interval=line_H[1].split("-")
-			start=int(interval(0))
+			start=int(interval[0])
 			base=[]
 			
 			if chrom_H not in done_chrom:
