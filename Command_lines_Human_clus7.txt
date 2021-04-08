@@ -44,7 +44,7 @@ python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_
 #Faire graphiques par type de substitutions: 
 python3 mut_rates_plots.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Human_mut_rates.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/
 #Calcul taux de mutations global: 
-python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/mut_count_bar.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_count_bar2.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Human_mut_rate.txt
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/mut_count_bar.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_count_bar.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Human_mut_rate.txt
 #Faire graphique taux de mutations global: 
 python3 mut_rate_plot.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Human_mut_rate.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/Mut_rate.png
 
