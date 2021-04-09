@@ -5,9 +5,9 @@ import argparse
 
 
 def calcul_mut(input_AB, nonCpG, CpG): 
-	data=open(input_AB,"r")
-	nonCpG=open(nonCpG,"w")
-	CpG=open(CpG,"w")
+	data=open(input_AB,"r") #Fichier des bases ancestrales + bases actuelles
+	nonCpG=open(nonCpG,"w") #Fichier de sortie mutations non CpG
+	CpG=open(CpG,"w") #Fichier de sortie mutations CpG 
 	done_chrom=[]
 	
 	AB=data.readlines()
@@ -28,16 +28,16 @@ def calcul_mut(input_AB, nonCpG, CpG):
 			print(chrom)
 		
 		if nuc != nuc_EA: #S'il y a une mutation
-			if nuc == "C":
-				if pos2 == pos+1:
-					if nuc2 == "G":
+			if nuc == "C": #Si c'est un C
+				if pos2 == pos+1: #Si la base suivante du fichier la suit dans la séquence 
+					if nuc2 == "G": #Si c'est un CpG 
 						CpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, nuc_EA)) 
-					else:
+					else: #Si ce n'est pas un CpG
 						nonCpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, nuc_EA)) 
 				
-				else:
-					continue 	
-			else: 
+				else: #Si la base suivante du fichier ne la suit pas dans la séquence 
+					continue #Passe directement à l'itération suivante
+			else: #Si ce n'est pas un C
 				nonCpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, nuc_EA)) 
 			
 
