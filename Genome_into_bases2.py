@@ -38,6 +38,8 @@ def read_fasta(genome, output):
 	Lis les séquences et écrit les bases dans le fichier de sortie
 	"""
 	print("start reading fasta file")	
+	out=open(output, "w")
+	
 	nucleotides=["A","C","T","G"]
 	chromosomes=["chr1","chr2","chr3","chr4","chr5","chr6","chr7","chr8","chr9","chr10","chr11","chr12","chr13","chr14","chr15","chr16","chr17","chr18","chr19","chr20","chr21","chr22"]
 	base=[] 
