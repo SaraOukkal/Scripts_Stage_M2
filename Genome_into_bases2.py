@@ -42,6 +42,7 @@ def read_fasta(genome, output):
 	
 	nucleotides=["A","C","T","G"]
 	chromosomes=["chr1","chr2","chr3","chr4","chr5","chr6","chr7","chr8","chr9","chr10","chr11","chr12","chr13","chr14","chr15","chr16","chr17","chr18","chr19","chr20","chr21","chr22"]
+	done_chrom=[]
 	base=[] 
 	
 	for chrom in genome.keys(): 
@@ -57,6 +58,10 @@ def read_fasta(genome, output):
 					base.append(nuc) #Type de nucléotide
 	
 					out.write("{}\t{}\t{}\n".format(base[0],base[1],base[2])) #Ecrit en format Chr \t position \t nucléotide \n
+					
+					if chrom not in done_chrom:
+						print(chrom)
+						done_chrom.append(chrom)
 
 
 
