@@ -74,12 +74,12 @@ python3 Bar_proportion.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2
 #Distribution de la taille des barrières de l'Homme inclues dans les intervalles: 
 python3 Distri_intervals.py -inter /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_barriers_in_inter_sorted.bed -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/distri_bar_in_inter.png
 
-#Compter les ilots CpG: 
+#Compter les CpG: 
 python3 CpG.py -H /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/C_seq.fa -C /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/H_seq.fa -G /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/G_seq.fa -O /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/O_seq.fa 
 
 #Analyse du génome entier de l'Homme:
 ##Convertir fasta en bed: 
-python3 Genome_into_bases.py -fa /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/hg38.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_bases.txt
+python3 Genome_into_bases2.py -fa /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/hg38.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_bases_2.txt
 #Positionner bases autour de toutes les barrières: 
 python3 Ali_bar_dist.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/hg38/20200228_interSmallNFR.dat -B /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_bases.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_count_bar.txt
 #Positionner bases autour d'interbar de + de 1000:

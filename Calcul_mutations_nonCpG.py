@@ -5,10 +5,12 @@ import argparse
 
 
 def calcul_mut(input_AB, nonCpG, CpG): 
-	AB=open(input_AB,"r")
+	data=open(input_AB,"r")
 	nonCpG=open(nonCpG,"w")
 	CpG=open(CpG,"w")
 	done_chrom=[]
+	
+	AB=data.readlines()
 	
 	for i in range(len(AB)): 
 		line=AB[i].strip().split("\t")
