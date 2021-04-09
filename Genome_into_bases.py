@@ -16,6 +16,7 @@ def same_base(fa_file, output_file):
 	
 	done_chrom=[]
 	nucleotides=["A","C","T","G"]
+	chromosomes=["chr1","chr2", "chr3", "chr4", "chr5", "chr6", "chr7", "chr8", "chr9", "chr10", "chr11", "chr12", "chr13", "chr14", "chr15", "chr16", "chr17", "chr18", "chr19", "chr20", "chr21", "chr22"]
 	
 	start=0
 	
@@ -38,10 +39,12 @@ def same_base(fa_file, output_file):
 					base.append(chrom) #Chromosome chez l'espèce d'interet 	
 					base.append(pos)
 					base.append(l[n].upper())
-
-					out.write("{}\t{}\t{}\n".format(base[0],base[1],base[2])) 
+					
+					if chrom in chromosomes: 
+						out.write("{}\t{}\t{}\n".format(base[0],base[1],base[2])) 
+					
 					base=[] #Réinitialise la liste à chaque nucléotide
-					 
+					
 				elif l[n].upper() =='N' :
 					pos=start+n
 		
