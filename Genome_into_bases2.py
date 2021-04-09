@@ -12,21 +12,24 @@ def load_fasta(fa_file):
 	"""
 	print("start loading fasta file")
 	data=open(fa_file,"r")
-	genome={}
+	genome={} #Initialise le dico qui contiendra les chromosomes en clé
+	seq=[] #Initialise la liste qui contiendra les séquences d'un chromosome
+	a=0
 	
 	for l in data: 
-		if l.startswith(">"): #Lignes >chr:st-end
-			chrom=l.strip().replace(">","")  #Chromosome
+		line=l.strip()
+		if line.startswith(">"): #Lignes >chr:st-end
+			if a == 1:
+				genome[chrom]=''.join(seq)
+				seq=[]
+				
+			chrom=line.replace(">","")  #Chromosome
+			a=1
 			print(chrom) 
 
 		else:	#Lignes de séquence
-			if chrom in genome.keys():
-				genome[chrom]+=l.strip('\n')
+			seq.append(line)
 				
-			else:
-				genome[chrom]=l.strip('\n')
-				
-	print(genome["chr8"])		
 	return genome
 			
 			

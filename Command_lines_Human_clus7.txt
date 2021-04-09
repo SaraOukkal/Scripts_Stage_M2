@@ -60,7 +60,7 @@ python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_resu
 #Copier les figures de clus7 à la machine locale: (example de chemins)
 #A faire sur la machine locale  
 scp soukkal@clus7.igfl.ens-lyon.fr:/media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/distri.png /home/saraoukkal/Documents/Stage_M1/Human_Results
-scp -r #SI c'est un dossier 
+scp -r soukkal@clus7.igfl.ens-lyon.fr:/media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/Actual_plots /home/saraoukkal/Documents/Stage_M1/Human_Results
 
 #Distribution de la taille des intervalles alignés sur les 4 espèces: 
 python3 Distri_intervals.py -inter /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/H_intervals.bed -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/distri_inter.png

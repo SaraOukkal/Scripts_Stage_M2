@@ -40,7 +40,10 @@ def mut_rates_plots(MR, output_directory):
 			
 	for i in types:
 				print(liste[i])
-				plt.plot(MR_dist,liste[i])
+				plt.plot(MR_dist,liste[i], color="black")
+				plt.axvline(0, color='red', linewidth=2)
+				plt.axvspan(-50, 0, zorder=1, alpha=0.1, color='#cc0000')
+				plt.axvspan(0, 500, zorder=1, alpha=0.1, color='#00cccc')
 				plt.title(i)
 				plt.xlabel("Distance from NIEBs")
 				plt.ylabel("Mutation rate (%)")
