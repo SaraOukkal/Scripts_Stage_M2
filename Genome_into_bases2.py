@@ -44,17 +44,17 @@ def read_fasta(genome, output):
 	
 	for chrom in genome.keys(): 
 		if chrom in chromosomes:
-		for i in range(len(genome[chrom])):
-			if genome[chrom][i].upper() in nucleotides: 
-				pos=i #L'index = position du nucléotide
-				nuc=genome[chrom][i].upper()
+			for i in range(len(genome[chrom])):
+				if genome[chrom][i].upper() in nucleotides: 
+					pos=i #L'index = position du nucléotide
+					nuc=genome[chrom][i].upper()
 				
-				base=[]
-				base.append(chrom) #Chromosome
-				base.append(pos) #Position de la base
-				base.append(nuc) #Type de nucléotide
+					base=[]
+					base.append(chrom) #Chromosome
+					base.append(pos) #Position de la base
+					base.append(nuc) #Type de nucléotide
 	
-				out.write("{}\t{}\t{}\n".format(base[0],base[1],base[2])) #Ecrit en format Chr \t position \t nucléotide \n
+					out.write("{}\t{}\t{}\n".format(base[0],base[1],base[2])) #Ecrit en format Chr \t position \t nucléotide \n
 
 
 
