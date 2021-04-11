@@ -38,6 +38,7 @@ def ancestral_sites(bar_AB_count, bar_genome_count, output): #Plot du nombre de 
 								num_Gen=int(line2[1]) + int(line2[2]) + int(line2[3]) + int(line2[4])
 								norm=num_AB/num_Gen
 								AncestralBase.append(norm)
+								
 
 	plt.plot(dist,AncestralBase, color='#0000cc')
 	plt.axvline(0, color='red', linewidth=2, label='NIEBs borders')
