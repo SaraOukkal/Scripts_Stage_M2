@@ -22,7 +22,7 @@ def ancestral_sites(bar_AB_count, bar_genome_count, output): #Plot du nombre de 
 	AncestralBase=[]
 	GenBase=[]
 	
-	for l in AB::
+	for l in AB:
 			if not l.startswith("d"): #Ignore le header du fichier
 				line1=l.strip().split("\t")
 				distance1=int(line1[0])
