@@ -54,7 +54,7 @@ def main():
 	
 	#fichiers fasta des séquences qui s'alignent chez les 4 espèces:
 	parser.add_argument('-AB', '--input_AB', type=str, help='Path to ancestral bases count around barriers', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/AB_count_bar.txt")	
-	parser.add_argument('-AB', '--input_Gen', type=str, help='Path to all genome bases count around barriers', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step5_results/Genome_count_bar.txt")			
+	parser.add_argument('-Gen', '--input_Gen', type=str, help='Path to all genome bases count around barriers', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step5_results/Genome_count_bar.txt")			
 	#fichier de sortie: 
 	parser.add_argument('-out', '--output', type=str, help='Path to output plot', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/Plots/AB_norm_plot.png")			
 
