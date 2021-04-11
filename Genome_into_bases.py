@@ -6,67 +6,83 @@ import argparse
 
 
 
-def same_base(fa_file, output_file):
+def load_fasta(fa_file):
 	"""
-	Rapporte les positions des bases alignées
+	Charge les sequences fasta dans un dictionnaire par chromosome
 	"""
-	
-	out=open(output_file,"w")
+	print("start loading fasta file")
 	data=open(fa_file,"r")
-	
-	done_chrom=[]
-	nucleotides=["A","C","T","G"]
-	chromosomes=["chr1","chr2", "chr3", "chr4", "chr5", "chr6", "chr7", "chr8", "chr9", "chr10", "chr11", "chr12", "chr13", "chr14", "chr15", "chr16", "chr17", "chr18", "chr19", "chr20", "chr21", "chr22"]
-	
-	start=0
+	genome={} #Initialise le dico qui contiendra les chromosomes en clé
+	seq=[] #Initialise la liste qui contiendra les séquences d'un chromosome
+	a=0
 	
 	for l in data: 
-		
-		if l.startswith(">"): #Lignes >chr:st-end
-			chrom=l.strip().replace(">","")  #Chromosome
-			base=[]
-			start=0
-			
-			if chrom not in done_chrom:
-				done_chrom.append(chrom)
-				print(chrom) #Sert à savoir ou on en est dans le fichier (au changement de chromosome)
-			
+		line=l.strip() #Retire les \n en fin de ligne
+		if line.startswith(">"): #Lignes >chr:st-end
+			if a == 1:
+				genome[chrom]=''.join(seq) #Relie la liste des séquences d'un chromosome en une string
+				seq=[]
+				
+			chrom=line.replace(">","")  #Chromosome
+			a=1
+			print(chrom) 
+
 		else:	#Lignes de séquence
-			for n in range(len(l)):#Pour chaque position de nucléotide dans la séquence
-				base=[] #Réinitialise la liste base à chaque nucléotide 
-				if l[n].upper() in nucleotides: 
-					pos=start+n #Calcule la position du nucléotide 
-					base.append(chrom) #Chromosome chez l'espèce d'interet 	
-					base.append(pos)
-					base.append(l[n].upper())
+			seq.append(line) #Ajoute la séquence à la liste du chromosome
+				
+	return genome
+			
+			
+def read_fasta(genome, output):
+	"""
+	Lis les séquences et écrit les bases dans le fichier de sortie
+	"""
+	print("start reading fasta file")	
+	out=open(output, "w")
+	
+	nucleotides=["A","C","T","G"]
+	chromosomes=["chr1","chr2","chr3","chr4","chr5","chr6","chr7","chr8","chr9","chr10","chr11","chr12","chr13","chr14","chr15","chr16","chr17","chr18","chr19","chr20","chr21","chr22"]
+	done_chrom=[]
+	base=[] 
+	
+	for chrom in genome.keys(): 
+		if chrom in chromosomes:
+			for i in range(len(genome[chrom])):
+				if genome[chrom][i].upper() in nucleotides: 
+					pos=i #L'index = position du nucléotide
+					nuc=genome[chrom][i].upper()
+				
+					base=[]
+					base.append(chrom) #Chromosome
+					base.append(pos) #Position de la base
+					base.append(nuc) #Type de nucléotide
+	
+					out.write("{}\t{}\t{}\n".format(base[0],base[1],base[2])) #Ecrit en format Chr \t position \t nucléotide \n
 					
-					if chrom in chromosomes: 
-						out.write("{}\t{}\t{}\n".format(base[0],base[1],base[2])) 
-					
-					base=[] #Réinitialise la liste à chaque nucléotide
-					
-				elif l[n].upper() =='N' :
-					pos=start+n
-		
-			start=pos #Mets à jour la position start pour les cas ou on a un retour à la ligne pour une même séquence dans le fichier fasta
+					if chrom not in done_chrom:
+						print(chrom)
+						done_chrom.append(chrom)
+
 
 
 def main(): 
 	parser = argparse.ArgumentParser()
 	
 	#fichier fasta des séquences:
-	parser.add_argument('-fa', '--input_fa', type=str, help='Path to fasta file', default ="/home/soukkal/Bureau/Projet/Step3_results/H_seq.fa")					
+	parser.add_argument('-fa', '--input_fa', type=str, help='Path to fasta file', default ="/media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/hg38.fa")					
 		
 	
 	#fichier de sortie: 
-	parser.add_argument('-out', '--output', type=str, help='Path to output file', default ="/home/soukkal/Bureau/Projet/Step4_results/Ali_bases.txt")			
+	parser.add_argument('-out', '--output', type=str, help='Path to output file', default ="/media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_bases_2.txt")			
 
 	
 	args = parser.parse_args()
 	
-	print("start processing")
-	same_base(args.input_fa,args.output)
-	print("finished")
+	
+	Genome=load_fasta(args.input_fa)
+	read_fasta(Genome, args.output)
+
+	print("finished writing output")
 	
 	
 if "__main__" == __name__:

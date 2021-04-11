@@ -9,10 +9,14 @@ def calcul_mut(input_AB, nonCpG, CpG):
 	nonCpG=open(nonCpG,"w") #Fichier de sortie mutations non CpG
 	CpG=open(CpG,"w") #Fichier de sortie mutations CpG 
 	done_chrom=[]
+	c=0
 	
-	AB=data.readlines()
+	AB=data.readline()
 	
-	for i in range(len(AB)): 
+	for l in AB:
+		c+=1
+	
+	for i in range(c): 
 		line=AB[i].strip().split("\t")
 		chrom=line[0] #chromosome du nt 
 		pos=int(line[1]) #position du nt
