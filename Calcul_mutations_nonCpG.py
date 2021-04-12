@@ -2,30 +2,25 @@
 
 #Importer packages: 
 import argparse 
-
-
+	
 def calcul_mut(input_AB, nonCpG, CpG): 
-	data=open(input_AB,"r") #Fichier des bases ancestrales + bases actuelles
+	f=open(input_AB,"r") #Fichier des bases ancestrales + bases actuelles
 	nonCpG=open(nonCpG,"w") #Fichier de sortie mutations non CpG
 	CpG=open(CpG,"w") #Fichier de sortie mutations CpG 
 	done_chrom=[]
 	c=0
 	
-	AB=data.readline()
+	flen=sum(1 for _ in f)
+	print(flen)
 	
-	for l in AB:
-		c+=1
-	
-	print(c)
-	
-	for i in range(c): 
-		line=data[i].strip().split("\t")
+	for i in range(flen): 
+		line=f[i].strip().split("\t")
 		chrom=line[0] #chromosome du nt 
 		pos=int(line[1]) #position du nt
 		nuc=line[2] #Nucléotide de l'espèce d'interêt 
 		nuc_EA=line[3] #nucléotide à l'état ancestral
 		
-		line2=data[i+1].strip().split("\t") #Nucléotide suivant pour repérer les CpG 
+		line2=f[i+1].strip().split("\t") #Nucléotide suivant pour repérer les CpG 
 		pos2=int(line2[1])
 		nuc2=line2[2]
 
@@ -58,7 +53,7 @@ def main():
 	parser.add_argument('-CpG', '--CpG', type=str, help='Path to CpG output file', default ="/home/soukkal/Bureau/Projet/Step4_results/AB_chimp.txt")		
 	
 	args = parser.parse_args()
-	
+
 	calcul_mut(args.input_AB, args.nonCpG, args.CpG)
 	
 	
