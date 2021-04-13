@@ -37,7 +37,7 @@ def calcul_mut(AB, nonCpG, CpG):
 			print("pos is", pos)
 			print("nuc", AB[chrom][pos][0])
 			print("EA", AB[chrom][pos][1])
-			if AB[chrom][pos][0] != AB[chrom][pos][1] : #si nuc différent de nuc_EA y a une mutation
+			if AB[chrom][pos][0] != AB[chrom][pos][1]: #si nuc différent de nuc_EA y a une mutation
 				print("MUT")
 				if AB[chrom][pos][0] == "C": #Si c'est un C
 					print("C un C")
@@ -54,6 +54,8 @@ def calcul_mut(AB, nonCpG, CpG):
 						continue #Passe directement à l'itération suivante
 				else: #Si ce n'est pas un C
 					nonCpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, AB[chrom][pos][0], AB[chrom][pos][1])) 
+			else:
+				print("pas de mutation")
 			
 def main(): 
 	parser = argparse.ArgumentParser()
