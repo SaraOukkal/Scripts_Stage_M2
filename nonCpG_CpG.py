@@ -36,10 +36,15 @@ def calcul_mut(AB, nonCpG, CpG):
 		print("AB.keys", AB.keys())
 		print("chrom actuel", chrom)
 		for pos in AB[chrom].keys():
+			print(pos)
 			if AB[chrom][pos][0] != AB[chrom][pos][1] : #si nuc différent de nuc_EA y a une mutation
+				print("MUT")
 				if AB[chrom][pos][0] == "C": #Si c'est un C
+					print("C un C")
 					if pos+1 in AB[chrom].keys(): #Si la base suivante du fichier la suit dans la séquence 
+						print(pos+1)
 						if AB[chrom][pos+1][0] == "G": #Si c'est un CpG 
+							print("C un G")
 							CpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, AB[chrom][pos][0], AB[chrom][pos][1])) 
 				
 						else: #Si ce n'est pas un CpG
