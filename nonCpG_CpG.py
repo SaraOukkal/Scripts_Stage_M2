@@ -43,7 +43,6 @@ def calcul_mut(AB, nonCpG, CpG):
 							CpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, AB[chrom][pos][0], AB[chrom][pos][1])) 
 				
 						else: #Si ce n'est pas un CpG
-							print("nonCpG")
 							nonCpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, AB[chrom][pos][0], AB[chrom][pos][1])) 
 			
 					else: #Si la base suivante de la séquence n'est pas une base ancestrale
@@ -51,8 +50,6 @@ def calcul_mut(AB, nonCpG, CpG):
 						
 				else: #Si ce n'est pas un C
 					nonCpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, AB[chrom][pos][0], AB[chrom][pos][1])) 
-			else:
-				print("pas de mutation")
 			
 def main(): 
 	parser = argparse.ArgumentParser()
