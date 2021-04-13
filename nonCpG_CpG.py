@@ -25,6 +25,7 @@ def load_AB(input_AB):
 		AB[chrom][pos].append(nuc)
 		AB[chrom][pos].append(nuc_EA)
 		
+	print(AB)
 	return AB
 			
 	
