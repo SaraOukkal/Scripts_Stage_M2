@@ -33,6 +33,8 @@ def calcul_mut(AB, nonCpG, CpG):
 	CpG=open(CpG,"w") #Fichier de sortie mutations CpG 
 		
 	for chrom in AB.keys():
+		print("AB.keys", AB.keys())
+		print("chrom actuel", chrom)
 		for pos in AB[chrom].keys():
 			if AB[chrom][pos][0] != AB[chrom][pos][1] : #si nuc différent de nuc_EA y a une mutation
 				if AB[chrom][pos][0] == "C": #Si c'est un C
@@ -59,8 +61,12 @@ def main():
 	parser.add_argument('-CpG', '--CpG', type=str, help='Path to CpG output file', default ="/home/soukkal/Bureau/Projet/Step4_results/AB_chimp.txt")		
 	
 	args = parser.parse_args()
+	print("start loading AB")
 	AB=load_AB(args.input_AB)
+	print("load AB done")
+	print("start calculating mutations")
 	calcul_mut(AB, args.nonCpG, args.CpG)
+	print("done calculating mutations")
 	
 	
 if "__main__" == __name__:
