@@ -13,8 +13,9 @@ def calcul_mut(input_AB, nonCpG, CpG):
 	flen=sum(1 for _ in f)
 	print(flen)
 	
+	AB=f.readlines()
+	
 	for i in range(flen): 
-		AB=f.readline()
 		line=AB.strip().split("\t")
 		chrom=line[0] #chromosome du nt 
 		pos=int(line[1]) #position du nt

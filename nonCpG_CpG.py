@@ -10,20 +10,24 @@ def load_AB(input_AB):
 	AB={}
 	
 	for l in data:
+		base=[]		
+		
 		line=l.strip().split("\t")
 		chrom=line[0] #chromosome du nt 
 		pos=int(line[1]) #position du nt
 		nuc=line[2] #Nucléotide actuel
-		nuc_EA=line[3] #nucléotide à l'état ancestral
+		EA=line[3] #nucléotide à l'état ancestral
+
+		base.append(pos)
+		base.append(nuc)
+		base.append(EA)
 		
 		if chrom not in done_chrom:
 			print(chrom)
 			done_chrom.append(chrom)
-			AB[chrom]={}
-			
-		AB[chrom][pos]=[]
-		AB[chrom][pos].append(nuc)
-		AB[chrom][pos].append(nuc_EA)
+			AB[chrom]=[]
+		
+		AB[chrom].append(base)
 		
 	return AB
 			
@@ -33,23 +37,28 @@ def calcul_mut(AB, nonCpG, CpG):
 	CpG=open(CpG,"w") #Fichier de sortie mutations CpG 
 		
 	for chrom in AB.keys():
-		for pos in AB[chrom].keys():
-			if AB[chrom][pos][0] != AB[chrom][pos][1]: #si nuc différent de nuc_EA y a une mutation
-				if AB[chrom][pos][0] == "C": #Si c'est un C
-					if pos+1 in AB[chrom].keys(): #Si la base suivante du fichier la suit dans la séquence 
-						print(pos+1)
-						if AB[chrom][pos+1][0] == "G": #Si c'est un CpG 
+		for i in AB[chrom]:
+			pos=int(AB[chrom][i][0])
+			nuc=AB[chrom][i][1]
+			EA=AB[chrom][i][2]
+			pos2=int(AB[chrom][i+1][0])
+			nuc2=AB[chrom][i+1][1]
+			
+			if nuc != EA: #si il y a une mutation
+				if nuc == "C": #Si c'est un C
+					if pos2 == pos+1: #Si la base suivante du fichier la suit dans la séquence 
+						if nuc2 == "G": #Si c'est un CpG 
 							print("CpG")
-							CpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, AB[chrom][pos][0], AB[chrom][pos][1])) 
+							CpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, EA)) 
 				
 						else: #Si ce n'est pas un CpG
-							nonCpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, AB[chrom][pos][0], AB[chrom][pos][1])) 
+							nonCpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, EA)) 
 			
 					else: #Si la base suivante de la séquence n'est pas une base ancestrale
 						continue #Passe directement à l'itération suivante
 						
 				else: #Si ce n'est pas un C
-					nonCpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, AB[chrom][pos][0], AB[chrom][pos][1])) 
+					nonCpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, EA)) 
 			
 def main(): 
 	parser = argparse.ArgumentParser()
