@@ -14,13 +14,14 @@ def calcul_mut(input_AB, nonCpG, CpG):
 	print(flen)
 	
 	for i in range(flen): 
-		line=f[i].strip().split("\t")
+		AB=f.readline()
+		line=AB.strip().split("\t")
 		chrom=line[0] #chromosome du nt 
 		pos=int(line[1]) #position du nt
 		nuc=line[2] #Nucléotide de l'espèce d'interêt 
 		nuc_EA=line[3] #nucléotide à l'état ancestral
 		
-		line2=f[i+1].strip().split("\t") #Nucléotide suivant pour repérer les CpG 
+		line2=AB[i+1].strip().split("\t") #Nucléotide suivant pour repérer les CpG 
 		pos2=int(line2[1])
 		nuc2=line2[2]
 
