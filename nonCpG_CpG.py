@@ -19,11 +19,12 @@ def load_AB(input_AB):
 		if chrom not in done_chrom:
 			print(chrom)
 			done_chrom.append(chrom)
-		
-		AB[chrom]={}
+			AB[chrom]={}
+			
 		AB[chrom][pos]=[]
 		AB[chrom][pos].append(nuc)
 		AB[chrom][pos].append(nuc_EA)
+		
 		
 	print(AB)
 	return AB
