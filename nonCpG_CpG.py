@@ -33,10 +33,10 @@ def calcul_mut(AB, nonCpG, CpG):
 	CpG=open(CpG,"w") #Fichier de sortie mutations CpG 
 		
 	for chrom in AB.keys():
-		print("AB.keys", AB.keys())
-		print("chrom actuel", chrom)
 		for pos in AB[chrom].keys():
-			print(pos)
+			print("pos is", pos)
+			print("nuc", AB[chrom][pos][0])
+			print("EA", AB[chrom][pos][1])
 			if AB[chrom][pos][0] != AB[chrom][pos][1] : #si nuc différent de nuc_EA y a une mutation
 				print("MUT")
 				if AB[chrom][pos][0] == "C": #Si c'est un C
