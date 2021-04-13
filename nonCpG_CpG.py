@@ -3,11 +3,11 @@
 #Importer packages: 
 import argparse 
 	
-def load_AB(input_AB):
+def load_AB(input_AB, nonCpG, CpG):
 	data=open(input_AB,"r") #Fichier des bases ancestrales + bases actuelles
-	
+	nonCpG=open(nonCpG,"w") #Fichier de sortie mutations non CpG
+	CpG=open(CpG,"w") #Fichier de sortie mutations CpG 
 	done_chrom=[]
-	AB={}
 	
 	for l in data:
 		base=[]		
@@ -17,32 +17,39 @@ def load_AB(input_AB):
 		pos=int(line[1]) #position du nt
 		nuc=line[2] #Nucléotide actuel
 		EA=line[3] #nucléotide à l'état ancestral
-
+		
+		base.append(chrom)
 		base.append(pos)
 		base.append(nuc)
 		base.append(EA)
 		
 		if chrom not in done_chrom:
+			if chrom != "chr1" :
+				print("start calculating mutations")
+				calcul_mut(chromosome, nonCpG, CpG)
+				print("done calculating mutations")
+			chromosome=[]
 			print(chrom)
 			done_chrom.append(chrom)
-			AB[chrom]=[]
 		
-		AB[chrom].append(base)
+		chromosome.append(base)
+		if l == "": 
+			print("start calculating last mutations")
+				calcul_mut(chromosome, nonCpG, CpG)
+				print("done calculating last mutations")
 		
 	return AB
 			
 	
-def calcul_mut(AB, nonCpG, CpG):
-	nonCpG=open(nonCpG,"w") #Fichier de sortie mutations non CpG
-	CpG=open(CpG,"w") #Fichier de sortie mutations CpG 
+def calcul_mut(chromosome, nonCpG, CpG):
 		
-	for chrom in AB.keys():
-		for i in AB[chrom]:
-			pos=int(AB[chrom][i][0])
-			nuc=AB[chrom][i][1]
-			EA=AB[chrom][i][2]
-			pos2=int(AB[chrom][i+1][0])
-			nuc2=AB[chrom][i+1][1]
+		for i in range(len(chromosome)):
+			chrom=chromosome[i][0]
+			pos=int(chromosome[i][1])
+			nuc=chromosome[i][2]
+			EA=chromosome[i][3]
+			pos2=int(chromosome[i+1][1])
+			nuc2=chromosome[i+1][2]
 			
 			if nuc != EA: #si il y a une mutation
 				if nuc == "C": #Si c'est un C
@@ -72,11 +79,9 @@ def main():
 	
 	args = parser.parse_args()
 	print("start loading AB")
-	AB=load_AB(args.input_AB)
+	AB=load_AB(args.input_AB, args.nonCpG, args.CpG)
 	print("load AB done")
-	print("start calculating mutations")
-	calcul_mut(AB, args.nonCpG, args.CpG)
-	print("done calculating mutations")
+
 	
 	
 if "__main__" == __name__:
