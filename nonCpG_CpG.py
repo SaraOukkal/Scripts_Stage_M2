@@ -48,8 +48,11 @@ def calcul_mut(chromosome, nonCpG, CpG):
 			pos=int(chromosome[i][1])
 			nuc=chromosome[i][2]
 			EA=chromosome[i][3]
-			pos2=int(chromosome[i+1][1])
-			nuc2=chromosome[i+1][2]
+			if i != len(chromosome)-1:
+				pos2=int(chromosome[i+1][1])
+				nuc2=chromosome[i+1][2]
+			else: 
+				break
 			
 			if nuc != EA: #si il y a une mutation
 				if nuc == "C": #Si c'est un C
