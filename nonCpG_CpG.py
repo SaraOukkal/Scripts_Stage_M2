@@ -10,14 +10,13 @@ def load_AB(input_AB, nonCpG, CpG):
 	done_chrom=[]
 	
 	for l in data:
-		base=[]		
-		
 		line=l.strip().split("\t")
 		chrom=line[0] #chromosome du nt 
 		pos=int(line[1]) #position du nt
 		nuc=line[2] #Nucléotide actuel
 		EA=line[3] #nucléotide à l'état ancestral
 		
+		base=[]	
 		base.append(chrom)
 		base.append(pos)
 		base.append(nuc)
@@ -33,12 +32,11 @@ def load_AB(input_AB, nonCpG, CpG):
 			done_chrom.append(chrom)
 		
 		chromosome.append(base)
-		if l == "": 
-			print("start calculating last mutations")
-			calcul_mut(chromosome, nonCpG, CpG)
-			print("done calculating last mutations")
 		
-	return AB
+	print("start calculating last mutations")
+	calcul_mut(chromosome, nonCpG, CpG)
+	print("done calculating last mutations")		
+		
 			
 	
 def calcul_mut(chromosome, nonCpG, CpG):
@@ -48,17 +46,17 @@ def calcul_mut(chromosome, nonCpG, CpG):
 			pos=int(chromosome[i][1])
 			nuc=chromosome[i][2]
 			EA=chromosome[i][3]
-			if i != len(chromosome)-1:
-				pos2=int(chromosome[i+1][1])
-				nuc2=chromosome[i+1][2]
-			else: 
+			if i == len(chromosome)-1:
 				break
+				
+			pos2=int(chromosome[i+1][1])
+			nuc2=chromosome[i+1][2]
 			
 			if nuc != EA: #si il y a une mutation
 				if nuc == "C": #Si c'est un C
 					if pos2 == pos+1: #Si la base suivante du fichier la suit dans la séquence 
 						if nuc2 == "G": #Si c'est un CpG 
-							print("CpG")
+							#print("CpG")
 							CpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, EA)) 
 				
 						else: #Si ce n'est pas un CpG
@@ -82,8 +80,7 @@ def main():
 	
 	args = parser.parse_args()
 	print("start loading AB")
-	AB=load_AB(args.input_AB, args.nonCpG, args.CpG)
-	print("load AB done")
+	load_AB(args.input_AB, args.nonCpG, args.CpG)
 
 	
 	
