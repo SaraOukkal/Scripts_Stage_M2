@@ -28,7 +28,7 @@ def distri (intervals):
 def plot (distribution, output):
 	plt.hist(distribution, bins=20, color="salmon")
 	plt.title("Intervals size distribution")
-	plt.xticks(np.arange(25))
+	plt.xticks(np.arange(min(distribution), max(distribution),25))
 	plt.xlabel("Size")
 	plt.ylabel("Number of intervals")
 
