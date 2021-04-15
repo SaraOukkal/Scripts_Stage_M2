@@ -24,9 +24,10 @@ python3 Calcul_AB_nostr.py -H /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_
 sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human.txt  > /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human_sorted.txt 
 ## c) Retirer les CpG des bases ancestrales: 
 python3 AB_nonCpG_CpG.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human_sorted.txt -nonCpG /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human_nonCpG.txt -CpG /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human_CpG.txt
+sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_huma_nonCpG.txt  > /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human_nonCpG_sorted.txt 
 ## d) Positionner les AB autour des barrières:
 ###Compter les AB non CpG autour de toutes les barrières: 
-
+python3 AB_bar_dist.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/hg38/20200228_interSmallNFR.dat -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human_nonCpG_sorted.txt  -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_nonCpG_count_all_bar.txt
 ###Compter les AB autour des barrières sélectionnées:
 python3 AB_bar_dist.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/selected_inter_bar_sorted.bed -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human_sorted.txt  -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_count_bar.txt
 ###Compter les AB autour de toutes les barrières: 

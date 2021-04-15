@@ -22,7 +22,6 @@ def load_bar(input_bar):
 
 		if chrom not in barriers.keys():
 			barriers[chrom]=[]
-			print(chrom)
 		
 		bar={}
 		bar["st1"]=int(line[1]) #Début de la première barrière
@@ -56,7 +55,6 @@ def base_bar(barriers, input_AB):
 		pos=int(line[1]) #position du nt
 		nuc=line[2] #Nucléotide à l'état actuel
 		EA=line[3] #nucléotide à l'état ancestral
-		print(EA)
 				
 		if chrom not in done_chrom:
 			done_chrom.append(chrom)
@@ -75,7 +73,7 @@ def base_bar(barriers, input_AB):
 			mid_inter_bar=end1+((st2-end1)/2)
 			
 			if mid_bar1 < pos and pos < mid_bar2:
-				print("yay")
+				print("pos in bar")
 				if pos <= end1 or pos <= mid_inter_bar:
 					dist=pos-end1
 				elif pos <=st2 or pos <= mid_bar2: 
