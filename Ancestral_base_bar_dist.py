@@ -18,18 +18,18 @@ def load_bar(input_bar):
 	for l in bars: 
 		line=l.strip().split("\t")
 	
-		chrom=line[0]
+		chrom=line[0] #Chromosome
 
 		if chrom not in barriers.keys():
 			barriers[chrom]=[]
 		
 		bar={}
-		bar["st1"]=int(line[1])
-		bar["end1"]=int(line[2])
-		bar["st2"]=int(line[3])
-		bar["end2"]=int(line[4])
+		bar["st1"]=int(line[1]) #Début de la première barrière
+		bar["end1"]=int(line[2]) #Fin de la première barrière 
+		bar["st2"]=int(line[3]) #Début de la deuxième barrière
+		bar["end2"]=int(line[4]) #Fin de la deuxième barrière
 			
-		barriers[chrom].append(bar)
+		barriers[chrom].append(bar) #Ajouter l'inter barrière au dictionnaire
 		
 	
 		
@@ -38,7 +38,7 @@ def load_bar(input_bar):
 	
 	
 	
-def ancestral_base_bar(barriers, input_AB):
+def base_bar(barriers, input_AB):
 	"""
 	Charge le fichier des bases non mutées et les place en fonction des barrières
 	"""
@@ -53,7 +53,9 @@ def ancestral_base_bar(barriers, input_AB):
 		line=l.strip().split("\t")
 		chrom=line[0] #chromosome du nt 
 		pos=int(line[1]) #position du nt
-		nuc_EA=line[3] #nucléotide à l'état ancestral
+		nuc=line[2] #Nucléotide à l'état actuel
+		if line[3]:
+			EA=line[3] #nucléotide à l'état ancestral
 				
 		if chrom not in done_chrom:
 			done_chrom.append(chrom)
@@ -65,43 +67,28 @@ def ancestral_base_bar(barriers, input_AB):
 			end1=barriers[chrom][i]["end1"]	#end de la barrière x 
 			st2=barriers[chrom][i]["st2"]
 			end2=barriers[chrom][i]["end2"]
-			base=nuc_EA.upper()	#détermine le type de base	
-			mid_bar2=st2 + 50
+			if EA:
+				base=EA.upper()	#détermine le type de base ancestrale (fichier bases ancestrales)
+			else:
+				base=nuc.upper() #Détermine le type de base (fichier bases actuelles)
 			
-			if pos < st1: #Si la base est avant la première barrière (donc dans un interbarrière non prit en compte) 
-				index=i
-				break
+			mid_bar1=end1-((end1-st1)/2)
+			mid_bar2=st2+((end2-st2)/2)
+			mid_inter_bar=end1+((st2-end1)/2)
 			
-			elif pos <= end1 : #si la base est dans la première barrière
-				dist=pos-end1		
-				if dist >= -50:
-					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
-						dico[dist]=Counter()	
-					dico[dist][base]+=1 #Ajoute 1 au type de base concerné
+			if mid_bar1 < pos and pos < mid_bar2:
+				if pos <= end1 or pos <= mid_inter_bar:
+					dist=pos-end1
+				elif pos <=st2 or pos <= mid_bar2: 
+					dist=st2-pos 
+				
+				if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
+					dico[dist]=Counter()	
+				
+				dico[dist][base]+=1	
 				index=i #mets à jour l'index 
-				break
-
-			elif pos < st2: #Si la base est dans l'inter barrière end1-st2
-				dist1=pos-end1
-				dist2=st2-pos
-				dist=min(dist1,dist2)
-				if dist <= 1000:
-					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
-						dico[dist]=Counter()	
-					dico[dist][base]+=1 #Ajoute 1 au type de base concerné
-				index=i #mets à jour l'index 
-				break
-		
-			elif pos <= mid_bar2: #Si la base est dans la deuxième barrière (dans les 50 premiers nt)
-				dist=st2-pos		
-				if dist >= -50:
-					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
-						dico[dist]=Counter()	
-					dico[dist][base]+=1 #Ajoute 1 au type de base concerné
-				index=i #mets à jour l'index 
-				break
-			
-			#Si la base est après la deuxième barrière on continue de parcourir les barrières
+				
+		#Si la base est après la deuxième barrière on continue de parcourir les barrières
 				
 		c += 1 #mets à jour le compteur de bases totales 
 					
@@ -143,7 +130,7 @@ def main():
 	print("loading barriers file")
 	barriers=load_bar(args.input_bar)
 	print("counting bases around barriers")
-	base_count=ancestral_base_bar(barriers, args.input_AB)
+	base_count=base_bar(barriers, args.input_AB)
 	print("writing counts in the output file")
 	write_out(base_count,args.output)
 	print("done")
