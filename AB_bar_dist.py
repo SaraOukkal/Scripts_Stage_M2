@@ -83,6 +83,7 @@ def base_bar(barriers, input_AB):
 				
 				dico[dist][base]+=1	
 				index=i #mets à jour l'index 
+				break
 				
 		#Si la base est après la deuxième barrière on continue de parcourir les barrières
 				
