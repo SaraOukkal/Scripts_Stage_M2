@@ -73,7 +73,6 @@ def base_bar(barriers, input_AB):
 			mid_inter_bar=end1+((st2-end1)/2)
 			
 			if mid_bar1 < pos and pos < mid_bar2:
-				print("pos in bar")
 				if pos <= end1 or pos <= mid_inter_bar:
 					dist=pos-end1
 				elif pos <=st2 or pos <= mid_bar2: 
