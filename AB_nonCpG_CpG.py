@@ -38,7 +38,7 @@ def load_AB(input_AB, nonCpG, CpG):
 		chromosome.append(base)
 		
 	print("start calculating last mutations")
-	calcul_mut(chromosome, nonCpG, CpG)
+	remove_CpG(chromosome, nonCpG, CpG)
 	print("done calculating last mutations")		
 		
 			

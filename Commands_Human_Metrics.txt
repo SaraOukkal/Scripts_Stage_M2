@@ -1,0 +1,33 @@
+#Distribution tailles intervalles: 
+##Distribution de la taille des intervalles alignés sur les 4 espèces: 
+python3 Distri_intervals.py -inter /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/H_intervals.bed -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/distri_inter.png
+##Distribution de la taille des barrières de l'Homme: 
+python3 Distri_intervals.py -inter /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_barriers_sorted.bed -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/distri_bar.png
+##Distribution de la taille des barrières de l'Homme inclues dans les intervalles: 
+python3 Distri_intervals.py -inter /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_barriers_in_inter_sorted.bed -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/distri_bar_in_inter.png
+
+##Calcul de la proportion de barrières de l'Homme inclues dans les intervalles: 
+python3 Bar_proportion.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_barriers_sorted.bed -bar_inter /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/H_barriers_in_inter_sorted.bed
+
+#Compter les CpG: 
+python3 CpG_count.py -H /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/C_seq.fa -C /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/H_seq.fa -G /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/G_seq.fa -O /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/O_seq.fa 
+
+#Analyse du génome entier de l'Homme:
+##Convertir fasta en bed: 
+python3 Genome_into_bases.py -fa /media/disk1/soukkal/StageM2/Stage_M1/Human_Step3_results/hg38.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_bases.txt
+#Positionner bases autour de toutes les barrières: 
+python3 Genome_bar_dist.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/hg38/20200228_interSmallNFR.dat -B /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_bases.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_count_bar.txt
+#Positionner bases autour d'interbar de + de 1000:
+python3 Genome_bar_dist.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/selected_inter_bar_sorted.bed -B /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_bases.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_count_spe_bar.txt
+#Metrics: 
+python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_count_bar.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/Genome_plots/
+
+python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_count_spe_bar.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/Genome_spe_plots/
+#Normaliser nombre de sites AB/ nombre de sites dispo autour des NIEBs:
+python3 Plot_sites_norm.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_count_bar.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_count_spe_bar.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/AB_norm_plot.png
+
+#Copier les figures de clus7 à la machine locale: (example de chemins)
+#A faire sur la machine locale  
+scp soukkal@clus7.igfl.ens-lyon.fr:/media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/distri.png /home/saraoukkal/Documents/Stage_M1/Human_Results
+scp -r soukkal@clus7.igfl.ens-lyon.fr:/media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/Actual_plots /home/saraoukkal/Documents/Stage_M1/Human_Results
+
