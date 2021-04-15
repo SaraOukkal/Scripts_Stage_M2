@@ -54,8 +54,7 @@ def base_bar(barriers, input_AB):
 		chrom=line[0] #chromosome du nt 
 		pos=int(line[1]) #position du nt
 		nuc=line[2] #Nucléotide à l'état actuel
-		if line[3]:
-			EA=line[3] #nucléotide à l'état ancestral
+		EA=line[3] #nucléotide à l'état ancestral
 				
 		if chrom not in done_chrom:
 			done_chrom.append(chrom)
@@ -67,10 +66,7 @@ def base_bar(barriers, input_AB):
 			end1=barriers[chrom][i]["end1"]	#end de la barrière x 
 			st2=barriers[chrom][i]["st2"]
 			end2=barriers[chrom][i]["end2"]
-			if EA:
-				base=EA.upper()	#détermine le type de base ancestrale (fichier bases ancestrales)
-			else:
-				base=nuc.upper() #Détermine le type de base (fichier bases actuelles)
+			base=EA.upper()	#détermine le type de base ancestrale (fichier bases ancestrales)
 			
 			mid_bar1=end1-((end1-st1)/2)
 			mid_bar2=st2+((end2-st2)/2)

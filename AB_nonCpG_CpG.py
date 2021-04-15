@@ -28,18 +28,18 @@ def load_AB(input_AB, nonCpG, CpG):
 		
 		if chrom not in done_chrom:
 			if chrom != "chr1" :
-				print("start calculating mutations")
+				print("start calculating AB")
 				remove_CpG(chromosome, nonCpG, CpG)
-				print("done calculating mutations")
+				print("done calculating AB")
 			chromosome=[]
 			print(chrom)
 			done_chrom.append(chrom)
 		
 		chromosome.append(base)
 		
-	print("start calculating last mutations")
+	print("start calculating last AB")
 	remove_CpG(chromosome, nonCpG, CpG)
-	print("done calculating last mutations")		
+	print("done calculating last AB")		
 		
 			
 	
