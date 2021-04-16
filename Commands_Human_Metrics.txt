@@ -24,7 +24,7 @@ python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_resu
 
 python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_count_spe_bar.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/Genome_spe_plots/
 #Normaliser nombre de sites AB/ nombre de sites dispo autour des NIEBs:
-python3 Plot_sites_norm.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_count_bar.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_count_spe_bar.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/AB_norm_plot.png
+python3 Plot_sites_norm.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_nonCpG_count_all_bar.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Human_Step5_results/genome_count_bar.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Plots/AB_norm_plot_all_bar.png
 
 #Copier les figures de clus7 à la machine locale: (example de chemins)
 #A faire sur la machine locale  
