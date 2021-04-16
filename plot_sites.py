@@ -23,7 +23,7 @@ def ancestral_sites(bar_AB_count, output_directory): #Plot du nombre de sites pa
 		if not l.startswith("d"): #Ignore le header du fichier
 			line=l.strip().split("\t")
 			distance=int(line[0])
-			if distance <= 500 :
+			if distance >= -50 and distance <= 500 :
 				dist.append(int(line[0]))
 				num_AB=0
 				num_AB=int(line[1]) + int(line[2]) + int(line[3]) + int(line[4])
@@ -32,7 +32,7 @@ def ancestral_sites(bar_AB_count, output_directory): #Plot du nombre de sites pa
 
 	plt.plot(dist,AncestralBase, color='#0000cc')
 	plt.axvline(0, color='red', linewidth=2, label='NIEBs borders')
-	plt.axvspan(-50, 0, zorder=1, alpha=0.1, color='#cc0000', label='Inside NIEBs')
+	plt.axvspan(min(dist), 0, zorder=1, alpha=0.1, color='#cc0000', label='Inside NIEBs')
 	plt.axvspan(0, 500, zorder=1, alpha=0.1, color='#00cccc', label='Inter NIEBs')
 	plt.title("Number of ancestral sites around NIEBs")
 	plt.xlabel("Distance from NIEBs")
@@ -59,7 +59,7 @@ def ancestral_sub_sites(bar_AB_count, output_directory): #plot du nombre de site
 			line=l.strip().split("\t")
 			num=1
 			distance=int(line[0])
-			if distance <= 500 :
+			if distance >= -50 and distance <= 500 :
 				dist.append(int(line[0]))
 			
 				for t in liste: 
@@ -70,7 +70,7 @@ def ancestral_sub_sites(bar_AB_count, output_directory): #plot du nombre de site
 				#print(liste[i])
 				plt.plot(dist,liste[i], color='#0000cc')
 				plt.axvline(0, color='red', linewidth=2, label='NIEBs borders')
-				plt.axvspan(-50, 0, zorder=1, alpha=0.1, color='#cc0000', label='Inside NIEBs')
+				plt.axvspan(min(dist), 0, zorder=1, alpha=0.1, color='#cc0000', label='Inside NIEBs')
 				plt.axvspan(0, 500, zorder=1, alpha=0.1, color='#00cccc', label='Inter NIEBs')
 				plt.title("Number of ancestral base sites per type and per distance to NIEBs")
 				plt.xlabel("Distance from NIEBs")
@@ -100,7 +100,7 @@ def ancestral_sub_sites_percent(bar_AB_count, output_directory): #plot du pource
 			line=l.strip().split("\t")
 			num=1
 			distance=int(line[0])
-			if distance <= 500 :
+			if distance >= -50 and distance <= 500 :
 				tot=int(line[1]) + int(line[2]) + int(line[3]) + int(line[4]) 
 			
 				dist.append(int(line[0]))
@@ -113,7 +113,7 @@ def ancestral_sub_sites_percent(bar_AB_count, output_directory): #plot du pource
 				#print(liste[i])
 				plt.plot(dist,liste[i], color='#0000cc')
 				plt.axvline(0, color='red', linewidth=2, label='NIEBs borders')
-				plt.axvspan(-50, 0, zorder=1, alpha=0.1, color='#cc0000', label='Inside NIEBs')
+				plt.axvspan(min(dist), 0, zorder=1, alpha=0.1, color='#cc0000', label='Inside NIEBs')
 				plt.axvspan(0, 500, zorder=1, alpha=0.1, color='#00cccc', label='Inter NIEBs')
 				plt.title("Percentage of bases per distance to NIEBs")
 				plt.xlabel("Distance from NIEBs")
@@ -135,7 +135,7 @@ def GC_content(bar_AB_count, output_directory):
 		if not l.startswith("d"): #Ignore le header du fichier
 			line=l.strip().split("\t")
 			distance=int(line[0])
-			if distance <= 500 :
+			if distance >= -50 and distance <= 500 :
 				tot=int(line[1]) + int(line[2]) + int(line[3]) + int(line[4])
 				C=int(line[2])
 				G=int(line[3]) 
@@ -146,7 +146,7 @@ def GC_content(bar_AB_count, output_directory):
 			
 	plt.plot(dist,GC_per, color='#0000cc')
 	plt.axvline(0, color='red', linewidth=2, label='NIEBs borders')
-	plt.axvspan(-50, 0, zorder=1, alpha=0.1, color='#cc0000', label='Inside NIEBs')
+	plt.axvspan(min(dist), 0, zorder=1, alpha=0.1, color='#cc0000', label='Inside NIEBs')
 	plt.axvspan(0, 500, zorder=1, alpha=0.1, color='#00cccc', label='Inter NIEBs')
 	plt.title("GC % around NIEBs")
 	plt.xlabel("Distance from NIEBs")

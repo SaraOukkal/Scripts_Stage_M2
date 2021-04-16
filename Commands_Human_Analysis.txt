@@ -28,6 +28,8 @@ sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_h
 ## d) Positionner les AB autour des barrières:
 ###Compter les AB non CpG autour de toutes les barrières: 
 python3 AB_bar_dist.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/hg38/20200228_interSmallNFR.dat -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human_nonCpG_sorted.txt  -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_nonCpG_count_all_bar.txt
+
+python3 AB_bar_dist.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/selected_inter_bar_sorted.bed -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human_nonCpG_sorted.txt  -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_nonCpG_count.txt
 ###Compter les AB autour des barrières sélectionnées:
 python3 AB_bar_dist.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/selected_inter_bar_sorted.bed -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_human_sorted.txt  -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/AB_count_bar.txt
 ###Compter les AB autour de toutes les barrières: 
