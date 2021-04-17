@@ -2,11 +2,7 @@
 #!/usr/bin/python3
 
 #Importer packages: 
-import argparse 
-from collections import Counter
-
-
-def load_bar(input_bar):
+import argparse def load_bar(input_bar):
 	"""
 	Charge le fichier .bed des barrières dans un dictionnaire
 	"""
@@ -35,6 +31,10 @@ def load_bar(input_bar):
 		
 	return barriers #dictionnaire de chromosomes, chaque chromosome est une liste contenant des dictionnaires pour chaque barrière, un dictionnaire de barrière contient les positions start et end
 	
+from collections import Counter
+
+
+
 	
 	
 	

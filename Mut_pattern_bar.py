@@ -17,25 +17,22 @@ def load_bar(input_bar):
 	for l in bars: 
 		line=l.strip().split("\t")
 	
-		chrom=line[0]
+		chrom=line[0] #Chromosome
 
 		if chrom not in barriers.keys():
 			barriers[chrom]=[]
 		
 		bar={}
-		bar["st1"]=int(line[1])
-		bar["end1"]=int(line[2])
-		bar["st2"]=int(line[3])
-		bar["end2"]=int(line[4])
-
-		barriers[chrom].append(bar)
+		bar["st1"]=int(line[1]) #Début de la première barrière
+		bar["end1"]=int(line[2]) #Fin de la première barrière 
+		bar["st2"]=int(line[3]) #Début de la deuxième barrière
+		bar["end2"]=int(line[4]) #Fin de la deuxième barrière
+			
+		barriers[chrom].append(bar) #Ajouter l'inter barrière au dictionnaire
 		
 	
 		
 	return barriers #dictionnaire de chromosomes, chaque chromosome est une liste contenant des dictionnaires pour chaque barrière, un dictionnaire de barrière contient les positions start et end
-	
-	
-	
 	
 def mut_bar(barriers, input_mut):
 	"""
@@ -48,7 +45,7 @@ def mut_bar(barriers, input_mut):
 	
 	for l in mut: 
 		if c%100000 == 0 : 
-			print(c) #affiche C toutes les 100000 mutations 
+			print(c) #affiche C toutes les 100.000 mutations 
 		line=l.strip().split("\t")
 		chrom=line[0] #chromosome de la mutation 
 		pos=int(line[1]) #position de la mutation 
@@ -67,46 +64,33 @@ def mut_bar(barriers, input_mut):
 			st2=barriers[chrom][i]["st2"]
 			end2=barriers[chrom][i]["end2"]
 			mutation=nuc_C.upper()+">"+EA.upper()	#détermine le type de mutation 	
-			mid_bar2= st2 + 50
+			
+			mid_bar1=end1-((end1-st1)/2)
+			mid_bar2=st2+((end2-st2)/2)
+			mid_inter_bar=end1+((st2-end1)/2)
 			
 
-			if pos < st1: #Si la base est avant la première barrière (donc dans un interbarrière non prit en compte) 
+			if pos < mid_bar1: #Les bases avant la premièe barrière
 				index=i
 				break
-
-			elif pos <=end1 : #si la mutation est dans la première barrière (dans la partie droite de la barrière)
-				dist=pos-end1		
-				if dist >= -50: #Prend uniquement jusqu'a -50nt dans la barrière 
-					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
-						dico[dist]=Counter()	
-					dico[dist][mutation]+=1 #Ajoute 1 au type de mutation concerné 
-				index=i #mets à jour l'index 
-				break	
 			
-			elif pos < st2: #Si la mutation est dans l'inter barrière end1-st2
-				dist1=pos-end1
-				dist2=st2-pos
-				dist=min(dist1,dist2)
-				if dist <= 1000:
-					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
-						dico[dist]=Counter()	
-					dico[dist][mutation]+=1 #Ajoute 1 au type de base concerné
+			if pos > mid_bar1 and pos < mid_bar2:
+				if pos <= end1 or pos <= mid_inter_bar:
+					dist=pos-end1
+				elif pos <=st2 or pos <= mid_bar2: 
+					dist=st2-pos 
+				
+				if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
+					dico[dist]=Counter()	
+				
+				dico[dist][mutation]+=1	
 				index=i #mets à jour l'index 
-				break				
-			
-			elif pos <= mid_bar2: #Si la mutation est dans la deuxième barrière (dans la partie gauche de la barrière)
-				dist=st2-pos	
-				if dist >= -50:
-					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
-						dico[dist]=Counter()	
-					dico[dist][mutation]+=1 #Ajoute 1 au type de base concerné
-				index=i #mets à jour l'index 
-				break			
-	
-			#Si la mutation est après la deuxième barrière on continue de parcourir les barrières
-			
-		c += 1 #mets à jour le compteur de mutations totales 
-
+				break
+				
+		#Si la base est après la deuxième barrière on continue de parcourir les barrières
+				
+		c += 1 #mets à jour le compteur de bases totales 
+					
 	return dico								
 
 
