@@ -43,17 +43,20 @@ def mut_rate(bar_mut_count, bar_AB_count, output):
 					AB_T=int(line_AB[4])
 					tot_AB=AB_A + AB_C + AB_G + AB_T #Somme des bases ancestrales
 					
-					if mut_dist == AB_dist: #A chaque même distance des barrières
+					if mut_dist >= -50 and mut_dist <= 500:
+						if mut_dist == AB_dist: #A chaque même distance des barrières
 						
-						MR=[]
-						MR.append(mut_dist)
-						MR.append(tot_mut/tot_AB) #Calcul du taux de mutation 
+							MR=[]
+							MR.append(mut_dist)
+							MR.append(tot_mut/tot_AB) #Calcul du taux de mutation 
 						
-						#print(MR)
-						out.write("{}\t{}\n".format(MR[0],MR[1]))
+							#print(MR)
+							out.write("{}\t{}\n".format(MR[0],MR[1]))
 					
-					else: 
-						continue
+						else: 
+							continue
+					else:
+						break 
 						
 
 def main(): 
