@@ -18,7 +18,7 @@ def mut_rate(bar_mut_count, bar_AB_count, output):
 		if not l.startswith("d"): #Ignore le header du fichier
 
 			line_mut=l.strip().split("\t")
-			mut_dist=line_mut[0] #Charge les données des mutations dans les variables associées 
+			mut_dist=int(line_mut[0]) #Charge les données des mutations dans les variables associées 
 			mut_AT=int(line_mut[1])
 			mut_AC=int(line_mut[2])
 			mut_AG=int(line_mut[3])
@@ -36,7 +36,7 @@ def mut_rate(bar_mut_count, bar_AB_count, output):
 			for i in AB: #Parcours le fichier contenant le nombre de bases ancestrales par type et par distance des NIEBs
 				if not i.startswith("d"): #Ignore le header du fichier 
 					line_AB=i.strip().split("\t")
-					AB_dist=line_AB[0] #Charge les données des bases ancestrales dans les variables associées 
+					AB_dist=int(line_AB[0]) #Charge les données des bases ancestrales dans les variables associées 
 					AB_A=int(line_AB[1])
 					AB_C=int(line_AB[2])
 					AB_G=int(line_AB[3])
