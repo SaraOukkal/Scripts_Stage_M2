@@ -74,7 +74,7 @@ def mut_bar(barriers, input_mut):
 				index=i
 				break
 			
-			if pos > mid_bar1 and pos < mid_bar2:
+			if pos >= mid_bar1 and pos <= mid_bar2:
 				if pos <= end1 or pos <= mid_inter_bar:
 					dist=pos-end1
 				elif pos <=st2 or pos <= mid_bar2: 
