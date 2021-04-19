@@ -69,15 +69,14 @@ def mut_bar(barriers, input_mut):
 			mid_bar2=st2+((end2-st2)/2)
 			mid_inter_bar=end1+((st2-end1)/2)
 			
-
 			if pos < mid_bar1: #Les bases avant la premièe barrière
 				index=i
 				break
 			
-			if pos >= mid_bar1 and pos <= mid_bar2:
-				if pos <= end1 or pos <= mid_inter_bar:
+			elif pos >= mid_bar1 and pos <= mid_bar2:
+				if pos <= mid_inter_bar:
 					dist=pos-end1
-				elif pos <=st2 or pos <= mid_bar2: 
+				else:
 					dist=st2-pos 
 				
 				if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
