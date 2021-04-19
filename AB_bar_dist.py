@@ -52,7 +52,7 @@ def base_bar(barriers, input_AB):
 		chrom=line[0] #chromosome du nt 
 		pos=int(line[1]) #position du nt
 		nuc=line[2] #Nucléotide à l'état actuel
-		EA=line[3].upper() #nucléotide à l'état ancestral
+		nuc_EA=line[3].upper() #nucléotide à l'état ancestral
 				
 		if chrom not in done_chrom:
 			done_chrom.append(chrom)
@@ -82,7 +82,7 @@ def base_bar(barriers, input_AB):
 				if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
 					dico[dist]=Counter()	
 				
-				dico[dist][EA]+=1	
+				dico[dist][nuc_EA]+=1	
 				index=i #mets à jour l'index 
 				break
 				
