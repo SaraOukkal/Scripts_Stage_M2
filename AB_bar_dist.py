@@ -34,15 +34,10 @@ def load_bar(input_bar):
 	return barriers #dictionnaire de chromosomes, chaque chromosome est une liste contenant des dictionnaires pour chaque barrière, un dictionnaire de barrière contient les positions start et end
 	
 from collections import Counter
-
-
-
-	
-	
 	
 def base_bar(barriers, input_AB):
 	"""
-	Charge le fichier des bases non mutées et les place en fonction des barrières
+	Charge le fichier chr/position/nuc/EA et place les bases en fonction des barrières
 	"""
 	dico={}	
 	AB=open(input_AB,"r")
@@ -56,7 +51,7 @@ def base_bar(barriers, input_AB):
 		chrom=line[0] #chromosome du nt 
 		pos=int(line[1]) #position du nt
 		nuc=line[2] #Nucléotide à l'état actuel
-		EA=line[3] #nucléotide à l'état ancestral
+		EA=line[3].upper() #nucléotide à l'état ancestral
 				
 		if chrom not in done_chrom:
 			done_chrom.append(chrom)
@@ -68,7 +63,6 @@ def base_bar(barriers, input_AB):
 			end1=barriers[chrom][i]["end1"]	#end de la barrière x 
 			st2=barriers[chrom][i]["st2"]
 			end2=barriers[chrom][i]["end2"]
-			base=EA.upper()	#détermine le type de base ancestrale (fichier bases ancestrales)
 			
 			mid_bar1=end1-((end1-st1)/2)
 			mid_bar2=st2+((end2-st2)/2)
@@ -78,7 +72,7 @@ def base_bar(barriers, input_AB):
 				index=i
 				break
 			
-			if pos > mid_bar1 and pos < mid_bar2:
+			elif pos > mid_bar1 and pos < mid_bar2:
 				if pos <= end1 or pos <= mid_inter_bar:
 					dist=pos-end1
 				elif pos <=st2 or pos <= mid_bar2: 
@@ -87,7 +81,7 @@ def base_bar(barriers, input_AB):
 				if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
 					dico[dist]=Counter()	
 				
-				dico[dist][base]+=1	
+				dico[dist][EA]+=1	
 				index=i #mets à jour l'index 
 				break
 				

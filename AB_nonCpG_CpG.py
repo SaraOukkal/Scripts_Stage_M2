@@ -70,7 +70,7 @@ def remove_CpG(chromosome, nonCpG, CpG):
 					nonCpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, EA)) 
 		
 			else: #Si la base suivante de la séquence n'est pas une base ancestrale
-				continue #Passe directement à l'itération suivante
+				continue #Passe directement à l'itération suivante (ignore le C en bord)
 					
 		else: #Si ce n'est pas un C 
 			nonCpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, EA)) 
