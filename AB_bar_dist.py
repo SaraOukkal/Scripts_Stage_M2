@@ -3,6 +3,7 @@
 
 #Importer packages: 
 import argparse 
+from collections import Counter
 
 def load_bar(input_bar):
 	"""
@@ -29,24 +30,24 @@ def load_bar(input_bar):
 			
 		barriers[chrom].append(bar) #Ajouter l'inter barrière au dictionnaire
 		
-	
-		
 	return barriers #dictionnaire de chromosomes, chaque chromosome est une liste contenant des dictionnaires pour chaque barrière, un dictionnaire de barrière contient les positions start et end
 	
-from collections import Counter
-	
+
 def base_bar(barriers, input_AB):
 	"""
 	Charge le fichier chr/position/nuc/EA et place les bases en fonction des barrières
 	"""
+	
 	dico={}	
 	AB=open(input_AB,"r")
 	done_chrom=[] 
 	c=0 #compteur de bases
 
 	for l in AB: 
+		
 		if c%1000000 == 0 : 
 			print(c) #affiche C toutes les 1.000.000 nt 
+			
 		line=l.strip().split("\t")
 		chrom=line[0] #chromosome du nt 
 		pos=int(line[1]) #position du nt
@@ -91,8 +92,6 @@ def base_bar(barriers, input_AB):
 					
 	return dico								
 
-
-		
 						
 def write_out(base_count,output_file):	
 	"""
