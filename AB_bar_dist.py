@@ -2,7 +2,9 @@
 #!/usr/bin/python3
 
 #Importer packages: 
-import argparse def load_bar(input_bar):
+import argparse 
+
+def load_bar(input_bar):
 	"""
 	Charge le fichier .bed des barrières dans un dictionnaire
 	"""
