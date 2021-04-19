@@ -54,7 +54,7 @@ def base_bar(barriers, input_AB):
 		chrom=line[0] #chromosome du nt 
 		pos=int(line[1]) #position du nt
 		nuc=line[2] #nucléotide 
-				
+					
 		if chrom not in done_chrom:
 			done_chrom.append(chrom)
 			print(chrom) #imprime le nouveau chromosome pris en charge 
@@ -65,47 +65,33 @@ def base_bar(barriers, input_AB):
 			end1=barriers[chrom][i]["end1"]	#end de la barrière x 
 			st2=barriers[chrom][i]["st2"]
 			end2=barriers[chrom][i]["end2"]
-			base=nuc.upper()	#détermine le type de base	
-			mid_bar2=st2 + 50
 			
-			if pos < st1: #Si la base est avant la première barrière (donc dans un interbarrière non prit en compte) 
+			mid_bar1=end1-((end1-st1)/2) #Milieu de première barrière
+			mid_bar2=st2+((end2-st2)/2)	#Milieu de deuxième barrière
+			mid_inter_bar=end1+((st2-end1)/2) #Milieu de l'interbarrière
+			
+			if pos < mid_bar1: #Ignorer les bases avant la premièe barrière
 				index=i
 				break
 			
-			elif pos <= end1 : #si la base est dans la première barrière
-				dist=pos-end1		
-				if dist >= -50:
-					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
-						dico[dist]=Counter()	
-					dico[dist][base]+=1 #Ajoute 1 au type de base concerné
+			elif pos >= mid_bar1 and pos <= mid_bar2: #Bases à prendre en compte
+				if pos <= mid_inter_bar: #Si autour du bord de barrière 1
+					dist=pos-end1
+				else: #Si autour du bord de barrière 2
+					dist=st2-pos 
+				
+				if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
+					dico[dist]=Counter()	
+				
+				dico[dist][nuc]+=1	
 				index=i #mets à jour l'index 
 				break
-
-			elif pos < st2: #Si la base est dans l'inter barrière end1-st2
-				dist1=pos-end1
-				dist2=st2-pos
-				dist=min(dist1,dist2)
-				if dist <= 1000:
-					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
-						dico[dist]=Counter()	
-					dico[dist][base]+=1 #Ajoute 1 au type de base concerné
-				index=i #mets à jour l'index 
-				break
-		
-			elif pos <= mid_bar2: #Si la base est dans la deuxième barrière (dans les 50 premiers nt)
-				dist=st2-pos		
-				if dist >= -50:
-					if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
-						dico[dist]=Counter()	
-					dico[dist][base]+=1 #Ajoute 1 au type de base concerné
-				index=i #mets à jour l'index 
-				break
-			
-			#Si la base est après la deuxième barrière on continue de parcourir les barrières
+				
+		#Si la base est après la deuxième barrière on continue de parcourir les barrières
 				
 		c += 1 #mets à jour le compteur de bases totales 
 					
-	return dico								
+	return dico															
 
 
 		
