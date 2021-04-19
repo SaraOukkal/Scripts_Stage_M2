@@ -74,9 +74,9 @@ def base_bar(barriers, input_AB):
 				break
 			
 			elif pos >= mid_bar1 and pos <= mid_bar2: #Bases à prendre en compte
-				if pos <= end1 or pos <= mid_inter_bar: #Si autour du bord de barrière 1
+				if pos <= mid_inter_bar: #Si autour du bord de barrière 1
 					dist=pos-end1
-				elif pos <=st2 or pos <= mid_bar2: #Si autour du bord de barrière 2
+				else: #Si autour du bord de barrière 2
 					dist=st2-pos 
 				
 				if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
