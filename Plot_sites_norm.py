@@ -26,7 +26,7 @@ def ancestral_sites(bar_AB_count, bar_genome_count, output): #Plot du nombre de 
 			if not l.startswith("d"): #Ignore le header du fichier
 				line1=l.strip().split("\t")
 				distance1=int(line1[0])
-				if distance1 >= -50 and distance1 <= 500 : 
+				if distance1 >= -50 and distance1 <= 2000 : 
 					for a in Gen:
 						if not a.startswith("d"): #Ignore le header du fichier
 							line2=a.strip().split("\t")
@@ -42,6 +42,7 @@ def ancestral_sites(bar_AB_count, bar_genome_count, output): #Plot du nombre de 
 
 	plt.plot(dist,AncestralBase, color='#0000cc')
 	plt.axvline(0, color='red', linewidth=2, label='NIEBs borders')
+	plt.axhline(0.7952966, color='green', linewidth=2, linestyle='dashed', alpha=0.5)
 	plt.axvspan(-50, 0, zorder=1, alpha=0.1, color='#cc0000', label='Inside NIEBs')
 	plt.axvspan(0, 500, zorder=1, alpha=0.1, color='#00cccc', label='Inter NIEBs')
 	plt.title("Number of AB sites normalized on all sites around NIEBs")
