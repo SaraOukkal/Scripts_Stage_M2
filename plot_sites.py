@@ -146,6 +146,7 @@ def GC_content(bar_AB_count, output_directory):
 
 			
 	plt.plot(dist,GC_per, color='#0000cc')
+	plt.axhline(37.9, color='green', linewidth=2, linestyle='dashed', alpha=0.5)#%GC moyen du génome
 	plt.axvline(0, color='red', linewidth=2, label='NIEBs borders')
 	plt.axvspan(min(dist), 0, zorder=1, alpha=0.1, color='#cc0000', label='Inside NIEBs')
 	plt.axvspan(0, 500, zorder=1, alpha=0.1, color='#00cccc', label='Inter NIEBs')

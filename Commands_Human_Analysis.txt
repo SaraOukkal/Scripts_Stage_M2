@@ -50,9 +50,10 @@ python3 Mut_nonCpG_CpG.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_
 ## b) Positionner les mutations autour des barrières:
 python3 Mut_pattern_bar.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/selected_inter_bar_sorted.bed -mut /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Mut_human.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/mut_count_bar.txt
 ###Positionner les mutations CpG et non CpG autour des barrières:
+####+ de 1000:
 python3 Mut_pattern_bar.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/selected_inter_bar_sorted.bed -mut /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Mut_human_nonCpG.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/mut_nonCpG_count_bar.txt
-
-python3 Mut_pattern_bar.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human_Step2_results/selected_inter_bar_sorted.bed -mut /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Mut_human_CpG.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/mut_CpG_count_bar.txt
+####Toutes:
+python3 Mut_pattern_bar.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/hg38/20200228_interSmallNFR.dat -mut /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/Mut_human_nonCpG.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human_Step4_results/mut_nonCpG_count_all_bar.txt
 
 # 6) Calcul du taux de mutations :
 ## a) Calcul taux de mutations global/CpG/nonCpG: 
