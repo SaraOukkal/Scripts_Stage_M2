@@ -32,11 +32,11 @@ def ancestral_sites(bar_AB_count, bar_genome_count, output): #Plot du nombre de 
 				distance2=int(line2[0])
 							
 				if distance1 == distance2:
-				dist.append(int(line1[0]))
-				num_AB=int(line1[1]) + int(line1[2]) + int(line1[3]) + int(line1[4])
-				num_Gen=int(line2[1]) + int(line2[2]) + int(line2[3]) + int(line2[4])
-				norm=num_AB/num_Gen
-				AncestralBase.append(norm)
+					dist.append(int(line1[0]))
+					num_AB=int(line1[1]) + int(line1[2]) + int(line1[3]) + int(line1[4])
+					num_Gen=int(line2[1]) + int(line2[2]) + int(line2[3]) + int(line2[4])
+					norm=num_AB/num_Gen
+					AncestralBase.append(norm)
 								
 
 	plt.plot(dist,AncestralBase, color='#0000cc')
