@@ -1,0 +1,45 @@
+
+# 1) Récupérer les alignements communs aux 4 espèces: 
+## a) Créer les fichiers .bed de l'Homme:
+python3 Human_bed.py 
+
+## b) Calculer les intervalles de l'Homme qui s'alignent sur les 4 espèces: 
+bash Human_Bedtools_intersect 
+## c) Recalculer les intervalles de toutes les espèces: 
+python3 New_intervals.py
+ 
+# 2) Sélectionner les barrières qui ont un inter barrière de plus de 1000nt: 
+python3 select_inter_bar.py 
+
+# 3) Récupérer les fasta des alignements  
+bash Get_seq_files
+
+# 4) Définir les bases ancestrales aux bords des barrières de l'Homme: 
+## a) Déterminer les bases ancestrales depuis les séquences des 4 espèces: 
+python3 Calcul_AB_nostr.py 
+
+## c) Repérer les bases ancestrales CpG et nonCpG: 
+python3 AB_nonCpG_CpG.py 
+## d) Positionner les AB:
+python3 AB_bar_dist.py 
+
+## e) Mesurer GC%, nombre de sites, nombre de chaque base: 
+python3 plot_sites.py
+
+# 5) Mutations:
+## a) Repérer les mutations CpG et non CpG:
+python3 Mut_nonCpG_CpG.py 
+## b) Positionner les mutations autour des barrières:
+python3 Mut_pattern_bar.py
+
+# 6) Calcul des taux de mutations :
+## a) Global: 
+python3 mut_rate.py 
+## b) Faire graphiques taux de mutations: 
+python3 mut_rate_plot.py 
+## c) Calcul des taux de mutations par type:
+python3 spe_mut_rates.py 
+## d) Faire graphiques taux de mutations par types: 
+python3 mut_rates_plots.py 
+
+

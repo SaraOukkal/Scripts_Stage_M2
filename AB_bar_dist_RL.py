@@ -33,7 +33,7 @@ def load_bar(input_bar):
 	return barriers #dictionnaire de chromosomes, chaque chromosome est une liste contenant des dictionnaires pour chaque barrière, un dictionnaire de barrière contient les positions start et end
 	
 
-def base_bar(barriers, input_AB, Left, Right):
+def base_bar(barriers, input_AB, Right, Left):
 	"""
 	Charge le fichier chr/position/nuc/EA et place les bases en fonction des barrières
 	"""
@@ -88,9 +88,7 @@ def base_bar(barriers, input_AB, Left, Right):
 				
 				index=i #mets à jour l'index 
 				break
-				
-		
-				
+
 		#Si la base est après la deuxième barrière on continue de parcourir les barrières
 				
 		c += 1 #mets à jour le compteur de bases totales 

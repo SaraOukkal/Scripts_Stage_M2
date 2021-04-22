@@ -34,11 +34,11 @@ def load_bar(input_bar):
 		
 	return barriers #dictionnaire de chromosomes, chaque chromosome est une liste contenant des dictionnaires pour chaque barrière, un dictionnaire de barrière contient les positions start et end
 	
-def mut_bar(barriers, input_mut):
+def mut_bar(barriers, input_mut, Right, Left):
 	"""
 	Charge le fichier des mutations ponctuelles et les place en fonction des barrières
 	"""
-	dico={}	
+
 	mut=open(input_mut,"r")
 	done_chrom=[] 
 	c = 0 #compteur de mutations
@@ -76,13 +76,16 @@ def mut_bar(barriers, input_mut):
 			elif pos >= mid_bar1 and pos <= mid_bar2:
 				if pos <= mid_inter_bar:
 					dist=pos-end1
+					if dist not in Left.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
+						Left[dist]=Counter()
+					Left[dist][mutation]+=1	
+					
 				else:
 					dist=st2-pos 
+					if dist not in Right.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
+						Right[dist]=Counter()	
+					Right[dist][mutation]+=1	
 				
-				if dist not in dico.keys(): #Si cette distance n'a pas encore été croisée on l'ajoute au dictionnaire 
-					dico[dist]=Counter()	
-				
-				dico[dist][mutation]+=1	
 				index=i #mets à jour l'index 
 				break
 				
@@ -119,7 +122,8 @@ def main():
 	parser.add_argument('-mut', '--input_mut', type=str, help='Path to mutation positions and nuc ancestral state', default ="/home/soukkal/Bureau/Projet/Step3_results/mut_EA_sorted.txt")			
 
 	#fichier de sortie: 
-	parser.add_argument('-out', '--output', type=str, help='Path to output file', default ="/home/soukkal/Bureau/Projet/Step3_results/mut_count_bar.txt")			
+	parser.add_argument('-R', '--right', type=str, help='Path to right borders output file', default ="/home/soukkal/Bureau/Projet/Step3_results/mut_count_bar.txt")	
+	parser.add_argument('-L', '--left', type=str, help='Path to right borders output file', default ="/home/soukkal/Bureau/Projet/Step3_results/mut_count_bar.txt")		
 
 	
 	args = parser.parse_args()
@@ -128,9 +132,13 @@ def main():
 	print("loading barriers file")
 	barriers=load_bar(args.input_bar)
 	print("counting mutations around barriers")
-	mut_count=mut_bar(barriers, args.input_mut)
-	print("writing counts in the output file")
-	write_out(mut_count,args.output)
+	Right={}	
+	Left={}
+	mut_bar(barriers, args.input_mut, Right, Left)
+	print("writing counts in the Left file")
+	write_out(Left,args.left)
+	print("writing counts in the Right file")
+	write_out(Right,args.right)
 	print("done")
 	
 
