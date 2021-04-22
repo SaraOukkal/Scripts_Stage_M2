@@ -92,8 +92,7 @@ def mut_bar(barriers, input_mut, Right, Left):
 		#Si la base est après la deuxième barrière on continue de parcourir les barrières
 				
 		c += 1 #mets à jour le compteur de bases totales 
-					
-	return dico								
+										
 
 
 		
