@@ -52,6 +52,9 @@ def calcul_mut(chromosome, nonCpG, CpG):
 			pos2=int(chromosome[i+1][1])
 			EA2=chromosome[i+1][3]
 			
+			pos3=int(chromosome[i-1][1]) #Base précédente du fichier
+			EA3=chromosome[i-1][3]
+			
 			if nuc != EA: #si il y a une mutation
 				if EA == "C": #Si c'est un C
 					if pos2 == pos+1: #Si la base suivante du fichier la suit dans la séquence 
@@ -64,9 +67,20 @@ def calcul_mut(chromosome, nonCpG, CpG):
 		
 					else: #Si la base suivante de la séquence n'est pas une base ancestrale
 						continue #Passe directement à l'itération suivante (ignore le C en bord)
+				if EA == "G": #Si c'est un G
+					if pos3 == pos-1: 
+						if EA3 == "C": #Si c'est un CpG 
+							CpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, EA)) 
 					
-				else: #Si ce n'est pas un C 
-					nonCpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, EA)) 
+						else: #Si ce n'est pas un CpG
+							nonCpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, EA)) 
+				
+					else: #Si la base précédente de la séquence n'est pas une base ancestrale
+						continue #Passe directement à l'itération suivante (ignore le G en bord)		
+				
+				else: #Si ce n'est pas un C ou un G
+					nonCpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, EA))
+
 		
 			
 def main(): 
