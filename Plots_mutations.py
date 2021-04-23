@@ -136,7 +136,7 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 	
 	plt.plot(MR_dist,liste["MR_AG"], color="blue")
 	plt.plot(MR_dist,liste["MR_TC"], color="green")
-	plt.axvline(0, color='black', alpha=0.5))
+	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("AG_TC")
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("Mutation rate (%)")
