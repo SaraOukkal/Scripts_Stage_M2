@@ -45,22 +45,41 @@ def mut_rates(bar_mut_count, bar_AB_count, output):
 						
 						MR=[]
 						MR.append(mut_dist)
+						if AB_A != 0:
+							MR.append(mut_AT/AB_A) #Calcul du taux de mutation pour ce type de substitutions
+							MR.append(mut_AC/AB_A)
+							MR.append(mut_AG/AB_A)
+						else: 
+							MR.append(0)s
+							MR.append(0)
+							MR.append(0)
 						
-						MR.append(mut_AT/AB_A) #Calcul du taux de mutation pour ce type de substitutions
-						MR.append(mut_AC/AB_A)
-						MR.append(mut_AG/AB_A)
+						if AB_C != 0:
+							MR.append(mut_CT/AB_C)
+							MR.append(mut_CA/AB_C)
+							MR.append(mut_CG/AB_C)
+						else: 
+							MR.append(0) 
+							MR.append(0)
+							MR.append(0)
 						
-						MR.append(mut_CT/AB_C)
-						MR.append(mut_CA/AB_C)
-						MR.append(mut_CG/AB_C)
-						
-						MR.append(mut_GT/AB_G)
-						MR.append(mut_GA/AB_G)
-						MR.append(mut_GC/AB_G)
-						
-						MR.append(mut_TA/AB_T)
-						MR.append(mut_TC/AB_T)
-						MR.append(mut_TG/AB_T)
+						if AB_G != 0:
+							MR.append(mut_GT/AB_G)
+							MR.append(mut_GA/AB_G)
+							MR.append(mut_GC/AB_G)
+						else: 
+							MR.append(0) 
+							MR.append(0)
+							MR.append(0)
+							
+						if AB_T != 0:	
+							MR.append(mut_TA/AB_T)
+							MR.append(mut_TC/AB_T)
+							MR.append(mut_TG/AB_T)
+						else: 
+							MR.append(0) 
+							MR.append(0)
+							MR.append(0)
 						
 						#print(MR)
 						out.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(MR[0],MR[1],MR[2],MR[3],MR[4],MR[5],MR[6],MR[7],MR[8],MR[9],MR[10],MR[11],MR[12])) 
