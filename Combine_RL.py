@@ -61,8 +61,8 @@ def main():
 	
 	#fichiers input:
 	##fichiers compte d'AB R et L:				
-	parser.add_argument('-L', '--Left', type=str, help='Path to bases count around left borders)			
-	parser.add_argument('-R', '--Right', type=str, help='Path to bases count around left borders)		
+	parser.add_argument('-L', '--Left', type=str, help='Path to bases count around left borders')			
+	parser.add_argument('-R', '--Right', type=str, help='Path to bases count around left borders')		
 	#fichier de sortie: 
 	parser.add_argument('-RL', '--RightLeft', type=str, help='Path to combined output file')	
 	
