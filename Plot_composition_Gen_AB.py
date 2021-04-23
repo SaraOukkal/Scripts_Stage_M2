@@ -249,7 +249,7 @@ def GC_content(input_AB, input_Gen, output_dir):
 	Plot du pourcentage GC
 	"""
 	Gen_count=open(input_Gen, "r")
-	AB_count=open(input_AB, "r")) 
+	AB_count=open(input_AB, "r")
 	Gen=Gen_count.readlines()
 	AB=AB_count.readlines()
 	
