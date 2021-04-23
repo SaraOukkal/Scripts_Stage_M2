@@ -55,7 +55,7 @@ def mut_rate_plot(mut_rate, output_dir):
 				MR.append(float(line_MR[1])*100)
 
 	plt.plot(dist,MR, color="red")
-	plt.axvline(0, color='black' alpha=0.5)
+	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("Mutation rates around NIEBs")
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("Mutation rate (%)")
@@ -92,7 +92,7 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 			
 	plt.plot(MR_dist,liste["MR_AT"], color="blue")
 	plt.plot(MR_dist,liste["MR_TA"], color="green")
-	plt.axvline(0, color='black' alpha=0.5)
+	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("AT_TA")
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("Mutation rate (%)")
@@ -103,7 +103,7 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 	
 	plt.plot(MR_dist,liste["MR_AC"], color="blue")
 	plt.plot(MR_dist,liste["MR_TG"], color="green")
-	plt.axvline(0, color='black' alpha=0.5)
+	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("AC_TG")
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("Mutation rate (%)")
@@ -114,7 +114,7 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 	
 	plt.plot(MR_dist,liste["MR_CG"], color="red")
 	plt.plot(MR_dist,liste["MR_GC"], color="orange")
-	plt.axvline(0, color='black' alpha=0.5)
+	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("CG_GC")
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("Mutation rate (%)")
@@ -125,7 +125,7 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 	
 	plt.plot(MR_dist,liste["MR_CT"], color="red")
 	plt.plot(MR_dist,liste["MR_GA"], color="orange")
-	plt.axvline(0, color='black' alpha=0.5)
+	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("CT_GA")
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("Mutation rate (%)")
@@ -136,7 +136,7 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 	
 	plt.plot(MR_dist,liste["MR_AG"], color="blue")
 	plt.plot(MR_dist,liste["MR_TC"], color="green")
-	plt.axvline(0, color='black' alpha=0.5))
+	plt.axvline(0, color='black', alpha=0.5))
 	plt.title("AG_TC")
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("Mutation rate (%)")
@@ -147,7 +147,7 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 	
 	plt.plot(MR_dist,liste["MR_GT"], color="orange")
 	plt.plot(MR_dist,liste["MR_CA"], color="red")
-	plt.axvline(0, color='black' alpha=0.5)
+	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("GT_CA")
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("Mutation rate (%)")
@@ -185,7 +185,7 @@ def mut_rate_base(sub_mut_rates, output_dir):
 	plt.plot(MR_dist,liste["C"], color="red")
 	plt.plot(MR_dist,liste["T"], color="green")
 	plt.plot(MR_dist,liste["G"], color="orange")
-	plt.axvline(0, color='black' alpha=0.5)
+	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("Mutation percentage of each nucleotide type around NIEBs")
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("Mutation rate (%)")
