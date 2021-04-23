@@ -14,26 +14,6 @@ python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Result
 ####All:
 python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/All/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/All/Plots/AB_Plots/
 
-
-# 5) Mutations: 
-## a) Repérer les mutations CpG et non CpG:
-python3 Mut_nonCpG_CpG.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/AB_sorted.txt -nonCpG /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/Mut_nonCpG.txt -CpG /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/Mut_CpG.txt
-## b) Positionner les mutations autour des barrières:
-###All interNIEBs:
-####CpG:
-python3 Mut_pattern_bar.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/hg38/20200228_interSmallNFR.dat -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/Mut_CpG.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/CpG/Mut_count.txt
-####nonCpG:
-python3 Mut_pattern_bar.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/hg38/20200228_interSmallNFR.dat -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/Mut_nonCpG.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/nonCpG/Mut_count.txt
-####All:
-python3 Mut_pattern_bar.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/hg38/20200228_interSmallNFR.dat -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/Mut.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/All/Mut_count.txt
-###interNIEBs de +1000pb:
-####CpG:
-python3 Mut_pattern_bar.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human/Barriers/selected_inter_bar_sorted.bed -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/Mut_CpG.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/CpG/Mut_count.txt
-####nonCpG:
-python3 Mut_pattern_bar.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human/Barriers/selected_inter_bar_sorted.bed -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/Mut_nonCpG.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/nonCpG/Mut_count.txt
-####All:
-python3 Mut_pattern_bar.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human/Barriers/selected_inter_bar_sorted.bed -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/Mut.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/All/Mut_count.txt
-
 # 6) Calcul du taux de mutations :
 ###All interNIEBs:
 ####CpG:

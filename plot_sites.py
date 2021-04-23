@@ -162,7 +162,7 @@ def GC_content(bar_AB_count, output_directory):
 def main(): 
 	parser = argparse.ArgumentParser()
 	
-	#fichiers fasta des séquences qui s'alignent chez les 4 espèces:
+	#fichier des bases: 
 	parser.add_argument('-AB', '--input_AB', type=str, help='Path to ancestral bases count around barriers', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/AB_count_bar.txt")			
 	#fichier de sortie: 
 	parser.add_argument('-out', '--output_dir', type=str, help='Path to output directory', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/Plots/AB_plots/")			
