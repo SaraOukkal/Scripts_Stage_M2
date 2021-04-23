@@ -5,6 +5,7 @@ import argparse
 import numpy as np
 import os
 import matplotlib as mpl
+import matplotlib.ticker as ticker
 if os.environ.get('DISPLAY','') == '':
     print('no display found. Using non-interactive Agg backend')
     mpl.use('Agg')
@@ -45,7 +46,7 @@ def ancestral_sites(input_AB, input_Gen, output_dir):
 				print(num_B)
 				GenomeBase.append(num_B)			
 	
-
+	plt.figure(figsize=(10,10))
 	plt.plot(dist,AncestralBase, color='royalblue')
 	plt.plot(dist,GenomeBase, color='royalblue', linestyle='dashed', alpha=0.5)
 	plt.set_aspect(1)
@@ -90,7 +91,7 @@ def norm_sites(input_AB, input_Gen, output_dir):
 								norm=num_AB/num_Gen
 								NormBase.append(norm)
 								
-
+	plt.figure(figsize=(10,10))
 	plt.plot(dist,NormBase, color='royalblue')
 	plt.axvline(0, color='red', linewidth=2)
 	plt.axhline(0.7952966, color='green', linewidth=2, linestyle='dashed', alpha=0.5)
@@ -143,7 +144,7 @@ def ancestral_sub_sites(input_AB, input_Gen, output_dir):
 					Gen_List[t].append(int(line[num]))
 					num+=1
 	
-
+	plt.figure(figsize=(10,10))
 	plt.plot(dist,AB_List["A"], color='dodgerblue')
 	plt.plot(dist,AB_List["T"], color='mediumaquamarine')
 	plt.plot(dist,Gen_List["A"], color='dodgerblue', linestyle='dashed', alpha=0.5)
@@ -157,6 +158,7 @@ def ancestral_sub_sites(input_AB, input_Gen, output_dir):
 	plt.savefig(filepath)
 	plt.clf()	
 	
+	plt.figure(figsize=(10,10))
 	plt.plot(dist,AB_List["G"], color='orange')
 	plt.plot(dist,AB_List["C"], color='tomato')
 	plt.plot(dist,Gen_List["G"], color='orange', linestyle='dashed', alpha=0.5)
@@ -214,7 +216,7 @@ def ancestral_sub_sites_percent(input_AB, input_Gen, output_dir):
 					Gen_List[t].append((int(line[num])/tot)*100)
 					num+=1
 	
-
+	plt.figure(figsize=(10,10))
 	plt.plot(dist,AB_List["A"], color='dodgerblue')
 	plt.plot(dist,AB_List["T"], color='mediumaquamarine')
 	plt.plot(dist,Gen_List["A"], color='dodgerblue', linestyle='dashed', alpha=0.5)
@@ -228,6 +230,7 @@ def ancestral_sub_sites_percent(input_AB, input_Gen, output_dir):
 	plt.savefig(filepath)
 	plt.clf()	
 	
+	plt.figure(figsize=(10,10))
 	plt.plot(dist,AB_List["G"], color='orange')
 	plt.plot(dist,AB_List["C"], color='tomato')
 	plt.plot(dist,Gen_List["G"], color='orange', linestyle='dashed', alpha=0.5)
@@ -279,7 +282,8 @@ def GC_content(input_AB, input_Gen, output_dir):
 				G=int(line[3]) 
 				GC=((C + G)/tot)*100
 				GC_Gen.append(GC)
-					
+	
+	plt.figure(figsize=(10,10))			
 	plt.plot(dist,GC_AB, color='orangered')
 	plt.plot(dist,GC_Gen, color='orangered', linestyle='dashed', alpha=0.5)
 	plt.axhline(37.9, color='green', linewidth=2, linestyle='dashed', alpha=0.5)#%GC moyen du génome
