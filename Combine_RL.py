@@ -44,6 +44,9 @@ def combine(Left, Right):
 						dico[distR]["G"]=G
 						dico[distR]["T"]=T
 						
+					else:
+						index=i
+						
 	return dico
 	
 def write_out(dico, output):

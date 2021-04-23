@@ -19,6 +19,10 @@ python3 Genome_into_bases.py -fa /media/disk1/soukkal/StageM2/Stage_M1/Ali_inter
 python3 Genome_bar_dist_RL.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/hg38/20200228_interSmallNFR.dat -B /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/genome_bases.txt -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Left/Genome_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Right/Genome_count.txt
 #Positionner bases autour d'interbar de + de 1000:
 python3 Genome_bar_dist_RL.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human/Barriers/selected_inter_bar_sorted.bed -B /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/genome_bases.txt -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/1000_inter_bar/Left/Genome_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/1000_inter_bar/Right/Genome_count.txt
+
+##Combine Right and Left:
+python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/1000_inter_bar/Left/Genome_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/1000_inter_bar/Right/Genome_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/1000_inter_bar/LR/Genome_count.txt 
+
 #Metrics: 
 python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Left/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Left/Plots/AB_Plots/
 
