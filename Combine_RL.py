@@ -43,7 +43,8 @@ def combine(Left, Right):
 						dico[distR]["C"]=C
 						dico[distR]["G"]=G
 						dico[distR]["T"]=T
-						
+						break
+										
 					else:
 						index=i
 						
