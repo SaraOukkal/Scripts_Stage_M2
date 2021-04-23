@@ -17,7 +17,7 @@ def mut_number(input_Mut, output_dir):
 	dist=[]
 	Mutations=[]
 	
-	for l in Mut
+	for l in Mut:
 		if not l.startswith("d"): #Ignore le header du fichier
 			line=l.strip().split("\t")
 			distance=int(line[0])
