@@ -11,6 +11,7 @@ def combine(Left, Right):
 	L=data1.readlines()
 	R=data2.readlines()
 	dico={}
+	index=0
 	
 	for a in L: 
 		if not a.startswith("d"):
