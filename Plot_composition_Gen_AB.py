@@ -55,7 +55,7 @@ def ancestral_sites(input_AB, input_Gen, output_dir):
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("Ancestral Bases")
 	filename= "AB_plot.png"
-	filepath=os.path.join(output_directory, filename)
+	filepath=os.path.join(output_dir, filename)
 	plt.savefig(filepath)
 	plt.clf()
 	
@@ -98,7 +98,7 @@ def norm_sites(input_AB, input_Gen, output_dir):
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("Ancestral Bases / All bases")
 	filename= "AB_norm_plot.png"
-	filepath=os.path.join(output_directory, filename)
+	filepath=os.path.join(output_dir, filename)
 	plt.savefig(filepath)
 	plt.clf()	
 
@@ -153,7 +153,7 @@ def ancestral_sub_sites(input_AB, input_Gen, output_dir):
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("Number of A/T")
 	filename= "A_T.png"
-	filepath=os.path.join(output_directory, filename)
+	filepath=os.path.join(output_dir, filename)
 	plt.savefig(filepath)
 	plt.clf()	
 	
@@ -167,7 +167,7 @@ def ancestral_sub_sites(input_AB, input_Gen, output_dir):
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("Number of G/C")
 	filename= "G_C.png"
-	filepath=os.path.join(output_directory, filename)
+	filepath=os.path.join(output_dir, filename)
 	plt.savefig(filepath)
 	plt.clf()	
 				
@@ -225,7 +225,7 @@ def ancestral_sub_sites_percent(input_AB, input_Gen, output_dir):
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("Percentages of A/T")
 	filename= "A_T_per.png"
-	filepath=os.path.join(output_directory, filename)
+	filepath=os.path.join(output_dir, filename)
 	plt.savefig(filepath)
 	plt.clf()	
 	
@@ -241,7 +241,7 @@ def ancestral_sub_sites_percent(input_AB, input_Gen, output_dir):
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("Percentages of G/C")
 	filename= "G_C_per.png"
-	filepath=os.path.join(output_directory, filename)
+	filepath=os.path.join(output_dir, filename)
 	plt.savefig(filepath)
 	plt.clf()	
 
@@ -291,7 +291,7 @@ def GC_content(input_AB, input_Gen, output_dir):
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("GC percentage")
 	filename= "GC_plot.png"
-	filepath=os.path.join(output_directory, filename)
+	filepath=os.path.join(output_dir, filename)
 	plt.savefig(filepath)	
 	plt.clf()
 		
