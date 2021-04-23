@@ -39,7 +39,7 @@ def base_bar(barriers, input_B, Right, Left):
 	"""
 	Charge le fichier des bases non mutées et les place en fonction des barrières
 	"""
-	AB=open(input_B,"r")
+	B=open(input_B,"r")
 	done_chrom=[] 
 	c = 0 #compteur de bases
 
