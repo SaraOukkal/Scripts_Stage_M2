@@ -76,6 +76,16 @@ python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Result
 ####All:
 python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/All/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/All/Plots/AB_Plots/
 
+##Composition Genome et bases ancestrales: 
+###All interNIEBs: 
+python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/All/AB_count.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Left/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/All/Plots/Compo_Plots/
+
+python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/All/AB_count.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Right/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/All/Plots/Compo_Plots/
+
+###InterNIEBS >1000:
+python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/All/AB_count.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/1000_inter_bar/Left/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/All/Plots/Compo_Plots/
+
+python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/All/AB_count.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/1000_inter_bar/Right/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/All/Plots/Compo_Plots/
 
 # 5) Mutations: 
 ## a) Repérer les mutations CpG et non CpG:

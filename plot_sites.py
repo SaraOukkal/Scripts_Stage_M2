@@ -31,6 +31,7 @@ def ancestral_sites(bar_AB_count, output_directory): #Plot du nombre de sites pa
 				AncestralBase.append(num_AB)
 
 	plt.plot(dist,AncestralBase, color='#0000cc')
+	ax.set_box_aspect(1)
 	plt.axvline(0, color='red', linewidth=2, alpha=0.5)
 	plt.axhline(1741560, color='green', linewidth=2, linestyle='dashed', alpha=0.5) #Nombre de bords de NIEBs dans interNIEBs >= 1000pb
 	plt.axvspan(min(dist), 0, zorder=1, alpha=0.1, color='#cc0000', label='Inside NIEBs')
