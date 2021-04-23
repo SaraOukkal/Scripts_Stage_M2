@@ -176,10 +176,10 @@ def mut_rate_base(sub_mut_rates, output_dir):
 			
 			MR_dist.append(float(line_MR[0])) #Charge les données des mutations dans les variables associées
 			
-			liste["A"].append(float(line_MR[1]+line_MR[2]+line_MR[3])*100) #Calcule le taux de mutations de A en pourcentage 
-			liste["C"].append(float(line_MR[4]+line_MR[5]+line_MR[6])*100)
-			liste["G"].append(float(line_MR[7]+line_MR[8]+line_MR[9])*100)
-			liste["T"].append(float(line_MR[10]+line_MR[11]+line_MR[12])*100)
+			liste["A"].append((float(line_MR[1])+float(line_MR[2])+float(line_MR[3]))*100) #Calcule le taux de mutations de A en pourcentage 
+			liste["C"].append((float(line_MR[4])+float(line_MR[5])+float(line_MR[6]))*100) 
+			liste["G"].append((float(line_MR[7])+float(line_MR[8])+float(line_MR[9]))*100) 
+			liste["T"].append((float(line_MR[10])+float(line_MR[11])+float(line_MR[12]))*100) 
 	
 	plt.plot(MR_dist,liste["A"], color="blue")
 	plt.plot(MR_dist,liste["C"], color="red")
