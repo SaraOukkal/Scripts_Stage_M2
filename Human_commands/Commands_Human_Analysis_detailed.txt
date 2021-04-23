@@ -47,18 +47,18 @@ python3 AB_bar_dist_RL.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human/Barri
 ####Combiner données R et L (avec complémentaire inverse pour R): 
 ###Compter les AB - tous les interNIEBs:
 ####CpG:
-python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/CpG/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/CpG/AB_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/RL/CpG/AB_count.txt
+python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/CpG/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/CpG/AB_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/CpG/AB_count.txt
 ####NonCpG:
-python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/nonCpG/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/nonCpG/AB_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/RL/nonCpG/AB_count.txt
+python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/nonCpG/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/nonCpG/AB_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/nonCpG/AB_count.txt
 ####All:
-python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/All/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/All/AB_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/RL/All/AB_count.txt
+python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/All/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/All/AB_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/All/AB_count.txt
 ###Compter les AB - interNIEBs de +1000pb:
 ####CpG:
-python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/CpG/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/CpG/AB_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/RL/CpG/AB_count.txt
+python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/CpG/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/CpG/AB_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/CpG/AB_count.txt
 ####NonCpG:
-python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/nonCpG/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/nonCpG/AB_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/RL/nonCpG/AB_count.txt
+python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/nonCpG/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/nonCpG/AB_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/nonCpG/AB_count.txt
 ####All:
-python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/All/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/All/AB_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/RL/All/AB_count.txt
+python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/All/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/All/AB_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/All/AB_count.txt
 
 ## e) Mesurer GC%, nombre de sites, nombre de chaque base: 
 ###All interNIEBs:

@@ -69,7 +69,8 @@ def main():
 	args = parser.parse_args()
 	
 	#Lancer fonctions: 
-
+	both_borders=combine(args.Left, args.Right)
+	write_out(both_borders, args.RightLeft)
 	
 
 if "__main__" == __name__:
