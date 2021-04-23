@@ -87,6 +87,8 @@ python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Hum
 
 python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/All/AB_count.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/1000_inter_bar/Right/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/All/Plots/Compo_Plots/
 
+python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/All/AB_count.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/1000_inter_bar/LR/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/All/Plots/Compo_Plots/
+
 # 5) Mutations: 
 ## a) Repérer les mutations CpG et non CpG:
 python3 Mut_nonCpG_CpG.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/AB_sorted.txt -nonCpG /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/Mut_nonCpG.txt -CpG /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/Mut_CpG.txt

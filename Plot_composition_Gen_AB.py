@@ -49,7 +49,6 @@ def ancestral_sites(input_AB, input_Gen, output_dir):
 	plt.figure(figsize=(10,10))
 	plt.plot(dist,AncestralBase, color='royalblue')
 	plt.plot(dist,GenomeBase, color='royalblue', linestyle='dashed', alpha=0.5)
-	plt.set_aspect(1)
 	plt.axvline(0, color='red', linewidth=2, alpha=0.3)
 	plt.axhline(1741560, color='green', linewidth=2, alpha=0.3) #Nombre de bords de NIEBs dans interNIEBs >= 1000pb
 	plt.title("Number of sites around NIEBs")
