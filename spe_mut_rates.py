@@ -10,7 +10,8 @@ def mut_rates(bar_mut_count, bar_AB_count, output):
 
 	mut_count=open(bar_mut_count, "r")
 	AB_count=open(bar_AB_count, "r")
-	
+
+	zero=0
 	mut=mut_count.readlines()
 	AB=AB_count.readlines()
 	
@@ -50,36 +51,36 @@ def mut_rates(bar_mut_count, bar_AB_count, output):
 							MR.append(mut_AC/AB_A)
 							MR.append(mut_AG/AB_A)
 						else: 
-							MR.append(0)s
-							MR.append(0)
-							MR.append(0)
+							MR.append(zero)
+							MR.append(zero)
+							MR.append(zero)
 						
 						if AB_C != 0:
 							MR.append(mut_CT/AB_C)
 							MR.append(mut_CA/AB_C)
 							MR.append(mut_CG/AB_C)
 						else: 
-							MR.append(0) 
-							MR.append(0)
-							MR.append(0)
+							MR.append(zero) 
+							MR.append(zero)
+							MR.append(zero)
 						
 						if AB_G != 0:
 							MR.append(mut_GT/AB_G)
 							MR.append(mut_GA/AB_G)
 							MR.append(mut_GC/AB_G)
 						else: 
-							MR.append(0) 
-							MR.append(0)
-							MR.append(0)
+							MR.append(zero) 
+							MR.append(zero)
+							MR.append(zero)
 							
 						if AB_T != 0:	
 							MR.append(mut_TA/AB_T)
 							MR.append(mut_TC/AB_T)
 							MR.append(mut_TG/AB_T)
 						else: 
-							MR.append(0) 
-							MR.append(0)
-							MR.append(0)
+							MR.append(zero) 
+							MR.append(zero)
+							MR.append(zero)
 						
 						#print(MR)
 						out.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(MR[0],MR[1],MR[2],MR[3],MR[4],MR[5],MR[6],MR[7],MR[8],MR[9],MR[10],MR[11],MR[12])) 
