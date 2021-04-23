@@ -82,6 +82,8 @@ python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Hum
 
 python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/All/AB_count.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Right/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/All/Plots/Compo_Plots/
 
+python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/All/AB_count.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/LR/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/All/Plots/Compo_Plots/
+
 ###InterNIEBS >1000:
 python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/All/AB_count.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/1000_inter_bar/Left/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/All/Plots/Compo_Plots/
 
@@ -109,8 +111,9 @@ python3 Mut_pattern_bar_RL.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human/B
 python3 Mut_pattern_bar_RL.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human/Barriers/selected_inter_bar_sorted.bed -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/Mut.txt -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/All/Mut_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/All/Mut_count.txt 
 
 ###Combiner les mutations R et L (complémentaire inverse pour R): 
+python3 Combine_RL_mut.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/CpG/Mut_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/CpG/Mut_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/CpG/Mut_count.txt
 
-
+python3 Combine_RL_mut.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/nonCpG/Mut_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/nonCpG/Mut_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_count.txt
 
 # 6) Calcul du taux de mutations :
 ###All interNIEBs:

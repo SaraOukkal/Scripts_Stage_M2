@@ -8,7 +8,6 @@ def combine(Left, Right):
 	data1=open(Left,"r")
 	data2=open(Right,"r")
 	
-	types=["AT","AC","AG","CT","CA","CG","GT","GA","GC","TA","TC","TG"]
 	L=data1.readlines()
 	R=data2.readlines()
 	dico={}
@@ -66,8 +65,20 @@ def combine(Left, Right):
 						TG=TG_L + AC_R
 						
 						dico[distR]={}
-						for a in types: 
-							dico[distR][a]=a
+					
+						dico[distR]["AT"]=AT
+						dico[distR]["AC"]=AC
+						dico[distR]["AG"]=AG
+						dico[distR]["CT"]=CT
+						dico[distR]["CA"]=CA
+						dico[distR]["CG"]=CG
+						dico[distR]["GT"]=GT
+						dico[distR]["GA"]=GA
+						dico[distR]["GC"]=GC
+						dico[distR]["TA"]=TA
+						dico[distR]["TC"]=TC
+						dico[distR]["TG"]=TG
+						break 
 
 						
 	return dico
