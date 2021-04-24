@@ -57,8 +57,8 @@ def ancestral_sites(input_AB, input_Gen, output_dir):
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.axhline(1741560, color='red', alpha=0.5) #Nombre de bords de NIEBs dans interNIEBs >= 1000pb
 	plt.title("Number of sites around NIEBs", fontsize=20)
-	plt.xlabel("Distance from NIEBs"fontsize=16)
-	plt.ylabel("Ancestral Bases"fontsize=16)
+	plt.xlabel("Distance from NIEBs", fontsize=16)
+	plt.ylabel("Ancestral Bases", fontsize=16)
 	filename= "AB_plot.png"
 	filepath=os.path.join(output_dir, filename)
 	plt.savefig(filepath)
