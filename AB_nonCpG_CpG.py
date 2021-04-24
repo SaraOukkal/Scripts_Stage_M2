@@ -68,20 +68,24 @@ def remove_CpG(chromosome, nonCpG, CpG):
 				if EA2 == "G": #Si c'est un CpG 
 					#print("CpG")
 					CpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, EA)) 
+					continue
 			
 				else: #Si ce n'est pas un CpG
-					nonCpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, EA)) 
+					nonCpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, EA))
+					continue 
 		
 			else: #Si la base suivante de la séquence n'est pas une base ancestrale
 				continue #Passe directement à l'itération suivante (ignore le C en bord)
 		
-		if EA == "G": #Si c'est un G
+		elif EA == "G": #Si c'est un G
 			if pos3 == pos-1: 
 				if EA3 == "C": #Si c'est un CpG 
 					CpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, EA)) 
+					continue
 			
 				else: #Si ce n'est pas un CpG
 					nonCpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, EA)) 
+					continue
 		
 			else: #Si la base précédente de la séquence n'est pas une base ancestrale
 				continue #Passe directement à l'itération suivante (ignore le G en bord)		
