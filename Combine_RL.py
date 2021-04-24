@@ -45,8 +45,6 @@ def combine(Left, Right):
 						dico[distR]["T"]=T
 						break
 										
-					else:
-						index=i
 						
 	return dico
 	
