@@ -143,6 +143,8 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 	plt.axes().minorticks_on()
 	plt.axes().xaxis.set_major_locator(MultipleLocator(100))
 	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
+	plt.xticks(fontsize=20)
+	plt.yticks(fontsize=20)
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("CG_GC", fontsize=20)
 	plt.xlabel("Distance from NIEBs", fontsize=16)
