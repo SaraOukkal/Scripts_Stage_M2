@@ -12,6 +12,7 @@ def mut_rates(bar_mut_count, bar_AB_count, output):
 	AB_count=open(bar_AB_count, "r")
 
 	zero=0
+	index=0
 	mut=mut_count.readlines()
 	AB=AB_count.readlines()
 	
