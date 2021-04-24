@@ -57,8 +57,8 @@ def ancestral_sites(input_AB, input_Gen, output_dir):
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.axhline(1741560, color='red', alpha=0.5) #Nombre de bords de NIEBs dans interNIEBs >= 1000pb
 	plt.title("Number of sites around NIEBs", fontsize=20)
-	plt.xlabel("Distance from NIEBs", fontsize=16)
-	plt.ylabel("Ancestral Bases", fontsize=16)
+	plt.xlabel("Distance from NIEBs", fontsize=20)
+	plt.ylabel("Ancestral Bases", fontsize=14)
 	filename= "AB_plot.png"
 	filepath=os.path.join(output_dir, filename)
 	plt.savefig(filepath)
@@ -105,7 +105,7 @@ def norm_sites(input_AB, input_Gen, output_dir):
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.axhline(0.7952966, color='red', alpha=0.5) 
 	plt.title("Proportion of Bases with known ancestral state around NIEBs", fontsize=20)
-	plt.xlabel("Distance from NIEBs", fontsize=16)
+	plt.xlabel("Distance from NIEBs", fontsize=20)
 	plt.ylabel("Ancestral Bases / All bases", fontsize=16)
 	filename= "AB_norm_plot.png"
 	filepath=os.path.join(output_dir, filename)
@@ -165,7 +165,7 @@ def ancestral_sub_sites(input_AB, input_Gen, output_dir):
 	plt.yticks(fontsize=15)
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("Number of A/T around NIEBs", fontsize=20)
-	plt.xlabel("Distance from NIEBs", fontsize=16)
+	plt.xlabel("Distance from NIEBs", fontsize=20)
 	plt.ylabel("Number of A/T", fontsize=16)
 	filename= "A_T.png"
 	filepath=os.path.join(output_dir, filename)
@@ -247,7 +247,7 @@ def ancestral_sub_sites_percent(input_AB, input_Gen, output_dir):
 	plt.yticks(fontsize=20)
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("Percentages of A/T around NIEBs", fontsize=20)
-	plt.xlabel("Distance from NIEBs", fontsize=16)
+	plt.xlabel("Distance from NIEBs", fontsize=20)
 	plt.ylabel("Percentages of A/T", fontsize=16)
 	filename= "A_T_per.png"
 	filepath=os.path.join(output_dir, filename)
@@ -266,7 +266,7 @@ def ancestral_sub_sites_percent(input_AB, input_Gen, output_dir):
 	plt.yticks(fontsize=20)
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("Percentages of G/C around NIEBs", fontsize=20)
-	plt.xlabel("Distance from NIEBs", fontsize=16)
+	plt.xlabel("Distance from NIEBs", fontsize=20)
 	plt.ylabel("Percentages of G/C", fontsize=16)
 	filename= "G_C_per.png"
 	filepath=os.path.join(output_dir, filename)
@@ -321,7 +321,7 @@ def GC_content(input_AB, input_Gen, output_dir):
 	plt.axhline(37.9, color='red', alpha=0.5)#%GC moyen du génome
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("GC % around NIEBs", fontsize=20)
-	plt.xlabel("Distance from NIEBs", fontsize=16)
+	plt.xlabel("Distance from NIEBs", fontsize=20)
 	plt.ylabel("GC percentage", fontsize=16)
 	filename= "GC_plot.png"
 	filepath=os.path.join(output_dir, filename)
