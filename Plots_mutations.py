@@ -31,9 +31,9 @@ def mut_number(input_Mut, output_dir):
 
 	plt.plot(dist,Mutations, color='darkred')
 	plt.axvline(0, color='black', alpha=0.5)
-	plt.xaxis.set_major_locator(MultipleLocator(100))
-	plt.xaxis.set_major_formatter('{x:.0F}')
-	plt.xaxis.set_minor_locator(MultipleLocator(50))
+	plt.axes().xaxis.set_major_locator(MultipleLocator(100))
+	plt.axes().xaxis.set_major_formatter('{x:.0F}')
+	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
 	plt.title("Number of mutations around NIEBs")
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("Mutations")
