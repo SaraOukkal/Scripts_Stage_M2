@@ -33,9 +33,9 @@ def mut_rates(bar_mut_count, bar_AB_count, output):
 			mut_TC=int(line_mut[11])
 			mut_TG=int(line_mut[12])
 			
-			for i in AB: #Parcours le fichier contenant le nombre de bases ancestrales par type et par distance des NIEBs
-				if not i.startswith("d"): #Ignore le header du fichier 
-					line_AB=i.strip().split("\t")
+			for i in range(index, len(AB)): #Parcours le fichier contenant le nombre de bases ancestrales par type et par distance des NIEBs
+				if not AB[i].startswith("d"): #Ignore le header du fichier 
+					line_AB=AB[i].strip().split("\t")
 					AB_dist=line_AB[0] #Charge les données des bases ancestrales dans les variables associées 
 					AB_A=int(line_AB[1])
 					AB_C=int(line_AB[2])
@@ -43,7 +43,7 @@ def mut_rates(bar_mut_count, bar_AB_count, output):
 					AB_T=int(line_AB[4])
 					
 					if mut_dist == AB_dist: #A chaque même distance des barrières
-						
+						index=i
 						MR=[]
 						MR.append(mut_dist)
 						if AB_A != 0:
@@ -84,9 +84,8 @@ def mut_rates(bar_mut_count, bar_AB_count, output):
 						
 						#print(MR)
 						out.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(MR[0],MR[1],MR[2],MR[3],MR[4],MR[5],MR[6],MR[7],MR[8],MR[9],MR[10],MR[11],MR[12])) 
-					
-					else: 
-						continue
+						break
+
 
 def main(): 
 	parser = argparse.ArgumentParser()

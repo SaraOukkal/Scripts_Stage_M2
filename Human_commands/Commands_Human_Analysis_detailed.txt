@@ -175,4 +175,4 @@ python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_R
 python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/nonCpG/Plots/Mut_Plots/
 ####All:
 python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/CpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/All/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/All/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/All/Plots/Mut_Plots/
-python3 mut_rates_plots.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/All/Mut_rate_spe.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/All/Plots/Mut_Plots/
+

@@ -13,6 +13,7 @@ def mut_rate(bar_mut_count, bar_AB_count, output):
 	
 	mut=mut_count.readlines()
 	AB=AB_count.readlines()
+	index=0
 	
 	for l in mut: #Parcours le fichier contenant le nombre de substitutions par type et par distance des NIEBs
 		if not l.startswith("d"): #Ignore le header du fichier
@@ -33,9 +34,9 @@ def mut_rate(bar_mut_count, bar_AB_count, output):
 			mut_TG=int(line_mut[12])
 			tot_mut=mut_AT + mut_AC + mut_AG + mut_CT + mut_CA + mut_CG + mut_GT + mut_GA + mut_GC + mut_TA + mut_TC + mut_TG #Somme des mutations
 			
-			for i in AB: #Parcours le fichier contenant le nombre de bases ancestrales par type et par distance des NIEBs
-				if not i.startswith("d"): #Ignore le header du fichier 
-					line_AB=i.strip().split("\t")
+			for i in range(index, len(AB)): #Parcours le fichier contenant le nombre de bases ancestrales par type et par distance des NIEBs
+				if not AB[i].startswith("d"): #Ignore le header du fichier 
+					line_AB=AB[i].strip().split("\t")
 					AB_dist=int(line_AB[0]) #Charge les données des bases ancestrales dans les variables associées 
 					AB_A=int(line_AB[1])
 					AB_C=int(line_AB[2])
@@ -47,12 +48,11 @@ def mut_rate(bar_mut_count, bar_AB_count, output):
 						MR=[]
 						MR.append(mut_dist)
 						MR.append(tot_mut/tot_AB) #Calcul du taux de mutation 
+						index=i
 					
 						#print(MR)
 						out.write("{}\t{}\n".format(MR[0],MR[1]))
-				
-					else: 
-						continue
+						break
 
 
 def main(): 
