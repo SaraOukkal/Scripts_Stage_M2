@@ -30,8 +30,6 @@ def combine(Left, Right):
 			TC_L=int(lineL[11])
 			TG_L=int(lineL[12])
 			
-
-			
 			for i in range(index,len(R)):
 				if not R[i].startswith("d"):
 					lineR=R[i].strip().split("\t")

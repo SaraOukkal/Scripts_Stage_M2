@@ -28,11 +28,13 @@ def mut_number(input_Mut, output_dir):
 				num=int(line[1]) + int(line[2]) + int(line[3]) + int(line[4])+ int(line[5])+ int(line[6])+ int(line[7])+ int(line[8])+ int(line[9])+ int(line[10])+ int(line[11])+ int(line[12])
 				print(num)
 				Mutations.append(num)
-
+	
+	plt.figure(figsize=(10,10))	
 	plt.plot(dist,Mutations, color='darkred')
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.axes().xaxis.set_major_locator(MultipleLocator(100))
 	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
+	plt.axes().yaxis.set_minor_locator(ml)
 	plt.title("Number of mutations around NIEBs")
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("Mutations")
@@ -57,7 +59,11 @@ def mut_rate_plot(mut_rate, output_dir):
 				dist.append(float(line_MR[0])) #Charge les données des mutations dans les variables associées
 				MR.append(float(line_MR[1])*100)
 
+	plt.figure(figsize=(10,10))	
 	plt.plot(dist,MR, color="red")
+	plt.axes().xaxis.set_major_locator(MultipleLocator(100))
+	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
+	plt.axes().yaxis.set_minor_locator(ml)
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("Mutation rates around NIEBs")
 	plt.xlabel("Distance from NIEBs")
@@ -93,8 +99,12 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 					liste[t].append(float(line_MR[num])*100) #Calcule le taux de mutations en pourcentage 
 					num+=1
 			
+	plt.figure(figsize=(10,10))	
 	plt.plot(MR_dist,liste["MR_AT"], color="blue")
 	plt.plot(MR_dist,liste["MR_TA"], color="green")
+	plt.axes().xaxis.set_major_locator(MultipleLocator(100))
+	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
+	plt.axes().yaxis.set_minor_locator(ml)
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("AT_TA")
 	plt.xlabel("Distance from NIEBs")
@@ -104,8 +114,12 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 	plt.savefig(filepath)
 	plt.clf()
 	
+	plt.figure(figsize=(10,10))	
 	plt.plot(MR_dist,liste["MR_AC"], color="blue")
 	plt.plot(MR_dist,liste["MR_TG"], color="green")
+	plt.axes().xaxis.set_major_locator(MultipleLocator(100))
+	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
+	plt.axes().yaxis.set_minor_locator(ml)
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("AC_TG")
 	plt.xlabel("Distance from NIEBs")
@@ -117,6 +131,9 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 	
 	plt.plot(MR_dist,liste["MR_CG"], color="red")
 	plt.plot(MR_dist,liste["MR_GC"], color="orange")
+	plt.axes().xaxis.set_major_locator(MultipleLocator(100))
+	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
+	plt.axes().yaxis.set_minor_locator(ml)
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("CG_GC")
 	plt.xlabel("Distance from NIEBs")
@@ -126,8 +143,12 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 	plt.savefig(filepath)
 	plt.clf()
 	
+	plt.figure(figsize=(10,10))	
 	plt.plot(MR_dist,liste["MR_CT"], color="red")
 	plt.plot(MR_dist,liste["MR_GA"], color="orange")
+	plt.axes().xaxis.set_major_locator(MultipleLocator(100))
+	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
+	plt.axes().yaxis.set_minor_locator(ml)
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("CT_GA")
 	plt.xlabel("Distance from NIEBs")
@@ -137,8 +158,12 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 	plt.savefig(filepath)
 	plt.clf()
 	
+	plt.figure(figsize=(10,10))	
 	plt.plot(MR_dist,liste["MR_AG"], color="blue")
 	plt.plot(MR_dist,liste["MR_TC"], color="green")
+	plt.axes().xaxis.set_major_locator(MultipleLocator(100))
+	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
+	plt.axes().yaxis.set_minor_locator(ml)
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("AG_TC")
 	plt.xlabel("Distance from NIEBs")
@@ -147,9 +172,13 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 	filepath=os.path.join(output_dir, filename)
 	plt.savefig(filepath)
 	plt.clf()
-	
+
+	plt.figure(figsize=(10,10))	
 	plt.plot(MR_dist,liste["MR_GT"], color="orange")
 	plt.plot(MR_dist,liste["MR_CA"], color="red")
+	plt.axes().xaxis.set_major_locator(MultipleLocator(100))
+	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
+	plt.axes().yaxis.set_minor_locator(ml)
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("GT_CA")
 	plt.xlabel("Distance from NIEBs")
@@ -183,10 +212,14 @@ def mut_rate_base(sub_mut_rates, output_dir):
 				liste["G"].append((float(line_MR[7])+float(line_MR[8])+float(line_MR[9]))*100) 
 				liste["T"].append((float(line_MR[10])+float(line_MR[11])+float(line_MR[12]))*100) 
 	
+	plt.figure(figsize=(10,10))	
 	plt.plot(MR_dist,liste["A"], color="blue")
 	plt.plot(MR_dist,liste["C"], color="red")
 	plt.plot(MR_dist,liste["T"], color="green")
 	plt.plot(MR_dist,liste["G"], color="orange")
+	plt.axes().xaxis.set_major_locator(MultipleLocator(100))
+	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
+	plt.axes().yaxis.set_minor_locator(ml)
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.title("Mutation percentage of each nucleotide type around NIEBs")
 	plt.xlabel("Distance from NIEBs")
