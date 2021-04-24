@@ -9,6 +9,7 @@ if os.environ.get('DISPLAY','') == '':
     print('no display found. Using non-interactive Agg backend')
     mpl.use('Agg')
 import matplotlib.pyplot as plt
+from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 
 def mut_number(input_Mut, output_dir):
 	Mut_count=open(input_Mut, "r") 
@@ -30,6 +31,9 @@ def mut_number(input_Mut, output_dir):
 
 	plt.plot(dist,Mutations, color='darkred')
 	plt.axvline(0, color='black', alpha=0.5)
+	plt.xaxis.set_major_locator(MultipleLocator(100))
+	plt.xaxis.set_major_formatter('{x:.0F}')
+	plt.xaxis.set_minor_locator(MultipleLocator(50))
 	plt.title("Number of mutations around NIEBs")
 	plt.xlabel("Distance from NIEBs")
 	plt.ylabel("Mutations")

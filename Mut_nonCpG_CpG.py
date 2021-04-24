@@ -59,7 +59,6 @@ def calcul_mut(chromosome, nonCpG, CpG):
 				if EA == "C": #Si c'est un C
 					if pos2 == pos+1: #Si la base suivante du fichier la suit dans la séquence 
 						if EA2 == "G": #Si c'est un CpG 
-							#print("CpG")
 							CpG.write("{}\t{}\t{}\t{}\n".format(chrom, pos, nuc, EA)) 
 							continue
 			
