@@ -5,11 +5,11 @@ import argparse
 import numpy as np
 import os
 import matplotlib as mpl
-import matplotlib.ticker as ticker
 if os.environ.get('DISPLAY','') == '':
     print('no display found. Using non-interactive Agg backend')
     mpl.use('Agg')
 import matplotlib.pyplot as plt
+from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 
 
 def ancestral_sites(input_AB, input_Gen, output_dir): 
