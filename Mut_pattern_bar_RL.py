@@ -63,7 +63,7 @@ def mut_bar(barriers, input_mut, Right, Left):
 			end1=barriers[chrom][i]["end1"]	#end de la barrière 1 
 			st2=barriers[chrom][i]["st2"]
 			end2=barriers[chrom][i]["end2"]
-			mutation=nuc_C.upper()+">"+EA.upper()	#détermine le type de mutation 	
+			mutation=EA.upper()+">"+nuc_C.upper()	#détermine le type de mutation 	
 			
 			mid_bar1=end1-((end1-st1)/2)
 			mid_bar2=st2+((end2-st2)/2)
@@ -93,9 +93,6 @@ def mut_bar(barriers, input_mut, Right, Left):
 				
 		c += 1 #mets à jour le compteur de bases totales 
 										
-
-
-		
 						
 def write_out(mut_count,output_file):	
 	"""
