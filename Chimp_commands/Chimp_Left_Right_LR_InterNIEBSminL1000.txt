@@ -1,0 +1,125 @@
+
+# 2) Sélectionner les barrières qui ont un inter barrière de plus de 1000nt: 
+python3 select_inter_bar.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/panTro5/20200228_interSmallNFR.dat -o /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Barriers/selected_inter_bar.txt
+## Trier les couples de barrières par chromosome et par position: 
+sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Barriers/selected_inter_bar.txt > /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Barriers/selected_inter_bar_sorted.bed
+
+# 3) Récupérer les fasta des alignements  
+bash Get_seq_files_chimp
+
+# 4) Définir les bases ancestrales aux bords des barrières de l'Homme: 
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/
+## a) Déterminer les bases ancestrales depuis les séquences des 4 espèces: 
+python3 Calcul_AB_nostr.py -H /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Fasta/C_seq.fa -C /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Fasta/H_seq.fa -G /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Fasta/G_seq.fa -O /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Fasta/O_seq.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/AB.txt 
+## b) Trier le fichier de sortie par chromosome et par position: 
+sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/AB.txt  > /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/AB_sorted.txt 
+## c) Repérer les bases ancestrales CpG et nonCpG: 
+python3 AB_nonCpG_CpG.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/AB_sorted.txt -nonCpG /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/AB_nonCpG.txt -CpG /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/AB_CpG.txt
+sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/AB_nonCpG.txt  > /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/AB_nonCpG_sorted.txt
+sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/AB_CpG.txt  > /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/AB_CpG_sorted.txt
+
+##Calculer les mutations CpG et non CpG:
+python3 Mut_nonCpG_CpG.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/AB_sorted.txt -nonCpG /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Mut_nonCpG.txt -CpG /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Mut_CpG.txt
+
+##Créer les sous dossiers: 
+bash mkdir_chimp.sh
+
+###Compter les AB:
+####CpG:
+python3 AB_bar_dist_RL.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Barriers/selected_inter_bar_sorted.bed -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/AB_CpG_sorted.txt -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/CpG/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/CpG/AB_count.txt 
+####NonCpG:
+python3 AB_bar_dist_RL.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Barriers/selected_inter_bar_sorted.bed -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/AB_nonCpG_sorted.txt -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/nonCpG/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/nonCpG/AB_count.txt 
+####All:
+python3 AB_bar_dist_RL.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Barriers/selected_inter_bar_sorted.bed -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/AB_sorted.txt -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/All/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/All/AB_count.txt 
+
+###Combiner LR:
+####CpG:
+python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/CpG/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/CpG/AB_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/CpG/AB_count.txt
+####NonCpG:
+python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/nonCpG/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/nonCpG/AB_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/nonCpG/AB_count.txt
+####All:
+python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/All/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/All/AB_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/All/AB_count.txt
+
+###Positionner mut autour bar: 
+###CpG:
+python3 Mut_pattern_bar_RL.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Barriers/selected_inter_bar_sorted.bed -mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Mut_CpG.txt -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/CpG/Mut_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/CpG/Mut_count.txt 
+####nonCpG:
+python3 Mut_pattern_bar_RL.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Barriers/selected_inter_bar_sorted.bed -mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Mut_nonCpG.txt -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/nonCpG/Mut_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/nonCpG/Mut_count.txt 
+
+###Combiner LR:
+####CpG: 
+python3 Combine_RL_mut.py -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/CpG/Mut_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/CpG/Mut_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/CpG/Mut_count.txt
+####nonCpG:
+python3 Combine_RL_mut.py -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/nonCpG/Mut_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/nonCpG/Mut_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_count.txt
+
+###Mut rate: 
+#Left: 
+####CpG:
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/CpG/Mut_rate.txt
+####nonCpG:
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/nonCpG/Mut_rate.txt
+#Right: 
+####CpG:
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/CpG/Mut_rate.txt
+####nonCpG:
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/nonCpG/Mut_rate.txt
+#LR: 
+####CpG:
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/CpG/Mut_rate.txt
+####nonCpG:
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_rate.txt
+
+###Mut rate specific: 
+#Left: 
+####CpG:
+python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/CpG/Mut_rate_spe.txt
+####nonCpG:
+python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/nonCpG/Mut_rate_spe.txt
+#Right:
+####CpG:
+python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/CpG/Mut_rate_spe.txt
+####nonCpG:
+python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/nonCpG/Mut_rate_spe.txt
+#LR: 
+####CpG:
+python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/CpG/Mut_rate_spe.txt
+####nonCpG:
+python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_rate_spe.txt
+
+###Mut plots: 
+#Left:
+####CpG:
+python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/CpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/CpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/CpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/CpG/Plots/
+####nonCpG:
+python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/nonCpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/nonCpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/nonCpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/nonCpG/Plots/
+#Right:
+####CpG:
+python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/CpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/CpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/CpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/CpG/Plots/
+####nonCpG:
+python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/nonCpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/nonCpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/nonCpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/nonCpG/Plots/
+#LR: 
+####CpG:
+python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/CpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/CpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/CpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/CpG/Plots/
+####nonCpG:
+python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/nonCpG/Plots/
+
+##Convertir fasta en bed: 
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/
+python3 Genome_into_bases.py -fa /media/disk1/soukkal/StageM2/Stage_M1/Ali_intervals/panTro5.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/genome_bases.txt
+#Positionner bases autour de toutes les barrières: 
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Left/
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Right/
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/LR/
+
+python3 Genome_bar_dist_RL.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/panTro5/20200228_interSmallNFR.dat -B /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/genome_bases.txt -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Left/Genome_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Right/Genome_count.txt
+
+python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Left/Genome_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Right/Genome_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/LR/Genome_count.txt 
+
+###Plots compo: 
+python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/All/AB_count.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Left/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/All/Plots/Compo_Plots/
+
+python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/All/AB_count.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Right/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/All/Plots/Compo_Plots/
+
+python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/All/AB_count.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/LR/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/All/Plots/Compo_Plots/
+
