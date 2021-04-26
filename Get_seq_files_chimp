@@ -3,13 +3,13 @@ mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Fasta/
 
 #Créer fichiers .bed pour les 4 espèces: (Format: Chr/st/end/strand)
 
-cat /media/disk1/soukkal/StageM2/Stage_M1/Ali_intervals/new_intervals_chimp.txt |cut -f1,2,3 > /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_intervals/C_intervals.bed
+cat /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_intervals/new_intervals_chimp.txt |cut -f1,2,3 > /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_intervals/C_intervals.bed
 
-cat /media/disk1/soukkal/StageM2/Stage_M1/Ali_intervals/new_intervals_chimp.txt |awk '{print $4 "\t" $5 "\t" $6 "\t" $1 "\t" $1 "\t" $7}' > /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_intervals/H_intervals.bed
+cat /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_intervals/new_intervals_chimp.txt |awk '{print $4 "\t" $5 "\t" $6 "\t" $1 "\t" $1 "\t" $7}' > /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_intervals/H_intervals.bed
 
-cat /media/disk1/soukkal/StageM2/Stage_M1/Ali_intervals/new_intervals_chimp.txt |awk '{print $8 "\t" $9 "\t" $10 "\t" $1 "\t" $1 "\t" $11}' > /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_intervals/G_intervals.bed
+cat /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_intervals/new_intervals_chimp.txt |awk '{print $8 "\t" $9 "\t" $10 "\t" $1 "\t" $1 "\t" $11}' > /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_intervals/G_intervals.bed
 
-cat /media/disk1/soukkal/StageM2/Stage_M1/Ali_intervals/new_intervals_chimp.txt |awk '{print $12 "\t" $13 "\t" $14 "\t" $1 "\t" $1 "\t" $15}' > /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_intervals/O_intervals.bed
+cat /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_intervals/new_intervals_chimp.txt |awk '{print $12 "\t" $13 "\t" $14 "\t" $1 "\t" $1 "\t" $15}' > /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_intervals/O_intervals.bed
 
 #Télécharger les fichiers fasta de génomes : hg38, panTro5, gorGor4, ponAbe2
 
