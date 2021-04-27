@@ -131,8 +131,8 @@ def ancestral_sub_sites_percent(bar_AB_count, output_dir): #plot du pourcentage 
 					num+=1
 			
 	plt.figure(figsize=(10,10))
-	plt.plot(dist,Liste["A"], color='dodgerblue', linestyle='dashed')
-	plt.plot(dist,Liste["T"], color='mediumaquamarine', linestyle='dashed')
+	plt.plot(dist,liste["A"], color='dodgerblue', linestyle='dashed')
+	plt.plot(dist,liste["T"], color='mediumaquamarine', linestyle='dashed')
 	plt.axes().minorticks_on()
 	plt.axes().xaxis.set_major_locator(MultipleLocator(100))
 	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
@@ -148,8 +148,8 @@ def ancestral_sub_sites_percent(bar_AB_count, output_dir): #plot du pourcentage 
 	plt.clf()	
 	
 	plt.figure(figsize=(10,10))
-	plt.plot(dist,Liste["G"], color='orange', linestyle='dashed')
-	plt.plot(dist,Liste["C"], color='tomato', linestyle='dashed')
+	plt.plot(dist,liste["G"], color='orange', linestyle='dashed')
+	plt.plot(dist,liste["C"], color='tomato', linestyle='dashed')
 	plt.axes().minorticks_on()
 	plt.axes().xaxis.set_major_locator(MultipleLocator(100))
 	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
