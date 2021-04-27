@@ -60,22 +60,6 @@ python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results
 ####All:
 python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/All/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/All/AB_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/All/AB_count.txt
 
-## e) Mesurer GC%, nombre de sites, nombre de chaque base: 
-###All interNIEBs:
-####CpG:
-python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/CpG/Plots/AB_Plots/
-####NonCpG:
-python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/nonCpG/Plots/AB_Plots/
-####All:
-python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/All/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/All/Plots/AB_Plots/
-###interNIEBs de +1000pb:
-####CpG:
-python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/CpG/Plots/AB_Plots/
-####NonCpG:
-python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/nonCpG/Plots/AB_Plots/
-####All:
-python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/All/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/All/Plots/AB_Plots/
-
 ##Composition Genome et bases ancestrales: 
 ###All interNIEBs: 
 python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/All/AB_count.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Left/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/All/Plots/Compo_Plots/
@@ -115,63 +99,100 @@ python3 Combine_RL_mut.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Res
 
 python3 Combine_RL_mut.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/nonCpG/Mut_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/nonCpG/Mut_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_count.txt
 
+python3 Combine_RL_mut.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/CpG/Mut_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/CpG/Mut_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/CpG/Mut_count.txt
+
+python3 Combine_RL_mut.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/nonCpG/Mut_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/nonCpG/Mut_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/nonCpG/Mut_count.txt
+
 # 6) Calcul du taux de mutations :
 ###All interNIEBs:
 ####CpG:
-python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/CpG/Mut_rate.txt
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/CpG/Mut_rate.txt
+
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/CpG/Mut_rate.txt
+
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/CpG/Mut_rate.txt
+
 ####nonCpG:
-python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/nonCpG/Mut_rate.txt
-####All:
-python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/All/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/All/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/All/Mut_rate.txt
-#interNIEBs de +1000pb: 
-####CpG:
-python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/CpG/Mut_rate.txt
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/nonCpG/Mut_rate.txt
+
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/nonCpG/Mut_rate.txt
+
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/nonCpG/Mut_rate.txt
+
+#InterNIEBS > 1000:
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/CpG/Mut_rate.txt
+
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/CpG/Mut_rate.txt
+
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/CpG/Mut_rate.txt
+
 ####nonCpG:
-python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/nonCpG/Mut_rate.txt
-####All:
-python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/All/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/All/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/All/Mut_rate.txt
-##Faire graphiques taux de mutations: 
-###All interNIEBs:
-####CpG:
-python3 mut_rate_plot.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/CpG/Mut_rate.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/CpG/Plots/Mut_Plots/Mut_rate_plot.png
-####nonCpG:
-python3 mut_rate_plot.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/nonCpG/Mut_rate.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/nonCpG/Plots/Mut_Plots/Mut_rate_plot.png
-####All:
-python3 mut_rate_plot.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/All/Mut_rate.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/All/Plots/Mut_Plots/Mut_rate_plot.png
-#interNIEBs de +1000pb: 
-####CpG:
-python3 mut_rate_plot.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/CpG/Mut_rate.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/CpG/Plots/Mut_Plots/Mut_rate_plot.png
-####nonCpG:
-python3 mut_rate_plot.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/nonCpG/Mut_rate.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/nonCpG/Plots/Mut_Plots/Mut_rate_plot.png
-####All:
-python3 mut_rate_plot.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/All/Mut_rate.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/All/Plots/Mut_Plots/Mut_rate_plot.png
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/nonCpG/Mut_rate.txt
+
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/nonCpG/Mut_rate.txt
+
+python3 mut_rate.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_rate.txt
+
 ## b) Calcul des taux de mutations par type: 
 ###All interNIEBs:
 ####CpG:
-python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/CpG/Mut_rate_spe.txt
+python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/CpG/Mut_rate_spe.txt
+
+python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/CpG/Mut_rate_spe.txt
+
+python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/CpG/Mut_rate_spe.txt
+
 ####nonCpG:
-python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/nonCpG/Mut_rate_spe.txt
-####All:
-python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/All/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/All/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/All/All/Mut_rate_spe.txt
-#interNIEBs de +1000pb: 
-####CpG:
-python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/CpG/Mut_rate_spe.txt
+python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/nonCpG/Mut_rate_spe.txt
+
+python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/nonCpG/Mut_rate_spe.txt
+
+python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/nonCpG/Mut_rate_spe.txt
+
+#InterNIEBS > 1000:
+python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/CpG/Mut_rate_spe.txt
+
+python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/CpG/Mut_rate_spe.txt
+
+python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/CpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/CpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/CpG/Mut_rate_spe.txt
+
 ####nonCpG:
+python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/nonCpG/Mut_rate_spe.txt
+
+python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/nonCpG/Mut_rate_spe.txt
+
 python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/nonCpG/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_rate_spe.txt
-####All:
-python3 spe_mut_rates.py -mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/All/Mut_count.txt -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/All/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/All/All/Mut_rate_spe.txt
+
+
 ##Faire graphiques mutations( taux de mut global, taux de mut specifique, nombre de mut): 
 ###All interNIEBs:
 ####CpG:
+python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/CpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/CpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/CpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/CpG/Plots/Mut_Plots/
+
+python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/CpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/CpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/CpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/CpG/Plots/Mut_Plots/
+
 python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/CpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/CpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/CpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/CpG/Plots/Mut_Plots/
 ####nonCpG:
+python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/nonCpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/nonCpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/nonCpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Left/nonCpG/Plots/Mut_Plots/
+
+python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/nonCpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/nonCpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/nonCpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/Right/nonCpG/Plots/Mut_Plots/
+
 python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/nonCpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/nonCpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/nonCpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/nonCpG/Plots/Mut_Plots/
 ####All:
 python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/CpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/All/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/All/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/All/Plots/Mut_Plots/
+
 #interNIEBs de +1000pb: 
 ####CpG:
+python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/CpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/CpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/CpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/CpG/Plots/Mut_Plots/
+
+python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/CpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/CpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/CpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/CpG/Plots/Mut_Plots/
+
 python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/CpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/CpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/CpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/CpG/Plots/Mut_Plots/
 ####nonCpG:
+python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/nonCpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/nonCpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/nonCpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Left/nonCpG/Plots/Mut_Plots/
+
+python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/nonCpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/nonCpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/nonCpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/Right/nonCpG/Plots/Mut_Plots/
+
 python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/nonCpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/nonCpG/Plots/Mut_Plots/
 ####All:
 python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/CpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/All/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/All/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/All/Plots/Mut_Plots/

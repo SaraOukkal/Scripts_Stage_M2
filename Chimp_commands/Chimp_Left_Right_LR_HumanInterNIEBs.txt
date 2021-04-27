@@ -13,7 +13,7 @@ mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Human_inter_bar/LR
 
 ###Compter les AB:
 ####NonCpG:
-python3 AB_bar_dist_RL.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human/Barriers/selected_inter_bar_sorted.bed -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/AB_nonCpG_sorted.txt -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Human_inter_bar/Left/nonCpG/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Human_inter_bar/Right/nonCpG/AB_count.txt 
+python3 AB_bar_dist_RL_nochr2.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Human/Barriers/selected_inter_bar_sorted.bed -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/AB_nonCpG_sorted.txt -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Human_inter_bar/Left/nonCpG/AB_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Human_inter_bar/Right/nonCpG/AB_count.txt 
 
 ###Combiner LR:
 ####NonCpG:
