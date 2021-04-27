@@ -176,3 +176,20 @@ python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_R
 ####All:
 python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/CpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/All/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/All/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/All/Plots/Mut_Plots/
 
+
+##Analyse poly nucléotides: 
+python3 Genome_into_poly_bases.py -fa /media/disk1/soukkal/StageM2/Stage_M1/Human/Fasta/hg38.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/Poly_bases.txt
+
+python3 Genome_bar_dist_RL.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/hg38/20200228_interSmallNFR.dat -B /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/Poly_bases.txt -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Left/Poly_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Right/Poly_count.txt
+
+python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Left/Poly_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Right/Poly_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/LR/Poly_count.txt
+
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Left/Poly_plots/
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Right/Poly_plots/
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/LR/Poly_plots/
+
+python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Left/Poly_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Left/Poly_plots/
+
+python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Right/Poly_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Right/Poly_plots/
+
+python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/LR/Poly_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/LR/Poly_plots/

@@ -1,5 +1,6 @@
 
 # 2) Sélectionner les barrières qui ont un inter barrière de plus de 1000nt: 
+mkdir  /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Barriers/
 python3 select_inter_bar.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/panTro5/20200228_interSmallNFR.dat -o /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Barriers/selected_inter_bar.txt
 ## Trier les couples de barrières par chromosome et par position: 
 sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Barriers/selected_inter_bar.txt > /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Barriers/selected_inter_bar_sorted.bed
@@ -105,16 +106,22 @@ python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_R
 
 ##Convertir fasta en bed: 
 mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/
-python3 Genome_into_bases.py -fa /media/disk1/soukkal/StageM2/Stage_M1/Ali_intervals/panTro5.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/genome_bases.txt
+python3 Genome_into_bases.py -fa /media/disk1/soukkal/StageM2/Stage_M1/Chimp/panTro5.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/genome_bases.txt
 #Positionner bases autour de toutes les barrières: 
 mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/
 mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Left/
 mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Right/
 mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/LR/
 
-python3 Genome_bar_dist_RL.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/panTro5/20200228_interSmallNFR.dat -B /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/genome_bases.txt -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Left/Genome_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Right/Genome_count.txt
+python3 Genome_bar_dist_RL.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Barriers/selected_inter_bar_sorted.bed -B /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/genome_bases.txt -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Left/Genome_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Right/Genome_count.txt
 
 python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Left/Genome_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Right/Genome_count.txt -RL /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/LR/Genome_count.txt 
+
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/All/Plots/Compo_Plots/
+
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/All/Plots/Compo_Plots/
+
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/All/Plots/Compo_Plots/
 
 ###Plots compo: 
 python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/All/AB_count.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Left/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Left/All/Plots/Compo_Plots/
@@ -122,4 +129,6 @@ python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Chi
 python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/All/AB_count.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Right/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/Right/All/Plots/Compo_Plots/
 
 python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/All/AB_count.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/LR/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/All/Plots/Compo_Plots/
+
+
 
