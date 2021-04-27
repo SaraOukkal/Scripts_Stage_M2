@@ -131,7 +131,7 @@ def main():
 	Right={}	#Dictionnaire pour les bords de barrières de droite
 	
 	print("counting bases around barriers")
-	base_bar(barriers, args.input_B, Left, Right)
+	base_bar(barriers, args.input_B, Right, Left)
 	print("writing counts in the Left file")
 	write_out(Left, args.left)
 	print("writing counts in the Right file")
