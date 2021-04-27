@@ -9,7 +9,7 @@ if os.environ.get('DISPLAY','') == '':
     print('no display found. Using non-interactive Agg backend')
     mpl.use('Agg')
 import matplotlib.pyplot as plt
-
+from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 
 def ancestral_sites(bar_AB_count, output_dir): #Plot du nombre de sites par distance aux barrières
 	AB_count=open(bar_AB_count, "r") #Fichier avec nombe de bases par type en fonction de la distance aux barrières
