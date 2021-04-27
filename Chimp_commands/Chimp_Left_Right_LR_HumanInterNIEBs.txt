@@ -21,7 +21,7 @@ python3 Combine_RL.py -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results
 
 ###Positionner mut autour bar: 
 ####nonCpG:
-python3 Mut_pattern_bar_RL.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Barriers/selected_inter_bar_sorted.bed -mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Mut_nonCpG.txt -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Human_inter_bar/Left/nonCpG/Mut_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Human_inter_bar/Right/nonCpG/Mut_count.txt 
+python3 Mut_pattern_bar_RL_nochr2.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Barriers/selected_inter_bar_sorted.bed -mut /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Mut_nonCpG.txt -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Human_inter_bar/Left/nonCpG/Mut_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Human_inter_bar/Right/nonCpG/Mut_count.txt 
 
 ###Combiner LR:
 ####nonCpG:
