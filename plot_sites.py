@@ -165,7 +165,7 @@ def ancestral_sub_sites_percent(bar_AB_count, output_dir): #plot du pourcentage 
 	plt.clf()	
 		
 
-def GC_content(bar_AB_count, output_directory):
+def GC_content(bar_AB_count, output_dir):
 	AB_count=open(bar_AB_count, "r")
 	AB=AB_count.readlines()
 	print("Loaded files GC")
