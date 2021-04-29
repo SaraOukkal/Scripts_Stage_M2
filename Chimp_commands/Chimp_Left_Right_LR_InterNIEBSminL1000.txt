@@ -106,7 +106,7 @@ python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_R
 
 ##Convertir fasta en bed: 
 mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/
-python3 Genome_into_bases.py -fa /media/disk1/soukkal/StageM2/Stage_M1/Chimp/panTro5.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/genome_bases.txt
+python3 Genome_into_bases.py -fa /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Fasta/panTro5.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/genome_bases.txt
 #Positionner bases autour de toutes les barrières: 
 mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/
 mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Left/
