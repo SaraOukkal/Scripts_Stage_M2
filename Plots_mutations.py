@@ -61,7 +61,7 @@ def mut_rate_plot(mut_rate, output_dir):
 		if not l.startswith("d"): #Ignore le header du fichier
 			line_MR=l.strip().split("\t")
 			distance=int(line_MR[0])
-			if distance >= -55 and distance <= 505 :
+			if distance >= -50 and distance <= 500 :
 				dist.append(float(line_MR[0])) #Charge les données des mutations dans les variables associées
 				MR.append(float(line_MR[1])*100)
 	
@@ -104,7 +104,7 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 			line_MR=l.strip().split("\t")
 			num=1
 			distance=int(line_MR[0])
-			if distance >= -55 and distance <= 505 :
+			if distance >= -50 and distance <= 500 :
 				MR_dist.append(float(line_MR[0])) #Charge les données des mutations dans les variables associées
 			
 				for t in liste: 
@@ -258,7 +258,7 @@ def mut_rate_base(sub_mut_rates, output_dir):
 		if not l.startswith("d"): #Ignore le header du fichier
 			line_MR=l.strip().split("\t")
 			distance=int(line_MR[0])
-			if distance >= -55 and distance <= 505 :
+			if distance >= -50 and distance <= 500 :
 				MR_dist.append(float(line_MR[0])) #Charge les données des mutations dans les variables associées
 				
 				liste["A"].append((float(line_MR[1])+float(line_MR[2])+float(line_MR[3]))*100) #Calcule le taux de mutations de A en pourcentage 
@@ -298,9 +298,29 @@ def Lissage(Liste):
 	Smooth=[]
 	
 	for i in range(len(Liste)):
-		if i >5 and i<len(Liste)-5:
-			Sum=Liste[i-5] + Liste[i-4]+ Liste[i-3]+ Liste[i-2]+ Liste[i-1]+ Liste[i]+ Liste[i+1]+ Liste[i+2]+ Liste[i+3]+ Liste[i+4]+ Liste[i+5]
+		if i == 0:
+			Sum=Liste[i] + Liste[i+1]+ Liste[i+2]+ Liste[i+3]+ Liste[i+4]+ Liste[i+5]
+			Mean=Sum/6
+			Smooth.append(Mean)
+		elif i == 1:
+			Sum=Liste[i-1] + Liste[i] + Liste[i+1]+ Liste[i+2]+ Liste[i+3]+ Liste[i+4]+ Liste[i+5]
+			Mean=Sum/7
+			Smooth.append(Mean)
+		elif i == 2:
+			Sum=Liste[i-2] +Liste[i-1] + Liste[i] + Liste[i+1]+ Liste[i+2]+ Liste[i+3]+ Liste[i+4]+ Liste[i+5]
+			Mean=Sum/8
+			Smooth.append(Mean)
+		elif i == 3:
+			Sum=Liste[i-3] +Liste[i-2] +Liste[i-1] + Liste[i] + Liste[i+1]+ Liste[i+2]+ Liste[i+3]+ Liste[i+4]+ Liste[i+5]
+			Mean=Sum/9
+			Smooth.append(Mean)
+		elif i >3 and i<len(Liste)-5:
+			Sum=Liste[i-4]+ Liste[i-3]+ Liste[i-2]+ Liste[i-1]+ Liste[i]+ Liste[i+1]+ Liste[i+2]+ Liste[i+3]+ Liste[i+4]+ Liste[i+5]
 			Mean=Sum/10
+			Smooth.append(Mean)
+		else: 
+			Sum=Liste[i-5] + Liste[i-4]+ Liste[i-3]+ Liste[i-2]+ Liste[i-1]+ Liste[i]
+			Mean=Sum/6
 			Smooth.append(Mean)
 	
 	return Smooth
