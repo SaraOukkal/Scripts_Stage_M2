@@ -61,7 +61,7 @@ def mut_rate_plot(mut_rate, output_dir):
 		if not l.startswith("d"): #Ignore le header du fichier
 			line_MR=l.strip().split("\t")
 			distance=int(line_MR[0])
-			if distance >= -50 and distance <= 500 :
+			if distance >= -55 and distance <= 505 :
 				dist.append(float(line_MR[0])) #Charge les données des mutations dans les variables associées
 				MR.append(float(line_MR[1])*100)
 	
@@ -104,16 +104,19 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 			line_MR=l.strip().split("\t")
 			num=1
 			distance=int(line_MR[0])
-			if distance >= -50 and distance <= 500 :
+			if distance >= -55 and distance <= 505 :
 				MR_dist.append(float(line_MR[0])) #Charge les données des mutations dans les variables associées
 			
 				for t in liste: 
 					liste[t].append(float(line_MR[num])*100) #Calcule le taux de mutations en pourcentage 
 					num+=1
-			
+	
+	Smooth_AT=Lissage(liste["MR_AT"])
+	Smooth_TA=Lissage(liste["MR_TA"])
+	
 	plt.figure(figsize=(10,10))	
-	plt.plot(MR_dist,liste["MR_AT"], color="blue")
-	plt.plot(MR_dist,liste["MR_TA"], color="green")
+	plt.plot(MR_dist,Smooth_AT, color="blue")
+	plt.plot(MR_dist,Smooth_TA, color="green")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
@@ -129,10 +132,13 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 	filepath=os.path.join(output_dir, filename)
 	plt.savefig(filepath)
 	plt.clf()
+
+	Smooth_AC=Lissage(liste["MR_AC"])
+	Smooth_TG=Lissage(liste["MR_TG"])
 	
 	plt.figure(figsize=(10,10))	
-	plt.plot(MR_dist,liste["MR_AC"], color="blue")
-	plt.plot(MR_dist,liste["MR_TG"], color="green")
+	plt.plot(MR_dist,Smooth_AC, color="blue")
+	plt.plot(MR_dist,Smooth_TG, color="green")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
@@ -149,8 +155,11 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 	plt.savefig(filepath)
 	plt.clf()
 	
-	plt.plot(MR_dist,liste["MR_CG"], color="red")
-	plt.plot(MR_dist,liste["MR_GC"], color="orange")
+	Smooth_CG=Lissage(liste["MR_CG"])
+	Smooth_GC=Lissage(liste["MR_GC"])
+	
+	plt.plot(MR_dist,Smooth_CG, color="red")
+	plt.plot(MR_dist,Smooth_GC, color="orange")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
@@ -167,9 +176,12 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 	plt.savefig(filepath)
 	plt.clf()
 	
+	Smooth_CT=Lissage(liste["MR_CT"])
+	Smooth_GA=Lissage(liste["MR_GA"])
+	
 	plt.figure(figsize=(10,10))	
-	plt.plot(MR_dist,liste["MR_CT"], color="red")
-	plt.plot(MR_dist,liste["MR_GA"], color="orange")
+	plt.plot(MR_dist,Smooth_CT, color="red")
+	plt.plot(MR_dist,Smooth_GA, color="orange")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
@@ -186,9 +198,12 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 	plt.savefig(filepath)
 	plt.clf()
 	
+	Smooth_AG=Lissage(liste["MR_AG"])
+	Smooth_TC=Lissage(liste["MR_TC"])
+	
 	plt.figure(figsize=(10,10))	
-	plt.plot(MR_dist,liste["MR_AG"], color="blue")
-	plt.plot(MR_dist,liste["MR_TC"], color="green")
+	plt.plot(MR_dist,Smooth_AG, color="blue")
+	plt.plot(MR_dist,Smooth_TC, color="green")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
@@ -204,10 +219,13 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 	filepath=os.path.join(output_dir, filename)
 	plt.savefig(filepath)
 	plt.clf()
+	
+	Smooth_GT=Lissage(liste["MR_GT"])
+	Smooth_CA=Lissage(liste["MR_CA"])
 
 	plt.figure(figsize=(10,10))	
-	plt.plot(MR_dist,liste["MR_GT"], color="orange")
-	plt.plot(MR_dist,liste["MR_CA"], color="red")
+	plt.plot(MR_dist,Smooth_GT, color="orange")
+	plt.plot(MR_dist,Smooth_CA, color="red")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
@@ -240,7 +258,7 @@ def mut_rate_base(sub_mut_rates, output_dir):
 		if not l.startswith("d"): #Ignore le header du fichier
 			line_MR=l.strip().split("\t")
 			distance=int(line_MR[0])
-			if distance >= -50 and distance <= 500 :
+			if distance >= -55 and distance <= 505 :
 				MR_dist.append(float(line_MR[0])) #Charge les données des mutations dans les variables associées
 				
 				liste["A"].append((float(line_MR[1])+float(line_MR[2])+float(line_MR[3]))*100) #Calcule le taux de mutations de A en pourcentage 
@@ -248,11 +266,17 @@ def mut_rate_base(sub_mut_rates, output_dir):
 				liste["G"].append((float(line_MR[7])+float(line_MR[8])+float(line_MR[9]))*100) 
 				liste["T"].append((float(line_MR[10])+float(line_MR[11])+float(line_MR[12]))*100) 
 	
+	
+	Smooth_A=Lissage(liste["A"])
+	Smooth_T=Lissage(liste["T"])
+	Smooth_C=Lissage(liste["C"])
+	Smooth_G=Lissage(liste["G"])
+	
 	plt.figure(figsize=(10,10))	
-	plt.plot(MR_dist,liste["A"], color="blue")
-	plt.plot(MR_dist,liste["C"], color="red")
-	plt.plot(MR_dist,liste["T"], color="green")
-	plt.plot(MR_dist,liste["G"], color="orange")
+	plt.plot(MR_dist,Smooth_A, color="blue")
+	plt.plot(MR_dist,Smooth_C, color="red")
+	plt.plot(MR_dist,Smooth_T, color="green")
+	plt.plot(MR_dist,Smooth_G, color="orange")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
@@ -274,13 +298,10 @@ def Lissage(Liste):
 	Smooth=[]
 	
 	for i in range(len(Liste)):
-		if i >=10 and i<=len(Liste)-10:
+		if i >=5 and i<=len(Liste)-5:
 			Sum=Liste[i-5] + Liste[i-4]+ Liste[i-3]+ Liste[i-2]+ Liste[i-1]+ Liste[i]+ Liste[i+1]+ Liste[i+2]+ Liste[i+3]+ Liste[i+4]+ Liste[i+5]
 			Mean=Sum/10
 			Smooth.append(Mean)
-			
-		else: 
-			Smooth.append(Liste[i])
 	
 	return Smooth
 
