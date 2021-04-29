@@ -57,7 +57,7 @@ def ancestral_sites(input_AB, input_Gen, output_dir):
 	plt.xticks(fontsize=20)
 	plt.yticks(fontsize=13)
 	plt.axvline(0, color='black', alpha=0.5)
-	plt.axhline(1727712, color='red', alpha=0.5) #Nombre de bords de NIEBs dans interNIEBs >= 1000pb
+	plt.axhline(1741560, color='red', alpha=0.5) #Nombre de bords de NIEBs dans interNIEBs >= 1000pb
 	plt.title("Number of sites around NIEBs", fontsize=20)
 	plt.xlabel("Distance from NIEBs", fontsize=16)
 	plt.ylabel("Ancestral Bases", fontsize=16)
