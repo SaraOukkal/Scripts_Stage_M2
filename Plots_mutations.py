@@ -273,7 +273,7 @@ def Lissage(Liste):
 	
 	Smooth=[]
 	
-	for i in range(len(Liste):
+	for i in range(len(Liste)):
 		if i >=10 and i<=len(Liste)-10:
 			Sum=Liste[i-5] + Liste[i-4]+ Liste[i-3]+ Liste[i-2]+ Liste[i-1]+ Liste[i]+ Liste[i+1]+ Liste[i+2]+ Liste[i+3]+ Liste[i+4]+ Liste[i+5]
 			Mean=Sum/10
