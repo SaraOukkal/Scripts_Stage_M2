@@ -65,8 +65,10 @@ def mut_rate_plot(mut_rate, output_dir):
 				dist.append(float(line_MR[0])) #Charge les données des mutations dans les variables associées
 				MR.append(float(line_MR[1])*100)
 
+	Smooth_MR=Lissage(MR)
+
 	plt.figure(figsize=(10,10))	
-	plt.plot(dist,MR, color="darkviolet")
+	plt.plot(dist,Smooth_MR, color="darkviolet")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
@@ -108,11 +110,15 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 				for t in liste: 
 					liste[t].append(float(line_MR[num])*100) #Calcule le taux de mutations en pourcentage 
 					num+=1
+	
+	Smooth_CG=Lissage(liste["MR_CG"])
+	Smooth_CT=Lissage(liste["MR_CT"])
+	Smooth_CA=Lissage(liste["MR_CA"])
 			
 	plt.figure(figsize=(10,10))	
-	plt.plot(MR_dist,liste["MR_CG"], color="firebrick")
-	plt.plot(MR_dist,liste["MR_CT"], color="red")
-	plt.plot(MR_dist,liste["MR_CA"], color="lightcoral")
+	plt.plot(MR_dist,Smooth_CG, color="firebrick")
+	plt.plot(MR_dist,Smooth_CT, color="red")
+	plt.plot(MR_dist,Smooth_CA, color="lightcoral")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
@@ -128,6 +134,39 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 	filepath=os.path.join(output_dir, filename)
 	plt.savefig(filepath)
 	plt.clf()
+	
+	
+def Lissage(Liste):
+	
+	Smooth=[]
+	
+	for i in range(len(Liste)):
+		if i == 0:
+			Sum=Liste[i] + Liste[i+1]+ Liste[i+2]+ Liste[i+3]+ Liste[i+4]+ Liste[i+5]
+			Mean=Sum/6
+			Smooth.append(Mean)
+		elif i == 1:
+			Sum=Liste[i-1] + Liste[i] + Liste[i+1]+ Liste[i+2]+ Liste[i+3]+ Liste[i+4]+ Liste[i+5]
+			Mean=Sum/7
+			Smooth.append(Mean)
+		elif i == 2:
+			Sum=Liste[i-2] +Liste[i-1] + Liste[i] + Liste[i+1]+ Liste[i+2]+ Liste[i+3]+ Liste[i+4]+ Liste[i+5]
+			Mean=Sum/8
+			Smooth.append(Mean)
+		elif i == 3:
+			Sum=Liste[i-3] +Liste[i-2] +Liste[i-1] + Liste[i] + Liste[i+1]+ Liste[i+2]+ Liste[i+3]+ Liste[i+4]+ Liste[i+5]
+			Mean=Sum/9
+			Smooth.append(Mean)
+		elif i >3 and i<len(Liste)-5:
+			Sum=Liste[i-4]+ Liste[i-3]+ Liste[i-2]+ Liste[i-1]+ Liste[i]+ Liste[i+1]+ Liste[i+2]+ Liste[i+3]+ Liste[i+4]+ Liste[i+5]
+			Mean=Sum/10
+			Smooth.append(Mean)
+		else: 
+			Sum=Liste[i-5] + Liste[i-4]+ Liste[i-3]+ Liste[i-2]+ Liste[i-1]+ Liste[i]
+			Mean=Sum/6
+			Smooth.append(Mean)
+	
+	return Smooth
 	
 def main(): 
 	parser = argparse.ArgumentParser()
