@@ -88,7 +88,7 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 	
 	data=open(sub_mut_rates, "r")
 	MR=data.readlines()
-	types=["MR_CT","MR_CA","MR_CG"]
+	types=["MR_AT","MR_AC","MR_AG","MR_CT","MR_CA","MR_CG","MR_GT","MR_GA","MR_GC","MR_TA","MR_TC","MR_TG"]
 	liste={}
 	
 	MR_dist=[]
@@ -109,7 +109,7 @@ def mut_rates_plots(sub_mut_rates, output_dir):
 					liste[t].append(float(line_MR[num])*100) #Calcule le taux de mutations en pourcentage 
 					num+=1
 			
-	
+	plt.figure(figsize=(10,10))	
 	plt.plot(MR_dist,liste["MR_CG"], color="firebrick")
 	plt.plot(MR_dist,liste["MR_CT"], color="red")
 	plt.plot(MR_dist,liste["MR_CA"], color="lightcoral")
