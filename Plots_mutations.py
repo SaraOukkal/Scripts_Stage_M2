@@ -64,9 +64,11 @@ def mut_rate_plot(mut_rate, output_dir):
 			if distance >= -50 and distance <= 500 :
 				dist.append(float(line_MR[0])) #Charge les données des mutations dans les variables associées
 				MR.append(float(line_MR[1])*100)
+	
+	Smooth_MR=Lissage(MR)
 
 	plt.figure(figsize=(10,10))	
-	plt.plot(dist,MR, color="darkviolet")
+	plt.plot(dist,Smooth_MR, color="darkviolet")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
@@ -267,6 +269,21 @@ def mut_rate_base(sub_mut_rates, output_dir):
 	plt.savefig(filepath)
 	plt.clf()
 	
+def Lissage(Liste):
+	
+	Smooth=[]
+	
+	for i in range(len(Liste):
+		if i >=10 and i<=len(Liste)-10:
+			Sum=Liste[i-5] + Liste[i-4]+ Liste[i-3]+ Liste[i-2]+ Liste[i-1]+ Liste[i]+ Liste[i+1]+ Liste[i+2]+ Liste[i+3]+ Liste[i+4]+ Liste[i+5]
+			Mean=Sum/10
+			Smooth.append(Mean)
+			
+		else: 
+			Smooth.append(Liste[i])
+	
+	return Smooth
+
 def main(): 
 	parser = argparse.ArgumentParser()
 	
