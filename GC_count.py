@@ -22,12 +22,12 @@ def GC_count(input_AB):
 		line=l.strip().split("\t")
 		chrom=line[0] #chromosome du nt 
 		nuc=line[2].upper() #Nucléotide à l'état actuel
-			if nuc == "G" or nuc == "C":
-				Actual_GC_count+=1
+		if nuc == "G" or nuc == "C":
+			Actual_GC_count+=1
 				
 		nuc_EA=line[3].upper() #nucléotide à l'état ancestral
-			if nuc_EA == "G" or nuc_EA == "C":
-				Ancestral_GC_count+=1
+		if nuc_EA == "G" or nuc_EA == "C":
+			Ancestral_GC_count+=1
 		
 		Base_count+=1
 				
