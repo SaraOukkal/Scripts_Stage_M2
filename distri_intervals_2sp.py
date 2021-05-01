@@ -37,15 +37,16 @@ def distri_inter_bar(intervals):
 		st=int(line[2])
 		end=int(line[3])	
 		size=end-st
-		sizes.append(size)
+		if size < 150000:
+			sizes.append(size)
 		
 	return sizes
 
 def plot (distribution1, distribution2, filename, output_dir):
 	
 	plt.figure(figsize=(10,10))	
-	plt.hist(distribution1, bins=20, color="darkviolet", alpha=0.5)
-	plt.hist(distribution2, bins=20, color="violet", alpha=0.5)
+	plt.hist(distribution1, bins=20, color="limegreen", alpha=0.5, ec="darkgreen")
+	plt.hist(distribution2, bins=20, color="dodgerblue", alpha=0.5, ec="darkblue")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
