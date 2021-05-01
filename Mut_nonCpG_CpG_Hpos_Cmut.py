@@ -13,7 +13,7 @@ def load_AB(input_AB, nonCpG, CpG):
 		line=l.strip().split("\t")
 		chrom=line[0] #chromosome du nt 
 		pos=int(line[1]) #position du nt
-		nuc=line[2] #Nucléotide actuel
+		nuc=line[4] #Nucléotide actuel
 		EA=line[3] #nucléotide à l'état ancestral
 		
 		base=[]	
