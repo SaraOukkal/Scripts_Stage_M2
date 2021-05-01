@@ -3,7 +3,7 @@ python3 Calcul_AB_nostr.py -H /media/disk1/soukkal/StageM2/Stage_M1/Human/Fasta/
 sort -k1,1 -k2,2n /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/AB.txt  > /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/AB_sorted.txt 
 
 ## c) Repérer les bases ancestrales CpG et nonCpG: 
-python3 AB_nonCpG_CpG_Hpos_Cmut.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/AB_sorted.txt -nonCpG /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Humab_inter_bar/AB_nonCpG.txt -CpG /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Human_inter_bar/AB_CpG.txt
+python3 AB_nonCpG_CpG_Hpos_Cmut.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/AB_sorted.txt -nonCpG /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Human_inter_bar/AB_nonCpG.txt -CpG /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Human_inter_bar/AB_CpG.txt
 
 python3 Mut_nonCpG_CpG_Hpos_Cmut.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/AB_sorted.txt -nonCpG /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Human_inter_bar/Mut_nonCpG.txt -CpG /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/Human_inter_bar/Mut_CpG.txt
 
