@@ -37,7 +37,7 @@ def distri_inter_bar(intervals):
 		st=int(line[2])
 		end=int(line[3])	
 		size=end-st
-		if size < 15000:
+		if size < 10000:
 			sizes.append(size)
 		
 	return sizes
