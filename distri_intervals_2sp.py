@@ -9,6 +9,8 @@ if os.environ.get('DISPLAY','') == '':
     print('no display found. Using non-interactive Agg backend')
     mpl.use('Agg')
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 
 
 def distri_bar(intervals):
