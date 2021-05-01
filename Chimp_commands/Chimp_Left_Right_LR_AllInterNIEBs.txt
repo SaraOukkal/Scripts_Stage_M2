@@ -97,3 +97,20 @@ python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_R
 ####nonCpG:
 python3 Plots_mutations.py -MR /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/nonCpG/Mut_rate.txt -MRS /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/nonCpG/Mut_rate_spe.txt -Mut /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/nonCpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/All_inter_bar/LR/nonCpG/Plots/Mut_Plots/
 
+##Analyse poly nucléotides: 
+python3 Genome_into_poly_bases.py -fa /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Fasta/panTro5.fa -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/Poly_bases.txt
+
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar/
+
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar/Left/
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar/Right/
+
+python3 Genome_bar_dist_RL.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Barriers/panTro5/20200228_interSmallNFR.dat -B /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/Poly_bases.txt -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar/Left/Poly_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar/Right/Poly_count.txt
+
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar/Left/Poly_plots/
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar/Right/Poly_plots/
+
+python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar/Left/Poly_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar/Left/Poly_plots/
+
+python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar/Right/Poly_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar/Right/Poly_plots/
+

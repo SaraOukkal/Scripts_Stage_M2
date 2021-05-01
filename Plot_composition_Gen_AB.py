@@ -332,8 +332,10 @@ def GC_content(input_AB, input_Gen, output_dir):
 	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
 	plt.xticks(fontsize=20)
 	plt.yticks(fontsize=20)
-	plt.axhline(37.9, color='red', alpha=0.5)#%GC moyen du génome
+	plt.axhline(40.40, color='red', alpha=0.5)#%GC moyen du génome
 	plt.axvline(0, color='black', alpha=0.5)
+	plt.axvline(137, color='black', alpha=0.2)
+	plt.axvline(280, color='black', alpha=0.2)
 	plt.title("GC % around NIEBs", fontsize=20)
 	plt.xlabel("Distance from NIEBs", fontsize=16)
 	plt.ylabel("GC percentage", fontsize=16)

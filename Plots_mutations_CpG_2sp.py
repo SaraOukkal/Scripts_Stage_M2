@@ -12,14 +12,17 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 
-def mut_number(input_Mut, output_dir):
-	Mut_count=open(input_Mut, "r") 
-	Mut=Mut_count.readlines()
+def mut_number(input_Mut1,input_Mut2, output_dir):
+	Mut_count1=open(input_Mut1, "r") 
+	Mut1=Mut_count1.readlines()
+	Mut_count2=open(input_Mut2, "r") 
+	Mut2=Mut_count2.readlines()
 	
 	dist=[]
-	Mutations=[]
+	Mutations1=[]
+	Mutations2=[]
 	
-	for l in Mut:
+	for l in Mut1:
 		if not l.startswith("d"): #Ignore le header du fichier
 			line=l.strip().split("\t")
 			distance=int(line[0])
@@ -28,10 +31,21 @@ def mut_number(input_Mut, output_dir):
 				num=0
 				num=int(line[1]) + int(line[2]) + int(line[3]) + int(line[4])+ int(line[5])+ int(line[6])+ int(line[7])+ int(line[8])+ int(line[9])+ int(line[10])+ int(line[11])+ int(line[12])
 				print(num)
-				Mutations.append(num)
+				Mutations1.append(num)
+	
+	for l in Mut2:
+		if not l.startswith("d"): #Ignore le header du fichier
+			line=l.strip().split("\t")
+			distance=int(line[0])
+			if distance >= -50 and distance <= 500 :
+				num=0
+				num=int(line[1]) + int(line[2]) + int(line[3]) + int(line[4])+ int(line[5])+ int(line[6])+ int(line[7])+ int(line[8])+ int(line[9])+ int(line[10])+ int(line[11])+ int(line[12])
+				print(num)
+				Mutations2.append(num)
 	
 	plt.figure(figsize=(10,10))	
-	plt.plot(dist,Mutations, color='violet')
+	plt.plot(dist,Mutations1, color='darkviolet')
+	plt.plot(dist,Mutations2, color='violet')
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.axvline(137, color='black', alpha=0.2)
 	plt.axvline(280, color='black', alpha=0.2)
@@ -51,26 +65,37 @@ def mut_number(input_Mut, output_dir):
 	plt.clf()
 
 
-def mut_rate_plot(mut_rate, output_dir):
-	data=open(mut_rate, "r")
-	mut_R=data.readlines()
-	print("Loaded files")
+def mut_rate_plot(mut_rate1, mut_rate2 output_dir):
+	data1=open(mut_rate1, "r")
+	mut_R1=data1.readlines()
+	data2=open(mut_rate2, "r")
+	mut_R2=data2.readlines()
 	
 	dist=[]
-	MR=[]
+	MR1=[]
+	MR2=[]
 	
-	for l in mut_R:
+	for l in mut_R1:
 		if not l.startswith("d"): #Ignore le header du fichier
 			line_MR=l.strip().split("\t")
 			distance=int(line_MR[0])
 			if distance >= -50 and distance <= 500 :
 				dist.append(float(line_MR[0])) #Charge les données des mutations dans les variables associées
-				MR.append(float(line_MR[1])*100)
+				MR1.append(float(line_MR[1])*100)
+				
+	for l in mut_R2:
+		if not l.startswith("d"): #Ignore le header du fichier
+			line_MR=l.strip().split("\t")
+			distance=int(line_MR[0])
+			if distance >= -50 and distance <= 500 :
+				MR2.append(float(line_MR[1])*100)
 
-	Smooth_MR=Lissage(MR)
+	Smooth_MR1=Lissage(MR1)
+	Smooth_MR2=Lissage(MR2)
 
 	plt.figure(figsize=(10,10))	
-	plt.plot(dist,Smooth_MR, color="darkviolet")
+	plt.plot(dist,Smooth_MR1, color="darkviolet")
+	plt.plot(dist,Smooth_MR2, color="violet")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
@@ -90,39 +115,59 @@ def mut_rate_plot(mut_rate, output_dir):
 	plt.clf()
 	
 
-def mut_rates_plots(sub_mut_rates, output_dir):
+def mut_rates_plots(sub_mut_rates1, sub_mut_rates2, output_dir):
 	
-	data=open(sub_mut_rates, "r")
-	MR=data.readlines()
+	data1=open(sub_mut_rates1, "r")
+	MR1=data1.readlines()
+	data2=open(sub_mut_rates2, "r")
+	MR2=data2.readlines()
+	
 	types=["MR_AT","MR_AC","MR_AG","MR_CT","MR_CA","MR_CG","MR_GT","MR_GA","MR_GC","MR_TA","MR_TC","MR_TG"]
-	liste={}
+	liste1={}
+	liste2={}
 	
 	MR_dist=[]
 	
 	for sub in types: 
-		liste[sub]=[]
-		
+		liste1[sub]=[]
+		liste2[sub]=[]
 
-	for l in MR:
+	for l in MR1:
 		if not l.startswith("d"): #Ignore le header du fichier
 			line_MR=l.strip().split("\t")
 			num=1
 			distance=int(line_MR[0])
 			if distance >= -50 and distance <= 500 :
 				MR_dist.append(float(line_MR[0])) #Charge les données des mutations dans les variables associées
-			
 				for t in liste: 
-					liste[t].append(float(line_MR[num])*100) #Calcule le taux de mutations en pourcentage 
+					liste1[t].append(float(line_MR[num])*100) #Calcule le taux de mutations en pourcentage 
+					num+=1
+					
+	for l in MR2:
+		if not l.startswith("d"): #Ignore le header du fichier
+			line_MR=l.strip().split("\t")
+			num=1
+			distance=int(line_MR[0])
+			if distance >= -50 and distance <= 500 :
+				for t in liste: 
+					liste2[t].append(float(line_MR[num])*100) #Calcule le taux de mutations en pourcentage 
 					num+=1
 	
-	Smooth_CG=Lissage(liste["MR_CG"])
-	Smooth_CT=Lissage(liste["MR_CT"])
-	Smooth_CA=Lissage(liste["MR_CA"])
+	Smooth_CG1=Lissage(liste1["MR_CG"])
+	Smooth_CT1=Lissage(liste1["MR_CT"])
+	Smooth_CA1=Lissage(liste1["MR_CA"])
+	
+	Smooth_CG2=Lissage(liste2["MR_CG"])
+	Smooth_CT2=Lissage(liste2["MR_CT"])
+	Smooth_CA2=Lissage(liste2["MR_CA"])
 			
 	plt.figure(figsize=(10,10))	
-	plt.plot(MR_dist,Smooth_CG, color="firebrick")
-	plt.plot(MR_dist,Smooth_CT, color="red")
-	plt.plot(MR_dist,Smooth_CA, color="lightcoral")
+	plt.plot(MR_dist,Smooth_CG1, color="firebrick")
+	plt.plot(MR_dist,Smooth_CT1, color="red")
+	plt.plot(MR_dist,Smooth_CA1, color="lightcoral")
+	plt.plot(MR_dist,Smooth_CG2, color="teal")
+	plt.plot(MR_dist,Smooth_CT2, color="darkturquoise")
+	plt.plot(MR_dist,Smooth_CA2, color="cyan")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
@@ -178,18 +223,22 @@ def main():
 	parser = argparse.ArgumentParser()
 	
 	#fichiers fasta des séquences qui s'alignent chez les 4 espèces:
-	parser.add_argument('-MR', '--input_MR', type=str, help='Path to mutation rates', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/chimp_mut_rate.txt")	
-	parser.add_argument('-MRS', '--input_MRS', type=str, help='Path to sub mutation rates', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/chimp_mut_rate.txt")	
-	parser.add_argument('-Mut', '--input_Mut', type=str, help='Path to mutations count', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/chimp_mut_rate.txt")				
+	parser.add_argument('-MR1', '--input_MR1', type=str, help='Path to mutation rates', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/chimp_mut_rate.txt")	
+	parser.add_argument('-MRS1', '--input_MRS1', type=str, help='Path to sub mutation rates', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/chimp_mut_rate.txt")	
+	parser.add_argument('-Mut1', '--input_Mut1', type=str, help='Path to mutations count', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/chimp_mut_rate.txt")		
+	
+	parser.add_argument('-MR2', '--input_MR2', type=str, help='Path to mutation rates', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/chimp_mut_rate.txt")	
+	parser.add_argument('-MRS2', '--input_MRS2', type=str, help='Path to sub mutation rates', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/chimp_mut_rate.txt")	
+	parser.add_argument('-Mut2', '--input_Mut2', type=str, help='Path to mutations count', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/chimp_mut_rate.txt")				
 
 	#fichier de sortie: 
 	parser.add_argument('-out', '--output_dir', type=str, help='Path to output file', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/Plots/Mut_plots/")			
 
 	
 	args = parser.parse_args()
-	mut_number(args.input_Mut, args.output_dir)
-	mut_rate_plot(args.input_MR, args.output_dir)
-	mut_rates_plots(args.input_MRS, args.output_dir)
+	mut_number(args.input_Mut1,args.input_Mut2, args.output_dir)
+	mut_rate_plot(args.input_MR1,args.input_MR2, args.output_dir)
+	mut_rates_plots(args.input_MRS1,args.input_MRS2, args.output_dir)
 	
 if "__main__" == __name__:
 	main()
