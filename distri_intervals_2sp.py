@@ -49,8 +49,6 @@ def plot (distribution1, distribution2, filename, output_dir):
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
-	plt.axes().xaxis.set_major_locator(MultipleLocator(100))
-	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
 	plt.xticks(fontsize=20)
 	plt.yticks(fontsize=20)
 	plt.title("Intervals size distribution", fontsize=20)
