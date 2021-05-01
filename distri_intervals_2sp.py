@@ -54,7 +54,6 @@ def plot (distribution1, distribution2, filename, output_dir):
 	plt.xticks(fontsize=20)
 	plt.yticks(fontsize=20)
 	plt.title("Intervals size distribution", fontsize=20)
-	plt.xticks(np.arange(min(distribution), max(distribution),25))
 	plt.xlabel("Size", fontsize=16)
 	plt.ylabel("Number", fontsize=16)
 	filepath=os.path.join(output_dir, filename)
