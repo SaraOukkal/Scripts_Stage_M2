@@ -161,8 +161,8 @@ def GC_content(input_AB1, input_Gen1,input_AB2, input_Gen2, output_dir):
 	plt.yticks(fontsize=20)
 	plt.axhline(40.40, color='red')#%GC moyen du génome
 	plt.axvline(0, color='black', alpha=0.5)
-	plt.axvline(137, color='black', alpha=0.2)
-	plt.axvline(280, color='black', alpha=0.2)
+	plt.axvline(135, color='black', alpha=0.2)
+	plt.axvline(279, color='black', alpha=0.2)
 	plt.title("GC % around NIEBs", fontsize=20)
 	plt.xlabel("Distance from NIEBs", fontsize=16)
 	plt.ylabel("GC percentage", fontsize=16)
