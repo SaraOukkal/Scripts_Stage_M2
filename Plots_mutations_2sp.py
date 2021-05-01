@@ -65,7 +65,7 @@ def mut_number(input_Mut1,input_Mut2, output_dir):
 	plt.clf()
 
 
-def mut_rate_plot(mut_rate1, mut_rate2 output_dir):
+def mut_rate_plot(mut_rate1, mut_rate2, output_dir):
 	data1=open(mut_rate1, "r")
 	mut_R1=data1.readlines()
 	data2=open(mut_rate2, "r")
