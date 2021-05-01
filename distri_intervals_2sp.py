@@ -42,7 +42,7 @@ def distri_inter_bar(intervals):
 		
 	return sizes
 	
-def plot (distribution1, distribution2, output_dir):
+def plot(distribution1, distribution2, filename, output_dir):
 	
 	plt.figure(figsize=(10,10))	
 	plt.hist(distribution1, bins=20, color="limegreen", alpha=0.3, ec="darkgreen")
