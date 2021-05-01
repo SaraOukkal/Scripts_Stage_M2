@@ -139,7 +139,7 @@ def mut_rates_plots(sub_mut_rates1, sub_mut_rates2, output_dir):
 			distance=int(line_MR[0])
 			if distance >= -50 and distance <= 500 :
 				MR_dist.append(float(line_MR[0])) #Charge les données des mutations dans les variables associées
-				for t in liste: 
+				for t in liste1: 
 					liste1[t].append(float(line_MR[num])*100) #Calcule le taux de mutations en pourcentage 
 					num+=1
 					
@@ -149,7 +149,7 @@ def mut_rates_plots(sub_mut_rates1, sub_mut_rates2, output_dir):
 			num=1
 			distance=int(line_MR[0])
 			if distance >= -50 and distance <= 500 :
-				for t in liste: 
+				for t in liste2: 
 					liste2[t].append(float(line_MR[num])*100) #Calcule le taux de mutations en pourcentage 
 					num+=1
 	
