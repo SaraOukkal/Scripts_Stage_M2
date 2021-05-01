@@ -20,8 +20,8 @@ def norm_sites(input_AB1, input_Gen1,input_AB2, input_Gen2, output_dir):
 	Gen1=Gen_count1.readlines()
 	AB1=AB_count1.readlines()
 	
-	Gen_count2=open(input_Gen1, "r")
-	AB_count2=open(input_AB1, "r") 
+	Gen_count2=open(input_Gen2, "r")
+	AB_count2=open(input_AB2, "r") 
 	Gen2=Gen_count2.readlines()
 	AB2=AB_count2.readlines()
 
@@ -62,8 +62,8 @@ def norm_sites(input_AB1, input_Gen1,input_AB2, input_Gen2, output_dir):
 								NormBase2.append(norm)
 								
 	plt.figure(figsize=(10,10))
-	plt.plot(dist,NormBase1, color='darkblue')
-	plt.plot(dist,NormBase2, color='blue')
+	plt.plot(dist,NormBase1, color='dimgrey')
+	plt.plot(dist,NormBase2, color='lightgrey')
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
@@ -159,7 +159,7 @@ def GC_content(input_AB1, input_Gen1,input_AB2, input_Gen2, output_dir):
 	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
 	plt.xticks(fontsize=20)
 	plt.yticks(fontsize=20)
-	plt.axhline(40.40, color='red', alpha=0.5)#%GC moyen du génome
+	plt.axhline(40.40, color='red')#%GC moyen du génome
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.axvline(137, color='black', alpha=0.2)
 	plt.axvline(280, color='black', alpha=0.2)

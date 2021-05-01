@@ -167,7 +167,7 @@ def mut_rates_plots(sub_mut_rates1, sub_mut_rates2, output_dir):
 	plt.plot(MR_dist,Smooth_CA1, color="lightcoral")
 	plt.plot(MR_dist,Smooth_CG2, color="teal")
 	plt.plot(MR_dist,Smooth_CT2, color="darkturquoise")
-	plt.plot(MR_dist,Smooth_CA2, color="cyan")
+	plt.plot(MR_dist,Smooth_CA2, color="paleturquoise")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
