@@ -37,7 +37,7 @@ def distri_inter_bar(intervals):
 		st=int(line[2])
 		end=int(line[3])	
 		size=end-st
-		if size < 10000:
+		if size < 1500:
 			sizes.append(size)
 		
 	return sizes
@@ -45,8 +45,25 @@ def distri_inter_bar(intervals):
 def plot(distribution1, distribution2, filename, output_dir):
 	
 	plt.figure(figsize=(10,10))	
-	plt.hist(distribution1, bins=20, color="limegreen", alpha=0.3, ec="darkgreen")
-	plt.hist(distribution2, bins=20, color="dodgerblue", alpha=0.3, ec="darkblue")
+	plt.hist(distribution1, bins=100, color="limegreen", alpha=0.3, ec="darkgreen")
+	plt.hist(distribution2, bins=100, color="dodgerblue", alpha=0.3, ec="darkblue")
+	plt.axes().minorticks_on()
+	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
+	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
+	plt.xticks(fontsize=20)
+	plt.yticks(fontsize=20)
+	plt.title("Intervals size distribution", fontsize=20)
+	plt.xlabel("Size", fontsize=16)
+	plt.ylabel("Number", fontsize=16)
+	filepath=os.path.join(output_dir, filename)
+	plt.savefig(filepath)	
+	plt.clf()	
+	
+def plot_inter(distribution1, distribution2, filename, output_dir):
+	
+	plt.figure(figsize=(10,10))	
+	plt.hist(distribution1, bins=1500, color="limegreen", alpha=0.3, ec="darkgreen")
+	plt.hist(distribution2, bins=1500, color="dodgerblue", alpha=0.3, ec="darkblue")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
@@ -137,7 +154,7 @@ def main():
 	
 	distribution3= distri_inter_bar(args.input_inter1)
 	distribution4= distri_inter_bar(args.input_inter2)
-	plot(distribution3, distribution4,"Distri_inter_NIEBs.png", args.output)
+	plot_inter(distribution3, distribution4,"Distri_inter_NIEBs.png", args.output)
 	
 	inter_bar_1000(args.input_inter1, args.input_inter2, args.output)
 
