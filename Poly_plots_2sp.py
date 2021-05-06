@@ -91,7 +91,7 @@ def ancestral_sub_sites(input_1, input_2, output_dir):
 			distance=int(line[0])
 			if distance >= -50 and distance <= 500 :
 				dist.append(int(line[0]))
-				for t in AB_List: 
+				for t in sp1_List: 
 					sp1_List[t].append(int(line[num]))
 					num+=1
 		
@@ -101,7 +101,7 @@ def ancestral_sub_sites(input_1, input_2, output_dir):
 			num=1
 			distance=int(line[0])
 			if distance >= -50 and distance <= 500 :
-				for t in AB_List: 
+				for t in sp2_List: 
 					sp2_List[t].append(int(line[num]))
 					num+=1
 	
@@ -159,7 +159,7 @@ def ancestral_sub_sites_percent(input_1, input_2, output_dir):
 			if distance >= -50 and distance <= 500 :
 				tot=int(line[1]) + int(line[2]) + int(line[3]) + int(line[4]) 
 				dist.append(int(line[0]))
-				for t in AB_List: 
+				for t in sp1_List: 
 					sp2_List[t].append((int(line[num])/tot)*100)
 					num+=1
 		
@@ -170,7 +170,7 @@ def ancestral_sub_sites_percent(input_1, input_2, output_dir):
 			distance=int(line[0])
 			if distance >= -50 and distance <= 500 :
 				tot=int(line[1]) + int(line[2]) + int(line[3]) + int(line[4]) 
-				for t in AB_List: 
+				for t in sp2_List: 
 					sp2_List[t].append((int(line[num])/tot)*100)
 					num+=1
 	
