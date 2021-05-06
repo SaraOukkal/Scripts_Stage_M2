@@ -14,8 +14,6 @@ def mut_count(input_mut):
 	fol_count=0
 	
 	for i in range(len(mut)): 
-		if c%100000 == 0 : 
-			print(c) #affiche C toutes les 100.000 mutations 
 		line=mut[i].strip().split("\t")
 		chrom=line[0] #chromosome de la mutation 
 		pos=int(line[1]) #position de la mutation 
