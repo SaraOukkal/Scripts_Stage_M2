@@ -33,7 +33,6 @@ def ancestral_sites(input_1, input_2, output_dir):
 				dist.append(int(line[0]))
 				num_AB=0
 				num_AB=int(line[1]) + int(line[2]) + int(line[3]) + int(line[4])
-				print(num_AB)
 				sp1bases.append(num_AB)
 	
 	for a in sp2:
@@ -43,7 +42,6 @@ def ancestral_sites(input_1, input_2, output_dir):
 			if distance >= -50 and distance <= 500 :
 				num_B=0
 				num_B=int(line[1]) + int(line[2]) + int(line[3]) + int(line[4])
-				print(num_B)
 				sp2bases.append(num_B)			
 	
 	plt.figure(figsize=(10,10))
@@ -160,7 +158,7 @@ def ancestral_sub_sites_percent(input_1, input_2, output_dir):
 				tot=int(line[1]) + int(line[2]) + int(line[3]) + int(line[4]) 
 				dist.append(int(line[0]))
 				for t in sp1_List: 
-					sp2_List[t].append((int(line[num])/tot)*100)
+					sp1_List[t].append((int(line[num])/tot)*100)
 					num+=1
 		
 	for a in sp2:
