@@ -13,7 +13,7 @@ def mut_count(input_mut):
 	mut=mutations.readlines()
 	fol_count=0
 	
-	for i in range(len(mut)): 
+	for i in range(len(mut)-1): 
 		line=mut[i].strip().split("\t")
 		chrom=line[0] #chromosome de la mutation 
 		pos=int(line[1]) #position de la mutation 
