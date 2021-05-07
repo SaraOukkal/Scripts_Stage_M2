@@ -220,7 +220,7 @@ def Poly_on_Gen(poly_1, poly_2, Gen_1, Gen_2, output_dir):
 			distance=int(line[0])
 			if distance >= -50 and distance <= 500 :
 				for a in Gen1: 
-					if not l.startswith("d"): #Ignore le header du fichier
+					if not a.startswith("d"): #Ignore le header du fichier
 						line2=a.strip().split("\t")
 						distance2=int(line2[0])
 						if distance == distance2:
