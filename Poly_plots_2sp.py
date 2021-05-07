@@ -220,15 +220,16 @@ def Poly_on_Gen(poly_1, poly_2, Gen_1, Gen_2, output_dir):
 			distance=int(line[0])
 			if distance >= -50 and distance <= 500 :
 				for a in Gen1: 
-					line2=a.strip().split("\t")
-					distance2=int(line2[0])
-					if distance == distance2:
-						dist.append(distance)
-						tot= int(line2[1]) + int(line2[2]) + int(line2[3]) + int(line2[4])
-						for t in sp1_List: 
-							sp1_List[t].append((int(line[num])/tot)*100)
-							num+=1
-						break
+					if not l.startswith("d"): #Ignore le header du fichier
+						line2=a.strip().split("\t")
+						distance2=int(line2[0])
+						if distance == distance2:
+							dist.append(distance)
+							tot= int(line2[1]) + int(line2[2]) + int(line2[3]) + int(line2[4])
+							for t in sp1_List: 
+								sp1_List[t].append((int(line[num])/tot)*100)
+								num+=1
+							break
 		
 	for l in poly2:
 		if not l.startswith("d"): #Ignore le header du fichier
@@ -237,15 +238,16 @@ def Poly_on_Gen(poly_1, poly_2, Gen_1, Gen_2, output_dir):
 			distance=int(line[0])
 			if distance >= -50 and distance <= 500 :
 				for a in Gen2: 
-					line2=a.strip().split("\t")
-					distance2=int(line2[0])
-					if distance == distance2:
-						dist.append(distance)
-						tot= int(line2[1]) + int(line2[2]) + int(line2[3]) + int(line2[4])
-						for t in sp2_List: 
-							sp2_List[t].append((int(line[num])/tot)*100)
-							num+=1
-						break
+					if not a.startswith("d"): #Ignore le header du fichier
+						line2=a.strip().split("\t")
+						distance2=int(line2[0])
+						if distance == distance2:
+							dist.append(distance)
+							tot= int(line2[1]) + int(line2[2]) + int(line2[3]) + int(line2[4])
+							for t in sp2_List: 
+								sp2_List[t].append((int(line[num])/tot)*100)
+								num+=1
+							break
 						
 	plt.figure(figsize=(10,10))
 	plt.plot(dist,sp1_List["A"], color='darkblue')
