@@ -227,7 +227,8 @@ def Poly_on_Gen(poly_1, poly_2, Gen_1, Gen_2, output_dir):
 							dist.append(distance)
 							tot= int(line2[1]) + int(line2[2]) + int(line2[3]) + int(line2[4])
 							for t in sp1_List: 
-								sp1_List[t].append((int(line[num])/tot)*100)
+								val=(int(line[num])/tot)*100
+								sp1_List[t].append(val)
 								num+=1
 							break
 		
@@ -242,10 +243,10 @@ def Poly_on_Gen(poly_1, poly_2, Gen_1, Gen_2, output_dir):
 						line2=a.strip().split("\t")
 						distance2=int(line2[0])
 						if distance == distance2:
-							dist.append(distance)
 							tot= int(line2[1]) + int(line2[2]) + int(line2[3]) + int(line2[4])
 							for t in sp2_List: 
-								sp2_List[t].append((int(line[num])/tot)*100)
+								val=(int(line[num])/tot)*100
+								sp2_List[t].append(val)
 								num+=1
 							break
 						
