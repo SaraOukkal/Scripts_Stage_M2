@@ -5,14 +5,13 @@ import argparse
 import numpy as np
 import os
 import matplotlib as mpl
-import seaborn as sns
 if os.environ.get('DISPLAY','') == '':
     print('no display found. Using non-interactive Agg backend')
     mpl.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
-
+import seaborn as sns
 
 def distri_bar(intervals):
 	f=open(intervals,"r")
