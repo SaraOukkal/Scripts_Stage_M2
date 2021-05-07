@@ -45,8 +45,8 @@ def distri_inter_bar(intervals):
 def plot(distribution1, distribution2, filename, output_dir):
 	
 	plt.figure(figsize=(10,10))	
-	sns.kdeplot(distribution1, color="black", alpĥa=0.8)
-	sns.kdeplot(distribution2, color="black", alpha=0.4)
+	sns.kdeplot(distribution1, color="black")
+	sns.kdeplot(distribution2, color="grey")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
@@ -62,8 +62,8 @@ def plot(distribution1, distribution2, filename, output_dir):
 def plot_inter(distribution1, distribution2, filename, output_dir):
 	
 	plt.figure(figsize=(10,10))	
-	sns.kdeplot(distribution1, color="black", alpĥa=0.8)
-	sns.kdeplot(distribution2, color="black", alpha=0.4)
+	sns.kdeplot(distribution1, color="black")
+	sns.kdeplot(distribution2, color="grey")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
