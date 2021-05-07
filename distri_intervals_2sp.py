@@ -5,7 +5,7 @@ import argparse
 import numpy as np
 import os
 import matplotlib as mpl
-import seaborn as sns:
+import seaborn as sns
 if os.environ.get('DISPLAY','') == '':
     print('no display found. Using non-interactive Agg backend')
     mpl.use('Agg')
