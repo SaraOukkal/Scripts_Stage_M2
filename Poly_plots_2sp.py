@@ -282,7 +282,7 @@ def main():
 	parser.add_argument('-sp1', '--input_1', type=str, help='Path to polybases count around barriers', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/AB_count_bar.txt")
 	parser.add_argument('-sp2', '--input_2', type=str, help='Path to polybases count around barriers', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/AB_count_bar.txt")
 	
-	parser.add_argument('-Gen1', '--input_Gen2', type=str, help='Path to bases count around barriers', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/AB_count_bar.txt")
+	parser.add_argument('-Gen1', '--input_Gen1', type=str, help='Path to bases count around barriers', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/AB_count_bar.txt")
 	parser.add_argument('-Gen2', '--input_Gen2', type=str, help='Path to bases count around barriers', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/AB_count_bar.txt")
 	
 				
