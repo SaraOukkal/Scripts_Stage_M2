@@ -5,7 +5,7 @@ import argparse
 
 def mut_count(input_mut):
 	"""
-	Charge le fichier des mutations ponctuelles et les place en fonction des barrières
+	Charge le fichier des mutations ponctuelles et compte les mutations successives
 	"""
 
 	mutations=open(input_mut,"r")
@@ -27,7 +27,6 @@ def mut_count(input_mut):
 		if chrom not in done_chrom:
 			done_chrom.append(chrom)
 			print(chrom) #imprime le nouveau chromosome pris en charge 
-			index=0 #réinitialise l'index 
 		
 		if previous_pos == pos-1:
 			fol_count+=1
