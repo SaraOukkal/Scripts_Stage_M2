@@ -47,7 +47,7 @@ def plot(distribution1, distribution2, filename, output_dir):
 	plt.figure(figsize=(10,10))	
 	sns.kdeplot(distribution1, color="black")
 	sns.kdeplot(distribution2, color="grey")
-	plt.axis(xmax=1500)
+	plt.axis(xlim=(0,1500))
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
