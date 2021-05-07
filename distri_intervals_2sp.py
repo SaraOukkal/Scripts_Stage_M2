@@ -71,7 +71,7 @@ def plot_inter(distribution1, distribution2, filename, output_dir):
 	plt.yticks(fontsize=20)
 	plt.title("Intervals size distribution", fontsize=20)
 	plt.xlabel("Size", fontsize=16)
-	plt.ylabel("Number", fontsize=16)
+	plt.ylabel("density", fontsize=16)
 	filepath=os.path.join(output_dir, filename)
 	plt.savefig(filepath)	
 	plt.clf()	
