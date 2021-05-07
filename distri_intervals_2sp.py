@@ -54,7 +54,7 @@ def plot(distribution1, distribution2, filename, output_dir):
 	plt.yticks(fontsize=20)
 	plt.title("Intervals size distribution", fontsize=20)
 	plt.xlabel("Size", fontsize=16)
-	plt.ylabel("Number", fontsize=16)
+	plt.ylabel("Density", fontsize=16)
 	filepath=os.path.join(output_dir, filename)
 	plt.savefig(filepath)	
 	plt.clf()	
@@ -86,9 +86,11 @@ def inter_bar_1000(intervals1, intervals2, output_dir):
 	types=["less", "more"]
 	less1=0
 	more1=0
+	All1=0
 	size1=[]
 	less2=0
 	more2=0
+	All2=0
 	size2=[]
 	
 	for l in inter1:
@@ -100,9 +102,12 @@ def inter_bar_1000(intervals1, intervals2, output_dir):
 			less1+=1
 		else:
 			more1+=1
-			
-	size1.append(less1)
-	size1.append(more1)
+		All1+=1
+	
+	less_per1=(less1/All1)*100	
+	more_per1=(more1/All1)*100		
+	size1.append(less_per1)
+	size1.append(more_per1)
 	
 	for l in inter2:
 		line=l.strip().split("\t")
@@ -113,9 +118,12 @@ def inter_bar_1000(intervals1, intervals2, output_dir):
 			less2+=1
 		else:
 			more2+=1
-			
-	size2.append(less2)
-	size2.append(more2)
+		All2+=1
+		
+	less_per2=(less1/All2)*100	
+	more_per2=(more1/All2)*100		
+	size2.append(less_per2)
+	size2.append(more_per2)
 	
 	plt.figure(figsize=(10,10))	
 	plt.bar(types,size1, color="limegreen", alpha=0.3, ec="darkgreen")
