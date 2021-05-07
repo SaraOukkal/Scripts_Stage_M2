@@ -61,7 +61,7 @@ def plot(distribution1, distribution2, filename, output_dir):
 	
 def plot_inter(distribution1, distribution2, filename, output_dir):
 	
-	plt.figure(figsize=(10,10))	
+	plt.figure(figsize=(20,10))	
 	sns.kdeplot(distribution1, color="black")
 	sns.kdeplot(distribution2, color="grey")
 	plt.axes().minorticks_on()
