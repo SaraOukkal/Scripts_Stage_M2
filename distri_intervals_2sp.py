@@ -5,6 +5,7 @@ import argparse
 import numpy as np
 import os
 import matplotlib as mpl
+import seaborn as sns:
 if os.environ.get('DISPLAY','') == '':
     print('no display found. Using non-interactive Agg backend')
     mpl.use('Agg')
@@ -37,7 +38,7 @@ def distri_inter_bar(intervals):
 		st=int(line[2])
 		end=int(line[3])	
 		size=end-st
-		if size < 1500:
+		if size < 1000:
 			sizes.append(size)
 		
 	return sizes
@@ -45,8 +46,8 @@ def distri_inter_bar(intervals):
 def plot(distribution1, distribution2, filename, output_dir):
 	
 	plt.figure(figsize=(10,10))	
-	plt.hist(distribution1, bins=100, color="limegreen", alpha=0.3, ec="darkgreen")
-	plt.hist(distribution2, bins=100, color="dodgerblue", alpha=0.3, ec="darkblue")
+	sns.kdeplot(distribution1, color="black", alpĥa=0.8)
+	sns.kdeplot(distribution2, color="black", alpha=0.4)
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
@@ -62,8 +63,8 @@ def plot(distribution1, distribution2, filename, output_dir):
 def plot_inter(distribution1, distribution2, filename, output_dir):
 	
 	plt.figure(figsize=(10,10))	
-	plt.hist(distribution1, bins=1500, color="limegreen", alpha=0.3, ec="darkgreen")
-	plt.hist(distribution2, bins=1500, color="dodgerblue", alpha=0.3, ec="darkblue")
+	sns.kdeplot(distribution1, color="black", alpĥa=0.8)
+	sns.kdeplot(distribution2, color="black", alpha=0.4)
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
