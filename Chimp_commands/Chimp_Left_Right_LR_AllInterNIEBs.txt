@@ -114,3 +114,7 @@ python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Res
 
 python3 plot_sites.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar/Right/Poly_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar/Right/Poly_plots/
 
+python3 Base_count.py -in /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/Poly_bases.txt 
+
+python3 Base_count.py -in /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/genome_bases.txt 
+
