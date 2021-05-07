@@ -198,15 +198,10 @@ def ancestral_sub_sites_percent(input_1, input_2, output_dir):
 	plt.clf()	
 
 def Poly_on_Gen(poly_1, poly_2, Gen_1, Gen_2, output_dir):
-	sp1_count=open(poly_1, "r")
-	sp2_count=open(poly_2, "r") 
-	Gen1_count=open(Gen_1, "r")
-	Gen2_count= open(Gen_2, "r")
-	
-	poly1=sp1_count.readlines()
-	poly2=sp2_count.readlines()
-	Gen1=Gen1_count.readlines()
-	Gen2=Gen2_count.readlines()
+	poly1=open(poly_1, "r")
+	poly2=open(poly_2, "r") 
+	Gen1=open(Gen_1, "r")
+	Gen2= open(Gen_2, "r")
 	
 	types=["A","C","G","T"]
 	sp1_List={}
@@ -226,8 +221,9 @@ def Poly_on_Gen(poly_1, poly_2, Gen_1, Gen_2, output_dir):
 			if distance >= -50 and distance <= 500 :
 				for a in Gen1: 
 					line2=a.strip().split("\t")
-					if distance == line2[0]:
-						dist.append(int(line[0]))
+					distance2=int(line2[0])
+					if distance == distance2:
+						dist.append(distance)
 						tot= int(line2[1]) + int(line2[2]) + int(line2[3]) + int(line2[4])
 						for t in sp1_List: 
 							sp1_List[t].append((int(line[num])/tot)*100)
@@ -242,8 +238,9 @@ def Poly_on_Gen(poly_1, poly_2, Gen_1, Gen_2, output_dir):
 			if distance >= -50 and distance <= 500 :
 				for a in Gen2: 
 					line2=a.strip().split("\t")
-					if distance == line2[0]:
-						dist.append(int(line[0]))
+					distance2=int(line2[0])
+					if distance == distance2:
+						dist.append(distance)
 						tot= int(line2[1]) + int(line2[2]) + int(line2[3]) + int(line2[4])
 						for t in sp2_List: 
 							sp2_List[t].append((int(line[num])/tot)*100)
