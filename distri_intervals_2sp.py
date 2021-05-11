@@ -42,7 +42,7 @@ def distri_inter_bar(intervals):
 		end=int(line[3])	
 		size=end-st
 		if size < 2000:
-			if size not in dico.keys():
+			if size not in sizes.keys():
 				sizes[size]=0
 			sizes[size]+=1
 		
