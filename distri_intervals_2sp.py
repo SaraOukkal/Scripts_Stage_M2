@@ -49,7 +49,7 @@ def distri_inter_bar(intervals):
 	for k in sorted(sizes.keys()):
 		density=sizes[k]/tot
 		dens.append(density)
-		length.append(sizes[k])
+		length.append(k)
 		
 	liste.append(length)
 	liste.append(dens)
@@ -81,8 +81,8 @@ def plot_inter(distribution1, distribution2, filename, output_dir):
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
-	plt.axes().xaxis.set_major_locator(MultipleLocator(1000))
-	plt.axes().xaxis.set_minor_locator(MultipleLocator(500))
+	plt.axes().xaxis.set_major_locator(MultipleLocator(100))
+	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
 	plt.xticks(fontsize=20)
 	plt.yticks(fontsize=20)
 	plt.axvline(117, color='black', alpha=0.5)
