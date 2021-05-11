@@ -75,7 +75,7 @@ def plot(distribution1, distribution2, filename, output_dir):
 	
 def plot_inter(distribution1, distribution2, filename, output_dir):
 	
-	plt.figure(figsize=(10,10))	
+	plt.figure(figsize=(20,10))	
 	plt.plot(distribution1[0],distribution1[1], color='firebrick')
 	plt.plot(distribution1[0],distribution2[1], color='tomato')
 	plt.axes().minorticks_on()
