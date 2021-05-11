@@ -48,7 +48,7 @@ def distri_inter_bar(intervals):
 		
 	for k in sorted(sizes.keys()):
 		density=sizes[k]/tot
-		dens.apend(density)
+		dens.append(density)
 		length.append(sizes[k])
 	
 	liste.append(length)
