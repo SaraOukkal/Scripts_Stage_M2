@@ -41,7 +41,7 @@ def distri_inter_bar(intervals):
 		st=int(line[2])
 		end=int(line[3])	
 		size=end-st
-		if size < 2000:
+		if size < 1000:
 			if size not in sizes.keys():
 				sizes[size]=0
 			sizes[size]+=1
@@ -59,8 +59,8 @@ def distri_inter_bar(intervals):
 def plot(distribution1, distribution2, filename, output_dir):
 	
 	plt.figure(figsize=(10,10))	
-	sns.kdeplot(distribution1, color="black")
-	sns.kdeplot(distribution2, color="grey")
+	sns.kdeplot(distribution1, color="blue")
+	sns.kdeplot(distribution2, color="red", linestyle="dashed")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
@@ -75,16 +75,16 @@ def plot(distribution1, distribution2, filename, output_dir):
 	
 def plot_inter(distribution1, distribution2, filename, output_dir):
 	
-	plt.figure(figsize=(20,10))	
-	
-	plt.plot(distribution1[0],distribution2[1], color='tomato')
-	plt.plot(distribution1[0],distribution1[1], color='blue')
+	plt.figure(figsize=(10,10))	
+	plt.plot(distribution1[0],distribution2[1], color='blue')
+	plt.plot(distribution1[0],distribution1[1], color='red', linestyle="dashed")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
 	plt.axes().xaxis.set_major_locator(MultipleLocator(100))
 	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
-	plt.xticks(fontsize=20)
+	degrees=65
+	plt.xticks(fontsize=20, rotation=degrees)
 	plt.yticks(fontsize=20)
 	plt.axvline(117, color='black', alpha=0.5)
 	plt.axvline(270, color='black', alpha=0.5)
