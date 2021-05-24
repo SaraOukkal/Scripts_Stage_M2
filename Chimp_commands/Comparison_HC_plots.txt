@@ -2,12 +2,19 @@ mkdir /media/disk1/soukkal/StageM2/Stage_M1/Comparison_HC/
 mkdir /media/disk1/soukkal/StageM2/Stage_M1/Comparison_HC/Poly_plots/
 mkdir /media/disk1/soukkal/StageM2/Stage_M1/Comparison_HC/Poly_plots/Left/
 mkdir /media/disk1/soukkal/StageM2/Stage_M1/Comparison_HC/Poly_plots/Right/
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Comparison_HC/Poly_plots/Left/no_Alu/
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Comparison_HC/Poly_plots/Right/no_Alu/
 
 ##Polyplots: 
-
+##All inter bar
 python3 Poly_plots_2sp.py -sp1 /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Left/Poly_count.txt -sp2 /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar/Left/Poly_count.txt -Gen1 /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/1000_inter_bar/Left/Genome_count.txt -Gen2 /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Left/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Comparison_HC/Poly_plots/Left/
 
 python3 Poly_plots_2sp.py -sp1 /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar/Right/Poly_count.txt -sp2 /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar/Right/Poly_count.txt -Gen1 /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/1000_inter_bar/Right/Genome_count.txt -Gen2 /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/1000_inter_bar/Right/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Comparison_HC/Poly_plots/Right/
+
+##Inter bar no alu: 
+python3 Poly_plots_2sp.py -sp1 /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar_no_Alu/Left/Poly_count.txt -sp2 /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar_no_Alu/Left/Poly_count.txt -Gen1 /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar_no_Alu/Left/Genome_count.txt -Gen2 /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar_no_Alu/Left/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Comparison_HC/Poly_plots/Left/no_Alu/
+
+python3 Poly_plots_2sp.py -sp1 /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar_no_Alu/Right/Poly_count.txt -sp2 /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar_no_Alu/Right/Poly_count.txt -Gen1 /media/disk1/soukkal/StageM2/Stage_M1/Human/Genome_Results/All_inter_bar_no_Alu/Right/Genome_count.txt -Gen2 /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar_no_Alu/Right/Genome_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Comparison_HC/Poly_plots/Right/no_Alu/
 
 ##1000 inter bar: 
 mkdir /media/disk1/soukkal/StageM2/Stage_M1/Comparison_HC/

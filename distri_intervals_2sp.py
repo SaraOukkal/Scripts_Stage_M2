@@ -90,8 +90,6 @@ def plot_inter(distribution1, distribution2, filename, output_dir):
 	plt.axvline(270, color='black', alpha=0.5)
 	plt.axvline(423, color='black', alpha=0.5)
 	plt.axvline(576, color='black', alpha=0.5)
-	plt.axvline(729, color='black', alpha=0.5)
-	plt.axvline(882, color='black', alpha=0.5)
 	plt.title("Intervals size distribution", fontsize=20)
 	plt.xlabel("Size", fontsize=16)
 	plt.ylabel("density", fontsize=16)

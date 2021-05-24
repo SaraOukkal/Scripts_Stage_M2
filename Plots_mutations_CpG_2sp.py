@@ -103,6 +103,7 @@ def mut_rate_plot(mut_rate1, mut_rate2, output_dir):
 	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
 	plt.xticks(fontsize=20)
 	plt.yticks(fontsize=20)
+	plt.ylim((4,8))
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.axvline(135, color='black', alpha=0.2)
 	plt.axvline(279, color='black', alpha=0.2)
@@ -178,7 +179,7 @@ def mut_rates_plots(sub_mut_rates1, sub_mut_rates2, output_dir):
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.axvline(135, color='black', alpha=0.2)
 	plt.axvline(279, color='black', alpha=0.2)
-	plt.title("C mutations", fontsize=20)
+	plt.title("C substitution rates around NIEBs borders", fontsize=20)
 	plt.xlabel("Distance from NIEBs", fontsize=16)
 	plt.ylabel("Mutation rate (%)", fontsize=16)
 	filename= "C_mut.png"

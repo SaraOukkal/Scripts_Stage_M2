@@ -120,4 +120,15 @@ mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar_no_
 
 python3 Plots_mutations_CpG_2sp.py -MR1 /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar_no_Alu/LR/CpG/Mut_rate.txt -MRS1 /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar_no_Alu/LR/CpG/Mut_rate_spe.txt -Mut1 /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar_no_Alu/LR/CpG/Mut_count.txt -MR2 /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/CpG/Mut_rate.txt -MRS2 /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/CpG/Mut_rate_spe.txt -Mut2 /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar/LR/CpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar_no_Alu/LR/CpG/Plots/Comparison_alu_noalu/
 
+##Poly bases:
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar_no_Alu/
+
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar_no_Alu/Left/
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar_no_Alu/Right/
+
+python3 Genome_bar_dist_RL.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/All_inter_bar_no_Alu/Inter_bar_no_alu.bed -B /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/Poly_bases.txt -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar_no_Alu/Left/Poly_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar_no_Alu/Right/Poly_count.txt
+
+##Genome: 
+
+python3 Genome_bar_dist_RL.py -bar /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/All_inter_bar_no_Alu/Inter_bar_no_alu.bed -B /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/genome_bases.txt -L /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar_no_Alu/Left/Genome_count.txt -R /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Genome_Results/All_inter_bar_no_Alu/Right/Genome_count.txt
 
