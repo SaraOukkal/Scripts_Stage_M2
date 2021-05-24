@@ -387,7 +387,7 @@ def mut_rate_base(sub_mut_rates1, sub_mut_rates2, output_dir):
 	plt.axes().xaxis.set_minor_locator(MultipleLocator(50))
 	plt.xticks(fontsize=20)
 	plt.yticks(fontsize=20)
-	plt.ylim((0,0.65))
+	plt.ylim((0,1.1))
 	plt.axvline(0, color='black', alpha=0.5)
 	plt.axvline(135, color='black', alpha=0.2)
 	plt.axvline(279, color='black', alpha=0.2)
