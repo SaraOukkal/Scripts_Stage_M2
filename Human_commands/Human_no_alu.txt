@@ -109,6 +109,7 @@ python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Hum
 
 python3 Plot_composition_Gen_AB.py -AB /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar_no_Alu/LR/All/AB_count.txt -Gen /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar/LR/All/AB_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar_no_Alu/LR/All/Plots/Compo_Plots/
 
+#Comparaison alu no alu: 
 mkdir /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar_no_Alu/LR/nonCpG/Plots/
 mkdir /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar_no_Alu/LR/nonCpG/Plots/Comparison_alu_noalu/
 

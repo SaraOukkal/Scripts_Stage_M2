@@ -94,8 +94,8 @@ def mut_rate_plot(mut_rate1, mut_rate2, output_dir):
 	Smooth_MR2=Lissage(MR2)
 
 	plt.figure(figsize=(10,10))	
-	plt.plot(dist,Smooth_MR1, color="darkviolet")
-	plt.plot(dist,Smooth_MR2, color="violet")
+	plt.plot(dist,Smooth_MR1, color="blue")
+	plt.plot(dist,Smooth_MR2, color="red")
 	plt.axes().minorticks_on()
 	plt.axes().tick_params(axis='both', which='major', direction='in', length= 8, width=2)
 	plt.axes().tick_params(axis='both', which='minor', direction='in', length= 4, width=1.5)
