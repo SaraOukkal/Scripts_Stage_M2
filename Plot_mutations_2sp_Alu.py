@@ -458,7 +458,6 @@ def main():
 	#fichier de sortie: 
 	parser.add_argument('-out', '--output_dir', type=str, help='Path to output file', default ="/home/saraoukkal/Documents/Stage_M1/Chimp_Step4_results/Plots/Mut_plots/")			
 	args = parser.parse_args()
-	mut_number(args.input_Mut1,args.input_Mut2, args.output_dir)
 	mut_rate_plot(args.input_MR1,args.input_MR2, args.output_dir)
 	mut_rates_plots(args.input_MRS1,args.input_MRS2, args.output_dir)
 	mut_rate_base(args.input_MRS1,args.input_MRS2, args.output_dir)
