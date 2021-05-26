@@ -52,6 +52,7 @@ python3 Plots_mutations_2sp.py -MR1 /media/disk1/soukkal/StageM2/Stage_M1/Human/
 
 mkdir /media/disk1/soukkal/StageM2/Stage_M1/Comparison_HC/1000_inter_bar_Alu/
 mkdir /media/disk1/soukkal/StageM2/Stage_M1/Comparison_HC/1000_inter_bar_Alu/nonCpG/
+mkdir /media/disk1/soukkal/StageM2/Stage_M1/Comparison_HC/1000_inter_bar_Alu/CpG/
 
 python3 Plots_mutations_2sp.py -MR1 /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar_Alu/LR/nonCpG/Mut_rate.txt -MRS1 /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar_Alu/LR/nonCpG/Mut_rate_spe.txt -Mut1 /media/disk1/soukkal/StageM2/Stage_M1/Human/Ali_Results/1000_inter_bar_Alu/LR/nonCpG/Mut_count.txt -MR2 /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar_Alu/LR/nonCpG/Mut_rate.txt -MRS2 /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar_Alu/LR/nonCpG/Mut_rate_spe.txt -Mut2 /media/disk1/soukkal/StageM2/Stage_M1/Chimp/Ali_Results/1000_inter_bar_Alu/LR/nonCpG/Mut_count.txt -out /media/disk1/soukkal/StageM2/Stage_M1/Comparison_HC/1000_inter_bar_Alu/nonCpG/
 
